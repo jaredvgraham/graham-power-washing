@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
           const bytes = await file.arrayBuffer();
           const buffer = Buffer.from(bytes);
 
-          const uploadDir = join(process.cwd(), "uploads");
+          const uploadDir = "/tmp/uploads";
           if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir);
           }
