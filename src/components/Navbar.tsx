@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 
@@ -13,6 +14,7 @@ const Navbar = () => {
               alt="Logo"
               width={40}
               height={40}
+              onClick={() => (window.location.href = "/")}
             />
           </a>
         </div>
