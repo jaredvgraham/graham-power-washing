@@ -2,14 +2,16 @@
 import React, { FormEvent, useState } from "react";
 import GetAQuote from "./GetAQuote";
 
-const PricingPage = () => {
-  const [squareFootage, setSquareFootage] = useState<number>(0);
+const PricingPage: React.FC = () => {
+  const [squareFootage, setSquareFootage] = useState<number | string>("");
   const [cost, setCost] = useState<string | null>(null);
   const costPerSqft = 0.25;
 
   const handleCalculate = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const calculatedCost = (squareFootage * costPerSqft).toFixed(2);
+    const calculatedCost = squareFootage
+      ? (Number(squareFootage) * costPerSqft).toFixed(2)
+      : null;
     setCost(calculatedCost);
   };
 
@@ -39,7 +41,7 @@ const PricingPage = () => {
             type="number"
             id="squareFootage"
             value={squareFootage}
-            onChange={(e) => setSquareFootage(Number(e.target.value))}
+            onChange={(e) => setSquareFootage(e.target.value)}
             className="w-full p-3 mb-4 border rounded-lg"
             placeholder="e.g., 2500"
             required

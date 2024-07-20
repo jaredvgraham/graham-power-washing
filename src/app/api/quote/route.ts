@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
     const data = await req.formData();
     const name = data.get("name")?.toString() || "";
     const email = data.get("email")?.toString() || "";
+    const town = data.get("town")?.toString() || "";
     const message = data.get("message")?.toString() || "";
     const phone = data.get("phone")?.toString() || "";
     const files = data.getAll("images") as File[];
@@ -77,7 +78,7 @@ export async function POST(req: NextRequest) {
       })
     );
 
-    const textMessage = `New Quote Request\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}\nImages: ${imageUrls.join(
+    const textMessage = `New Quote Request\nName: ${name}\nEmail: ${email}\nTown: ${town}\nPhone: ${phone}\nMessage: ${message}\nImages: ${imageUrls.join(
       ", "
     )}`;
 

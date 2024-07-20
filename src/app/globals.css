@@ -28,3 +28,19 @@ body {
 .redBorder {
   border-bottom: 1.5px solid rgb(176, 64, 64);
 }
+
+@keyframes breathing {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.breathing-animation {
+  animation: breathing 2s infinite;
+}

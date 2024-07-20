@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 import { useState } from "react";
 
 const GetAQuote = () => {
@@ -8,9 +8,12 @@ const GetAQuote = () => {
     name: "",
     email: "",
     phone: "",
+    town: "",
     images: [] as File[],
     message: "",
   });
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,6 +22,7 @@ const GetAQuote = () => {
     const form = new FormData();
     form.append("name", formData.name);
     form.append("email", formData.email);
+    form.append("town", formData.town);
     form.append("phone", formData.phone);
     form.append("message", formData.message);
     formData.images.forEach((file) => {
@@ -33,8 +37,23 @@ const GetAQuote = () => {
       });
       console.log("sent data");
       console.log(res);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        town: "",
+        images: [] as File[],
+        message: "",
+      });
+      setSuccessMessage("Quote request submitted successfully");
+      setErrorMessage(null); // Clear any previous error messages
     } catch (error) {
-      console.error(error);
+      if (isAxiosError(error)) {
+        console.error(error.response?.data);
+        setErrorMessage(error.response?.data.details || "An error occurred");
+      } else {
+        setErrorMessage("An unexpected error occurred");
+      }
     }
   };
 
@@ -51,7 +70,7 @@ const GetAQuote = () => {
   };
 
   return (
-    <div className=" py-12">
+    <div className="py-12">
       <div className="container mx-auto text-center mb-12">
         <h1 className="text-4xl font-light text-gray-800">Get A Quote</h1>
         <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
@@ -72,6 +91,7 @@ const GetAQuote = () => {
           <input
             type="text"
             id="name"
+            value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="w-full p-3 mb-4 border rounded-lg"
             placeholder="e.g., John Doe"
@@ -86,11 +106,27 @@ const GetAQuote = () => {
           <input
             type="email"
             id="email"
+            value={formData.email}
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
             className="w-full p-3 mb-4 border rounded-lg"
             placeholder="e.g., example@example.com"
+            required
+          />
+          <label
+            className="block text-gray-700 text-lg font-semibold mb-2"
+            htmlFor="town"
+          >
+            Town
+          </label>
+          <input
+            type="text"
+            id="town"
+            value={formData.town}
+            onChange={(e) => setFormData({ ...formData, town: e.target.value })}
+            className="w-full p-3 mb-4 border rounded-lg"
+            placeholder="e.g., Plymouth"
             required
           />
           <label
@@ -102,6 +138,7 @@ const GetAQuote = () => {
           <input
             type="tel"
             id="phone"
+            value={formData.phone}
             onChange={(e) =>
               setFormData({ ...formData, phone: e.target.value })
             }
@@ -143,6 +180,7 @@ const GetAQuote = () => {
           </label>
           <textarea
             id="message"
+            value={formData.message}
             className="w-full p-3 mb-4 border rounded-lg"
             placeholder="Tell us about your project..."
             onChange={(e) =>
@@ -156,6 +194,17 @@ const GetAQuote = () => {
           >
             Submit
           </button>
+          {errorMessage && (
+            <div className="mt-4 text-red-500">
+              <p>{errorMessage}</p>
+            </div>
+          )}
+
+          {successMessage && (
+            <div className="mt-4 text-green-500">
+              <p>{successMessage}</p>
+            </div>
+          )}
         </form>
       </div>
     </div>

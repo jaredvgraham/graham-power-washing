@@ -13,8 +13,8 @@ const Hero = () => {
   };
 
   return (
-    <div className="flex flex-col  items-center lg:justify-center w-full px-4">
-      <div className="text-center mb-8 lg:mb-0  sm:text-left sm:w-full lg:w-1/2 p-7">
+    <div className="flex flex-col  items-center lg:justify-center w-full px-4  ">
+      <div className="text-center mb-8 lg:mb-0  sm:text-left sm:w-full lg:w-1/2 p-7 text-gray-600">
         <h1 className="text-4xl font-extralight mb-2 text-center redBorder  ">
           Graham Power-Washing
         </h1>
@@ -26,16 +26,14 @@ const Hero = () => {
       <div className="w-full md:w-5/6 lg:w-2/3 xl:w-2/4 box">
         <Video
           src={first}
-          autoPlay
           muted
-          loop
           playsInline
           className="object-cover w-full h-auto"
         />
       </div>
       <button
         onClick={handleClick}
-        className="bg-slate-200 box text-green-600 p-2 rounded-lg mt-4"
+        className="bg-slate-200 box breathing-animation text-green-600 p-2 rounded-lg mt-4"
       >
         Get a Quote
       </button>
