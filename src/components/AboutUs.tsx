@@ -35,7 +35,7 @@ const AboutUs = () => {
         </div>
       </div>
       <div className="container mx-auto text-center mt-12">
-        <p className="text-gray-600 max-w-3xl mx-auto p-2  ">
+        <p className="text-gray-600 max-w-3xl mx-auto p-3  ">
           At Graham Power-Washing, we believe in delivering exceptional results
           and building long-lasting relationships with our clients. Whether
           it&apos;s a small residential house or a large commercial building, we
