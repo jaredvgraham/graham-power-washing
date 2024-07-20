@@ -19,7 +19,8 @@ const Hero = () => {
           Graham Power-Washing
         </h1>
         <p className="text-xl text-center font-extralight">
-          Committed to delivering exceptional results every time.
+          Committed to delivering exceptional results to the South Shore every
+          time.
         </p>
       </div>
       <div className="w-full md:w-5/6 lg:w-2/3 xl:w-2/4 box">

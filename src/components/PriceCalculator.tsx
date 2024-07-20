@@ -1,5 +1,6 @@
 "use client";
 import React, { FormEvent, useState } from "react";
+import GetAQuote from "./GetAQuote";
 
 const PricingPage = () => {
   const [squareFootage, setSquareFootage] = useState<number>(0);
@@ -13,7 +14,7 @@ const PricingPage = () => {
   };
 
   return (
-    <div className="bg-gray-100 py-12">
+    <div className=" py-12">
       <div className="container mx-auto text-center mb-12">
         <h1 className="text-4xl font-light text-gray-800">
           Pricing Calculator
@@ -59,6 +60,7 @@ const PricingPage = () => {
           </div>
         )}
       </div>
+      <GetAQuote />
     </div>
   );
 };

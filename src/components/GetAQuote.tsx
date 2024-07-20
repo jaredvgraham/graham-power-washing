@@ -14,6 +14,7 @@ const GetAQuote = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(formData.images.length);
 
     const form = new FormData();
     form.append("name", formData.name);
@@ -38,19 +39,23 @@ const GetAQuote = () => {
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-    if (e.target.files.length > 0) {
+    if (e.target.files) {
       const filesArray = Array.from(e.target.files);
-      setFormData({ ...formData, images: filesArray });
+      console.log(filesArray);
+
+      setFormData((prevState) => ({
+        ...prevState,
+        images: [...prevState.images, ...filesArray],
+      }));
     }
   };
 
   return (
-    <div className="bg-gray-100 py-12">
+    <div className=" py-12">
       <div className="container mx-auto text-center mb-12">
         <h1 className="text-4xl font-light text-gray-800">Get A Quote</h1>
         <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
-          Fill out the form below to get a quote for our power washing services.
+          Fill out the form below to get a finalized quote today.
         </p>
       </div>
       <div className="container mx-auto px-4">
@@ -108,7 +113,7 @@ const GetAQuote = () => {
             className="block text-gray-700 text-lg font-semibold mb-2"
             htmlFor="images"
           >
-            Images
+            Images (optional)
           </label>
           <input
             type="file"
@@ -116,8 +121,20 @@ const GetAQuote = () => {
             multiple
             onChange={handleFileChange}
             className="w-full p-3 mb-4 border rounded-lg"
-            required
           />
+          {formData.images.length > 0 && (
+            <div className="flex flex-wrap gap-4">
+              {formData.images.map((file, index) => (
+                <div key={index}>
+                  <img
+                    src={URL.createObjectURL(file)}
+                    alt={file.name}
+                    className="w-20 h-20 object-cover rounded-lg"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
           <label
             className="block text-gray-700 text-lg font-semibold mb-2"
             htmlFor="message"

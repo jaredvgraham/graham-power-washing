@@ -3,7 +3,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center w-full bg-zinc-300  thinBox py-4 px-8">
+    <nav className="flex items-center w-full bg-zinc-300 thinBox py-4 px-8">
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center">
           <a className="navbar-item" href="/">
@@ -34,7 +34,7 @@ const Navbar = () => {
           </a>
           <a
             className="navbar-item text-gray-600 hover:text-blue-500"
-            href="/about"
+            href="/contact"
           >
             Contact
           </a>

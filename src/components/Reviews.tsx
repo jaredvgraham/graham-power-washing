@@ -37,18 +37,18 @@ const Reviews = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8">
         <ReviewCard
-          review="Great service, very professional."
-          author="John Doe"
+          review="Graham power washed our house, decks, driveway, &amp; camper and it all came out beautifully. You don't realize how badly it needs to be done until it's all clean! Thank you Jared &amp; Justin"
+          author="Cora Showers"
           rating={5}
         />
         <ReviewCard
-          review="Amazing results, highly recommend!"
-          author="Jane Smith"
-          rating={4}
+          review="Unbelievable job at my house!! They did my house, deck, pool deck, and pool fence today. I was like a kid on Christmas morning when I came today! Highly recommend them to anyone. Very reasonable price and more importantly EXCEPTIONAL work!"
+          author="Chris Jones"
+          rating={5}
         />
         <ReviewCard
-          review="Very thorough and efficient."
-          author="Mark Johnson"
+          review="Justin pressure washed my house a few days ago and I saw it dry today for the first time. I'm not surprised but it looks awesome. Meticulous in every way, from the first callback within the hour, on schedule for the estimate visit, excellent price, great job and fantastic customer service. Thank you Justin. Highly recommended."
+          author="Kevin Geary"
           rating={5}
         />
       </div>
