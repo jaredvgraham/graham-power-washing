@@ -1,6 +1,3 @@
-"use client";
-import { useRouter } from "next/navigation";
-import React from "react";
 import { FaStar } from "react-icons/fa";
 
 type ReviewCardProps = {
@@ -29,11 +26,6 @@ const ReviewCard = ({ review, author, rating }: ReviewCardProps) => {
 };
 
 const Reviews = () => {
-  const Router = useRouter();
-
-  const navigateToReviews = () => {
-    Router.push("/reviews");
-  };
   return (
     <div className="p-7 bg-gray-200 mt-4">
       <div className="flex justify-center flex-col mb-8">
@@ -58,14 +50,29 @@ const Reviews = () => {
           author="Kevin Geary"
           rating={5}
         />
+        <ReviewCard
+          review="I recently moved to MA and needed my vinyl sided house and fence powerwashed. Justin returned my call immediately. We set up an appointment for the estimate and he was at my house on time. The price was very fair and he came out to the house within a few days, as we agreed, to do the work. He did the work himself and he did a great job. The house is clean and mildew free. The fence looks new. While onsite, he told me I could save some dollars by not doing the deck, since he believed it had been done recently and as a result didn't think his powerwashing would make much of a difference. He did not have to do that, but it was appreciated. Finally, he cleaned up and put back everything that had been moved in the process. I would recommend Justin to anyone looking for powerwashing."
+          author="Pete Durfee"
+          rating={5}
+        />
+        <ReviewCard
+          review="We were very pleased with our powerwashing. Our interactions were quick and very easy to work with. They actually care that their customers are satisfied. We have and will continue to recommend them."
+          author="Stephen LeClair"
+          rating={5}
+        />
+        <ReviewCard
+          review="Justin was on time, perfectly professional and courteous. He wasted no time in completing a spectacular power washing of my very dirty home. I could not be happier with Justin's work, and the great price. THANK YOU! Review by John S. in South Plymouth, MA"
+          author="John S."
+          rating={5}
+        />
       </div>
 
       <div className="flex justify-start ml-8">
-        <button
-          onClick={navigateToReviews}
-          className="bg-stone-400 text-white py-2 px-4 rounded-lg  hover:bg-stone-500 transition duration-300"
-        >
-          See More Reviews
+        <button className="bg-stone-400 text-white py-2 px-4 rounded-lg  hover:bg-stone-500 transition duration-300">
+          <a href="https://www.homeadvisor.com/rated.GrahamPainting.43994090.html">
+            {" "}
+            Not convinced? Check out our reviews on HomeAdvisor!{" "}
+          </a>
         </button>
       </div>
     </div>

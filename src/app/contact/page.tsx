@@ -1,8 +1,9 @@
+import GetAQuote from "@/components/GetAQuote";
 import React from "react";
 
 const ContactPage = () => {
   return (
-    <div className="bg-gray-100 py-12">
+    <div className="py-12">
       <div className="container mx-auto text-center mb-12">
         <h1 className="text-4xl font-light text-gray-800">Contact Us</h1>
         <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
@@ -27,7 +28,7 @@ const ContactPage = () => {
           </h3>
           <p className="text-gray-600 mb-4">
             Justin is available to answer your calls and provide you with the
-            best powerwashing services. Feel free to call anytime during
+            best powerwashing services. Feel free to call or text anytime during
             business hours!
           </p>
           <div className="text-center">
@@ -40,6 +41,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
+      <GetAQuote />
     </div>
   );
 };
