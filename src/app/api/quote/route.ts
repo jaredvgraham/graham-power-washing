@@ -4,11 +4,22 @@ import { join } from "path";
 import { uploadImageToFirebase } from "@/lib/uploadImage";
 import twilio from "twilio";
 import { v4 as uuidv4 } from "uuid";
+import nodemailer from "nodemailer";
 import fs from "fs";
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = twilio(accountSid, authToken);
+
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // true for 465, false for other ports
+  auth: {
+    user: process.env.EMAIL, // your Gmail address
+    pass: process.env.EMAIL_PASS, // your Gmail app password
+  },
+});
 
 export async function POST(req: NextRequest) {
   console.log("endpoint hit");
@@ -69,6 +80,16 @@ export async function POST(req: NextRequest) {
     const textMessage = `New Quote Request\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}\nImages: ${imageUrls.join(
       ", "
     )}`;
+
+    const mailOptions = {
+      from: process.env.EMAIL, // sender address
+      to: process.env.EMAIL, // list of receivers (sending to yourself)
+      subject: "New Quote Request", // Subject line
+      text: textMessage, // plain text body
+      html: `<p>${textMessage.replace(/\n/g, "<br>")}</p>`, // html body
+    };
+
+    await transporter.sendMail(mailOptions);
 
     await client.messages.create({
       body: textMessage,
