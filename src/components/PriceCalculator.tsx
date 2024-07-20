@@ -19,8 +19,8 @@ const PricingPage = () => {
           Pricing Calculator
         </h1>
         <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
-          Calculate the cost of our power washing services based on your home's
-          square footage.
+          Calculate the cost of our power washing services based on your
+          home&apos;s square footage.
         </p>
       </div>
       <div className="container mx-auto px-4">

@@ -1,7 +1,13 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 
-const ReviewCard = ({ review, author, rating }) => {
+type ReviewCardProps = {
+  review: string;
+  author: string;
+  rating: number;
+};
+
+const ReviewCard = ({ review, author, rating }: ReviewCardProps) => {
   return (
     <div className="bg-white shadow-md rounded-lg p-6 transform transition duration-500 hover:scale-105">
       <div className="flex items-center mb-4">
@@ -14,7 +20,7 @@ const ReviewCard = ({ review, author, rating }) => {
           />
         ))}
       </div>
-      <p className="text-gray-700 italic mb-4">"{review}"</p>
+      <p className="text-gray-700 italic mb-4">&quot;{review}&quot;</p>
       <p className="text-gray-600 font-semibold text-right">- {author}</p>
     </div>
   );

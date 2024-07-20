@@ -16,14 +16,7 @@ const AboutUs = () => {
       </div>
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-8 px-6">
         <div className="max-w-sm">
-          <Image
-            src="/justin2.jpg"
-            alt="Justin"
-            width={300}
-            height={300}
-            layout="responsive"
-            objectFit="cover"
-          />
+          <Image src="/justin2.jpg" alt="Justin" width={300} height={300} />
           <h2 className="text-xl font-semibold mt-4">Justin</h2>
           <p className="text-gray-600 mt-2">
             Justin brings his extensive experience and keen eye for detail to
@@ -32,28 +25,21 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="max-w-sm">
-          <Image
-            src="/me.jpg"
-            alt="Jared"
-            width={300}
-            height={300}
-            layout="responsive"
-            objectFit="cover"
-          />
+          <Image src="/me.jpg" alt="Jared" width={300} height={300} />
           <h2 className="text-xl font-semibold mt-4">Jared</h2>
           <p className="text-gray-600 mt-2">
-            Jared's dedication and commitment to customer satisfaction shine
-            through in his work, making sure every client is happy with the
-            results.
+            Jared&apos;s dedication and commitment to customer satisfaction
+            shine through in his work, making sure every client is happy with
+            the results.
           </p>
         </div>
       </div>
       <div className="container mx-auto text-center mt-12">
         <p className="text-gray-600 max-w-3xl mx-auto">
           At Graham Power-Washing, we believe in delivering exceptional results
-          and building long-lasting relationships with our clients. Whether it's
-          a small residential house or a large commercial building, we have the
-          expertise and equipment to get the job done right.
+          and building long-lasting relationships with our clients. Whether
+          it&apos;s a small residential house or a large commercial building, we
+          have the expertise and equipment to get the job done right.
         </p>
       </div>
     </div>

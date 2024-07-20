@@ -55,8 +55,6 @@ const OurWork = () => {
               alt={img.title}
               width={300}
               height={300}
-              layout="responsive"
-              objectFit="cover"
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
               <p className="text-white text-lg">Project {index + 1}</p>
