@@ -16,7 +16,7 @@ const AboutUs = () => {
       </div>
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-8 px-6">
         <div className="max-w-sm">
-          <Image src="/justin2.jpg" alt="Justin" width={310} height={310} />
+          <Image src="/justin2.jpeg" alt="Justin" width={320} height={320} />
           <h2 className="text-xl font-semibold mt-4">Justin</h2>
           <p className="text-gray-600 mt-2 w-80">
             Justin brings his extensive experience and keen eye for detail to
