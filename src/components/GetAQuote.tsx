@@ -26,12 +26,11 @@ const GetAQuote = () => {
     try {
       const uploadedBlobUrls = await Promise.all(
         formData.images.map(async (file) => {
-          const blobRes = await axios.post("/api/avatar/upload", formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
+          const newBlob: PutBlobResult = await upload(file.name, file, {
+            access: "public",
+            handleUploadUrl: "/api/avatar/upload",
           });
-          return blobRes.data.url;
+          return newBlob.url;
         })
       );
 
