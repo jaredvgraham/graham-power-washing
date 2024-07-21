@@ -7,6 +7,14 @@ import { v4 as uuidv4 } from "uuid";
 import nodemailer from "nodemailer";
 import fs from "fs";
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "20mb", // Set desired value here
+    },
+  },
+};
+
 export const maxDuration = 300; // 300 seconds or 5 minutes
 export const dynamic = "force-dynamic";
 
