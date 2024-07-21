@@ -7,7 +7,7 @@ interface Img {
   imageUrl: string;
 }
 
-const OurWork = () => {
+const BeforeAfter = () => {
   const [expandedImg, setExpandedImg] = useState<Img | null>(null);
 
   const handleExpandImg = (img: Img) => {
@@ -21,44 +21,44 @@ const OurWork = () => {
   const projects = [
     {
       title: "House 1",
-      imageUrl: "/img1.jpeg",
+      imageUrl: "/img9.jpeg",
     },
     {
       title: "House 2",
-      imageUrl: "/img2.jpeg",
+      imageUrl: "/img10.jpeg",
     },
     {
       title: "House 3",
-      imageUrl: "/img3.jpeg",
+      imageUrl: "/img11.jpeg",
     },
     {
       title: "House 4",
-      imageUrl: "/img4.jpeg",
+      imageUrl: "/img12.jpeg",
     },
     {
       title: "House 5",
-      imageUrl: "/img5.jpeg",
+      imageUrl: "/img13.jpeg",
     },
     {
       title: "House 6",
-      imageUrl: "/img6.jpeg",
+      imageUrl: "/img14.jpeg",
     },
     {
       title: "House 7",
-      imageUrl: "/img7.jpeg",
+      imageUrl: "/img15.jpeg",
     },
     {
       title: "House 8",
-      imageUrl: "/img8.jpeg",
+      imageUrl: "/img16.jpeg",
     },
   ];
 
   return (
     <div className="bg-gray-100 py-12">
       <div className="container mx-auto text-center mb-12">
-        <h1 className="text-4xl font-light text-gray-800">Our Work</h1>
+        <h1 className="text-4xl font-light text-gray-800">Before and After</h1>
         <p className="text-gray-600 mt-4">
-          Check out some of our recent projects
+          Check out some before and after photos
         </p>
       </div>
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
@@ -102,4 +102,4 @@ const OurWork = () => {
   );
 };
 
-export default OurWork;
+export default BeforeAfter;

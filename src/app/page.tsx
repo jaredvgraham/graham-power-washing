@@ -1,4 +1,5 @@
 import AboutUs from "@/components/AboutUs";
+import BeforeAfter from "@/components/BeforeAfter";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -14,6 +15,7 @@ const page = () => {
       </section>
       <Reviews />
       <OurWork />
+      <BeforeAfter />
       <section id="about">
         <AboutUs />
       </section>
