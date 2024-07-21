@@ -1,6 +1,7 @@
 "use client";
 import React, { FormEvent, useState } from "react";
 import GetAQuote from "./GetAQuote";
+import Contact from "./contact";
 
 const PricingPage: React.FC = () => {
   const [squareFootage, setSquareFootage] = useState<number | string>("");
@@ -63,6 +64,7 @@ const PricingPage: React.FC = () => {
         )}
       </div>
       <GetAQuote />
+      <Contact />
     </div>
   );
 };

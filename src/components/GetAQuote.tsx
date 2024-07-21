@@ -4,6 +4,7 @@ import axios, { isAxiosError } from "axios";
 import { useState, useRef } from "react";
 import { type PutBlobResult } from "@vercel/blob";
 import { upload } from "@vercel/blob/client";
+import ContactPage from "@/app/contact/page";
 
 const GetAQuote = () => {
   const inputFileRef = useRef<HTMLInputElement>(null);
@@ -153,7 +154,7 @@ const GetAQuote = () => {
             className="block text-gray-700 text-lg font-semibold mb-2"
             htmlFor="images"
           >
-            Images (optional)
+            Images
           </label>
           <input
             type="file"
