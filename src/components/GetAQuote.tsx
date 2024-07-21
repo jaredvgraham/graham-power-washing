@@ -1,9 +1,12 @@
 "use client";
 
 import axios, { isAxiosError } from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { type PutBlobResult } from "@vercel/blob";
+import { upload } from "@vercel/blob/client";
 
 const GetAQuote = () => {
+  const inputFileRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,26 +17,27 @@ const GetAQuote = () => {
   });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [blobUrls, setBlobUrls] = useState<string[]>([]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData.images.length);
 
-    const form = new FormData();
-    form.append("name", formData.name);
-    form.append("email", formData.email);
-    form.append("town", formData.town);
-    form.append("phone", formData.phone);
-    form.append("message", formData.message);
-    formData.images.forEach((file) => {
-      form.append("images", file);
-    });
-
     try {
-      const res = await axios.post("/api/quote", form, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      const uploadedBlobUrls = await Promise.all(
+        formData.images.map(async (file) => {
+          const blobRes = await axios.post("/api/avatar/upload", file, {
+            headers: {
+              "Content-Type": file.type,
+            },
+          });
+          return blobRes.data.url;
+        })
+      );
+
+      const res = await axios.post("/api/quote", {
+        ...formData,
+        imageUrls: uploadedBlobUrls,
       });
       console.log("sent data");
       console.log(res);
