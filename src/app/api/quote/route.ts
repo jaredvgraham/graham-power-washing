@@ -160,8 +160,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
       text: textMessage, // plain text body
       html: `<p>${textMessage.replace(/\n/g, "<br>")}</p>`, // html body
     };
+    const mailOptionsTwo = {
+      from: process.env.EMAIL, // sender address
+      to: "grahampaintinc@gmail.com", // list of receivers (sending to yourself)
+      subject: "New Quote Request", // Subject line
+      text: textMessage, // plain text body
+      html: `<p>${textMessage.replace(/\n/g, "<br>")}</p>`, // html body
+    };
 
     await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptionsTwo);
 
     await client.messages.create({
       body: textMessage,
