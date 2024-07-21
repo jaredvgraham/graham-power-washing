@@ -11,8 +11,8 @@ export async function POST(req: Request) {
   const contentType = req.headers.get("content-type") || "text/plain";
   const fileName = `${nanoid()}.${contentType.split("/")[1]}`;
   const blob = await put(fileName, file, {
-    contentType,
     access: "public",
+    multipart: true,
   });
   return NextResponse.json(blob);
 }
