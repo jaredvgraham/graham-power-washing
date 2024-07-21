@@ -1,5 +1,5 @@
 import GetAQuote from "@/components/GetAQuote";
-import Contact from "@/components/contact";
+import Contact from "@/components/Contact";
 import React from "react";
 
 const ContactPage = () => {

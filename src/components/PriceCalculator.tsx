@@ -1,7 +1,7 @@
 "use client";
 import React, { FormEvent, useState } from "react";
 import GetAQuote from "./GetAQuote";
-import Contact from "./contact";
+import Contact from "./Contact";
 
 const PricingPage: React.FC = () => {
   const [squareFootage, setSquareFootage] = useState<number | string>("");
