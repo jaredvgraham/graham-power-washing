@@ -3,7 +3,7 @@ import { withNextVideo } from "next-video/process";
 const nextConfig = {
   api: {
     bodyParser: {
-      sizeLimit: "20mb", // Set desired value here
+      sizeLimit: "100mb", // Set desired value here
     },
   },
 };
