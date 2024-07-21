@@ -118,11 +118,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-
-export const dynamic = {
-  api: {
-    bodyParser: {
-      sizeLimit: "20mb", // Set the desired limit here
-    },
-  },
-};

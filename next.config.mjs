@@ -1,9 +1,9 @@
 import { withNextVideo } from "next-video/process";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: {
-      bodySizeLimit: "100mb", // Set desired value here
+  api: {
+    bodyParser: {
+      sizeLimit: "20mb", // Set desired value here
     },
   },
 };
