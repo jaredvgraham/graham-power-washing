@@ -3,7 +3,7 @@ import { withNextVideo } from "next-video/process";
 const nextConfig = {
   experimental: {
     serverActions: {
-      bodySizeLimit: "20mb", // Set desired value here
+      bodySizeLimit: "100mb", // Set desired value here
     },
   },
 };
