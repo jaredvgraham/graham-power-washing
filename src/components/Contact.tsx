@@ -5,7 +5,7 @@ const Contact = () => {
     <div className="py-12">
       <div className="container mx-auto text-center mb-12">
         <h1 className="text-4xl font-light text-gray-800">Contact Us</h1>
-        <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
+        <p className="text-gray-600 mt-4 max-w-3xl mx-auto p-3">
           Have any questions or need a quote? Reach out to Justin directly!
         </p>
       </div>
