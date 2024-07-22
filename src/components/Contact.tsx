@@ -1,6 +1,17 @@
+"use client";
+import axios from "axios";
 import React from "react";
 
+const phoneCall = {
+  phone: "Phone Call",
+};
+
 const Contact = () => {
+  const handlePhoneClick = async () => {
+    const response = await axios.post("/api/phone", phoneCall);
+    console.log(response);
+  };
+
   return (
     <div className="py-12">
       <div className="container mx-auto text-center mb-12">
@@ -18,7 +29,11 @@ const Contact = () => {
             <strong>Owner:</strong> Justin
             <br />
             <strong>Phone:</strong>{" "}
-            <a href="tel:7744877616" className="text-blue-500 hover:underline">
+            <a
+              href="tel:7744877616"
+              onClick={handlePhoneClick}
+              className="text-blue-500 hover:underline"
+            >
               774-487-7616
             </a>
           </p>
@@ -32,10 +47,11 @@ const Contact = () => {
           </p>
           <div className="text-center">
             <a
-              href="tel:7813367247"
+              href="tel:7744877616"
+              onClick={handlePhoneClick}
               className="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition duration-300"
             >
-              Call Now: 7813367247
+              Call Now: 774-487-7616
             </a>
           </div>
         </div>
