@@ -169,7 +169,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     };
 
     await transporter.sendMail(mailOptions);
-    // await transporter.sendMail(mailOptionsTwo);
+    await transporter.sendMail(mailOptionsTwo);
 
     await client.messages.create({
       body: textMessage,
