@@ -7,11 +7,11 @@ const AboutUs = () => {
       <div className="container mx-auto text-center mb-12">
         <h1 className="text-4xl font-light text-gray-800">About Us</h1>
         <p className="text-gray-600 mt-4 max-w-3xl mx-auto p-2">
-          Welcome to Graham Power-Washing! We are a family-owned business run by
-          two brothers, Justin and Jared, who have been providing top-quality
-          power washing services for over a decade. Specializing in all aspects
-          of power washing, we take pride in handling jobs of any size with the
-          utmost professionalism and care.
+          Welcome to Graham Painting and Power-Washing! We are a family-owned
+          business run by two brothers, Justin and Jared, who have been
+          providing top-quality power washing and painting services for over a
+          decade. Specializing in all aspects of power washing, we take pride in
+          handling jobs of any size with the utmost professionalism and care.
         </p>
       </div>
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-8 px-6">
