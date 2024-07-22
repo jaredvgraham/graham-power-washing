@@ -11,11 +11,13 @@ export const metadata: Metadata = {
     "Graham Power-Washing offers top-quality power washing, painting, and cabinet refinishing services in Buzzards Bay, MA and surrounding areas. Serving residential and commercial clients across Middleboro, Scituate, Hingham, Plymouth, Falmouth, and more.",
   keywords: [
     "power washing",
+    "power washing near me",
     "painting",
-    "cabinet refinishing",
-    "popcorn ceiling removal",
-    "drywall patching",
     "Buzzards Bay power washing",
+    "Plymouth power washing",
+    "Deck Power Washing",
+    "Patios Power Washing",
+    "House Power Washing",
     "Massachusetts power washing",
     "Graham Power-Washing",
     "exterior cleaning",
@@ -39,6 +41,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id=' + i + dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-53X7DZN3');
+            `,
+          }}
+        />
+        {/* End Google Tag Manager */}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-7FS20SMXY8"
@@ -183,6 +198,16 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} bg-gray-100`}>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-53X7DZN3"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <Navbar />
         {children}
       </body>
