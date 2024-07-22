@@ -1,5 +1,6 @@
 import AboutUs from "@/components/AboutUs";
 import BeforeAfter from "@/components/BeforeAfter";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -19,7 +20,7 @@ const page = () => {
       <section id="about">
         <AboutUs />
       </section>
-
+      <Contact />
       <Footer />
     </>
   );
