@@ -1,3 +1,4 @@
+import { createPhoneCall } from "@/services/firebasePhoneCalls";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -16,12 +17,14 @@ export async function POST(req: NextRequest) {
     const { phone } = await req.json();
     console.log("msg", phone);
 
+    await createPhoneCall({ phone });
+
     const textMessage = `Phone call: ${phone}`;
 
     const mailOptions = {
       from: process.env.EMAIL, // sender address
       to: process.env.EMAIL, // list of receivers (sending to yourself)
-      subject: "New Quote Request", // Subject line
+      subject: "New Phone Call", // Subject line
       text: textMessage, // plain text body
       html: `<p>${textMessage.replace(/\n/g, "<br>")}</p>`, // html body
     };

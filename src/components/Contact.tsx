@@ -47,11 +47,11 @@ const Contact = () => {
           </p>
           <div className="text-center">
             <a
-              href="tel:7744877616"
+              href="tel:7813367247"
               onClick={handlePhoneClick}
               className="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition duration-300"
             >
-              Call Now: 774-487-7616
+              Call Now: 7813367247
             </a>
           </div>
         </div>

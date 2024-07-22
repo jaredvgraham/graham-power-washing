@@ -35,6 +35,14 @@ const GetAQuote = () => {
         })
       );
 
+      const adminResponse = await axios.post("/api/admin/quote", {
+        name: formData.name,
+        town: formData.town,
+        phone: formData.phone,
+      });
+
+      console.log(adminResponse);
+
       const res = await axios.post("/api/quote", {
         ...formData,
         imageUrls: uploadedBlobUrls,
@@ -159,6 +167,7 @@ const GetAQuote = () => {
           <input
             type="file"
             id="images"
+            required
             multiple
             onChange={handleFileChange}
             className="w-full p-3 mb-4 border rounded-lg"

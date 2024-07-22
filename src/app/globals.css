@@ -44,3 +44,37 @@ body {
 .breathing-animation {
   animation: breathing 2s infinite;
 }
+
+/* global.css or a specific CSS module */
+.quote-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.quote-card {
+  background: #fff;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* global.css or a specific CSS module */
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px; /* Adjust this value as needed */
+  height: 400px; /* Adjust this value as needed */
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+    max-width: 100%;
+    height: auto;
+  }
+}
