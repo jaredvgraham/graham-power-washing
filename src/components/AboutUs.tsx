@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 const AboutUs = () => {
+  //
   return (
     <div className="bg-white py-12">
       <div className="container mx-auto text-center mb-12">
