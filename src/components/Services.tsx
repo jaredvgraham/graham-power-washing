@@ -23,13 +23,7 @@ const Services = () => {
         "Our deck and patio cleaning services remove dirt, algae, and mildew, making your outdoor spaces look brand new. We use safe and effective methods to protect your wood and stone surfaces.",
       icon: "🪵",
     },
-    {
-      id: 4,
-      title: "Gutter Cleaning and Maintenance",
-      description:
-        "Prevent water damage with our gutter cleaning services. We clear out leaves, debris, and build-up to ensure your gutters function properly, protecting your home’s foundation and landscaping.",
-      icon: "🌧️",
-    },
+
     {
       id: 5,
       title: "Fence Pressure Washing",
