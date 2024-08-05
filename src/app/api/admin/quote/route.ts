@@ -6,6 +6,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const { name, town, phone } = await req.json();
 
     console.log("msg", name, town, phone);
+    
 
     await createQuote({ name, town, phone });
 

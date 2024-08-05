@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import OurWork from "@/components/OurWork";
 import Reviews from "@/components/Reviews";
+import Services from "@/components/Services";
 import React from "react";
 
 const page = () => {
@@ -17,6 +18,7 @@ const page = () => {
       <Reviews />
       <OurWork />
       <BeforeAfter />
+      <Services />
       <section id="about">
         <AboutUs />
       </section>
