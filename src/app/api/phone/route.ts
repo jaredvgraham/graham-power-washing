@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 
     await createPhoneCall({ phone });
 
-    const textMessage = `Phone call: ${phone}`;
+    const textMessage = `Phone call from graham powerwashing: ${phone}`;
 
     const mailOptions = {
       from: process.env.EMAIL, // sender address
