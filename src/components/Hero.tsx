@@ -31,6 +31,17 @@ const Hero = () => {
           className="object-cover w-full h-auto"
         />
       </div>
+      {/* <div className="w-full md:w-5/6 lg:w-2/3 xl:w-2/4 box">
+        <video
+          controls
+          muted
+          preload="auto"
+          className="object-cover w-full h-auto"
+        >
+          <source src="/house-wash-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div> */}
       <button
         onClick={handleClick}
         className="bg-slate-200 box breathing-animation text-green-600 p-2 rounded-lg mt-4"

@@ -3,28 +3,9 @@ import Image from "next/image";
 import React, { use, useEffect, useState } from "react";
 
 const Navbar = () => {
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolling(true);
-      } else {
-        setIsScrolling(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <nav
-      className={`flex items-center w-full thinBox py-4 px-8 sticky top-0 z-30 bg-zinc-300 ${
-        isScrolling ? " h-12" : ""
-      } transition-all duration-300`}
+      className={`flex items-center w-full thinBox py-4 px-8 sticky top-0 z-30 bg-zinc-300 `}
     >
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center">
