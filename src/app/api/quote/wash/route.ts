@@ -15,8 +15,16 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
-    const { name, email, phone, town, message, imageUrls, options } =
-      await req.json();
+    const {
+      name,
+      email,
+      phone,
+      town,
+      message,
+      imageUrls,
+      options,
+      squareFootage,
+    } = await req.json();
     console.log("Received data:", {
       name,
       email,
@@ -33,7 +41,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       );
     }
 
-    const quote = await getGptQuote(imageUrls, options);
+    const quote = await getGptQuote(imageUrls, options, squareFootage, town);
     console.log("Quote from GPT:", quote);
 
     if (!imageUrls || imageUrls.length === 0) {

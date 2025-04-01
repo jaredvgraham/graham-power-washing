@@ -16,6 +16,7 @@ const GetAiQuote = () => {
     images: [] as File[],
     message: "",
     options: [] as string[],
+    squareFootage: "",
   });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -48,18 +49,13 @@ const GetAiQuote = () => {
       const res = await axios.post("/api/quote/wash", {
         ...formData,
         imageUrls: uploadedBlobUrls,
+        squareFootage: formData.options.includes("house")
+          ? formData.squareFootage
+          : undefined,
       });
       console.log("sent data");
       console.log(res);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        town: "",
-        images: [] as File[],
-        message: "",
-        options: [],
-      });
+
       setSuccessMessage("Quote request submitted successfully");
       setErrorMessage(null); // Clear any previous error messages
     } catch (error) {
@@ -172,11 +168,13 @@ const GetAiQuote = () => {
             {[
               "house",
               "deck",
+              "walkway",
               "porch",
               "patio",
-              "fence",
-              "pool-deck-wash",
-              "fence-wash",
+              "Shed",
+              "Detached Garage",
+              "Stone Walls",
+              "Fence",
             ].map((option) => (
               <label key={option} className="flex items-center space-x-2 mb-2">
                 <input
@@ -201,6 +199,30 @@ const GetAiQuote = () => {
               </label>
             ))}
           </div>
+          {formData.options.includes("house") && (
+            <div className="w-full p-3 mb-4 border rounded-lg">
+              <label
+                className="block text-gray-700 text-lg font-semibold mb-2"
+                htmlFor="squareFootage"
+              >
+                Square Footage
+              </label>
+              <input
+                type="number"
+                id="squareFootage"
+                value={formData.squareFootage}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    squareFootage: e.target.value,
+                  })
+                }
+                className="w-full p-3 mb-4 border rounded-lg"
+                placeholder="e.g., 2500"
+                required
+              />
+            </div>
+          )}
           <label
             className="block text-gray-700 text-lg font-semibold mb-2"
             htmlFor="images"
@@ -218,7 +240,17 @@ const GetAiQuote = () => {
           {formData.images.length > 0 && (
             <div className="flex flex-wrap gap-4">
               {formData.images.map((file, index) => (
-                <div key={index}>
+                <div key={index} className="bg-gray-100 p-2 rounded-lg">
+                  <p
+                    onClick={() =>
+                      setFormData({
+                        ...formData,
+                        images: formData.images.filter((img) => img !== file),
+                      })
+                    }
+                  >
+                    x
+                  </p>
                   <img
                     src={URL.createObjectURL(file)}
                     alt={file.name}
