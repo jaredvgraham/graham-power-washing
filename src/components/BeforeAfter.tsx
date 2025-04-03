@@ -72,8 +72,9 @@ const BeforeAfter = () => {
               onClick={() => handleExpandImg(img)}
               src={img.imageUrl}
               alt={img.title}
-              fill
-              style={{ objectFit: "cover", cursor: "pointer" }}
+              width={600}
+              height={600}
+              className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-105"
             />
           </div>
         ))}

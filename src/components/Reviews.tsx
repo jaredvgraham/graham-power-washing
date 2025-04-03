@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FaStar } from "react-icons/fa";
@@ -11,7 +12,7 @@ type ReviewCardProps = {
 
 const ReviewCard = ({ review, author, rating }: ReviewCardProps) => {
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 transform transition duration-500 hover:scale-105">
+    <div className="bg-white shadow-md rounded-lg p-6 transform transition duration-500 hover:scale-105 h-full">
       <div className="flex items-center mb-4">
         {[...Array(5)].map((_, index) => (
           <FaStar
@@ -29,11 +30,29 @@ const ReviewCard = ({ review, author, rating }: ReviewCardProps) => {
 };
 
 const Reviews = () => {
-  const Router = useRouter();
+  const router = useRouter();
 
-  const navigateToReviews = () => {
-    Router.push("/reviews");
-  };
+  const reviews = [
+    {
+      review:
+        "Graham power washed our house, decks, driveway, & camper and it all came out beautifully. You don't realize how badly it needs to be done until it's all clean! Thank you Jared & Justin",
+      author: "C.S",
+      rating: 5,
+    },
+    {
+      review:
+        "Unbelievable job at my house!! They did my house, deck, pool deck, and pool fence today. I was like a kid on Christmas morning when I came today! Highly recommend them to anyone. Very reasonable price and more importantly EXCEPTIONAL work!",
+      author: "C.J",
+      rating: 5,
+    },
+    {
+      review:
+        "Justin pressure washed my house a few days ago and I saw it dry today for the first time. I'm not surprised but it looks awesome. Meticulous in every way, from the first callback within the hour, on schedule for the estimate visit, excellent price, great job and fantastic customer service. Thank you Justin. Highly recommended.",
+      author: "K.G",
+      rating: 5,
+    },
+  ];
+
   return (
     <div className="p-7 bg-gray-200 mt-4">
       <div className="flex justify-center flex-col mb-8">
@@ -43,27 +62,23 @@ const Reviews = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8">
-        <ReviewCard
-          review="Graham power washed our house, decks, driveway, &amp; camper and it all came out beautifully. You don't realize how badly it needs to be done until it's all clean! Thank you Jared &amp; Justin"
-          author="C.S"
-          rating={5}
-        />
-        <ReviewCard
-          review="Unbelievable job at my house!! They did my house, deck, pool deck, and pool fence today. I was like a kid on Christmas morning when I came today! Highly recommend them to anyone. Very reasonable price and more importantly EXCEPTIONAL work!"
-          author="C.J"
-          rating={5}
-        />
-        <ReviewCard
-          review="Justin pressure washed my house a few days ago and I saw it dry today for the first time. I'm not surprised but it looks awesome. Meticulous in every way, from the first callback within the hour, on schedule for the estimate visit, excellent price, great job and fantastic customer service. Thank you Justin. Highly recommended."
-          author="K.G"
-          rating={5}
-        />
+        {reviews.map((r, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: index * 0.15 }}
+          >
+            <ReviewCard {...r} />
+          </motion.div>
+        ))}
       </div>
 
       <div className="flex justify-start ml-8">
         <button
-          onClick={navigateToReviews}
-          className="bg-stone-400 text-white py-2 px-4 rounded-lg  hover:bg-stone-500 transition duration-300"
+          onClick={() => router.push("/reviews")}
+          className="bg-stone-400 text-white py-2 px-4 rounded-lg hover:bg-stone-500 transition duration-300"
         >
           See More Reviews
         </button>

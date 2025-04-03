@@ -16,13 +16,15 @@ const GetAiQuote = () => {
     images: [] as File[],
     message: "",
     options: [] as string[],
-    squareFootage: "",
   });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [blobUrls, setBlobUrls] = useState<string[]>([]);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
+    setIsSubmitting(true);
     e.preventDefault();
     console.log(formData.images.length);
 
@@ -49,9 +51,6 @@ const GetAiQuote = () => {
       const res = await axios.post("/api/quote/wash", {
         ...formData,
         imageUrls: uploadedBlobUrls,
-        squareFootage: formData.options.includes("house")
-          ? formData.squareFootage
-          : undefined,
       });
       console.log("sent data");
       console.log(res);
@@ -65,6 +64,8 @@ const GetAiQuote = () => {
       } else {
         setErrorMessage("An unexpected error occurred");
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -199,30 +200,7 @@ const GetAiQuote = () => {
               </label>
             ))}
           </div>
-          {formData.options.includes("house") && (
-            <div className="w-full p-3 mb-4 border rounded-lg">
-              <label
-                className="block text-gray-700 text-lg font-semibold mb-2"
-                htmlFor="squareFootage"
-              >
-                Square Footage
-              </label>
-              <input
-                type="number"
-                id="squareFootage"
-                value={formData.squareFootage}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    squareFootage: e.target.value,
-                  })
-                }
-                className="w-full p-3 mb-4 border rounded-lg"
-                placeholder="e.g., 2500"
-                required
-              />
-            </div>
-          )}
+
           <label
             className="block text-gray-700 text-lg font-semibold mb-2"
             htmlFor="images"
@@ -277,16 +255,28 @@ const GetAiQuote = () => {
             }
             required
           ></textarea>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300"
-          >
-            Submit
-          </button>
-          {errorMessage && (
-            <div className="mt-4 text-red-500">
-              <p>{errorMessage}</p>
-            </div>
+          {isSubmitting ? (
+            <button
+              type="button"
+              className="w-full bg-gray-500 text-white py-3 rounded-lg cursor-not-allowed"
+              disabled
+            >
+              Submitting...
+            </button>
+          ) : (
+            <>
+              <button
+                type="submit"
+                className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300"
+              >
+                Submit
+              </button>
+              {errorMessage && (
+                <div className="mt-4 text-red-500">
+                  <p>{errorMessage}</p>
+                </div>
+              )}
+            </>
           )}
 
           {successMessage && (

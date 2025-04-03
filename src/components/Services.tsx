@@ -4,7 +4,7 @@ const Services = () => {
   const services = [
     {
       id: 1,
-      title: "Soft Washing for Siding",
+      title: "Home Soft Washing",
       description:
         "Our professional soft washing services are perfect for cleaning siding without causing damage. This gentle cleaning method effectively removes algae, mold, and mildew, extending the life of your home’s exterior.",
       icon: "🏠",
@@ -52,13 +52,7 @@ const Services = () => {
         "Our pool apron cleaning services remove dirt, algae, and mildew from the areas surrounding your pool, providing a clean and safe environment for your family and guests to enjoy.",
       icon: "🏊",
     },
-    {
-      id: 9,
-      title: "Graffiti Removal",
-      description:
-        "Our graffiti removal services quickly and effectively eliminate unwanted graffiti from any surface, restoring the original appearance and maintaining your property’s image.",
-      icon: "🎨",
-    },
+
     {
       id: 10,
       title: "Window Cleaning",

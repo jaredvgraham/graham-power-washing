@@ -24,7 +24,7 @@ const Footer = () => {
         <div className="mt-8 border-t border-gray-700 pt-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400">
-              &copy; 2024 Graham Power-Washing. All rights reserved.
+              &copy; 2025 Graham Power-Washing. All rights reserved.
             </p>
           </div>
         </div>

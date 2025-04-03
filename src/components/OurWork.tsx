@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 interface Img {
   title: string;
@@ -63,8 +64,12 @@ const OurWork = () => {
       </div>
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
         {projects.map((img, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
             className="relative overflow-hidden rounded-lg shadow-lg box"
             style={{ aspectRatio: "1 / 1" }}
           >
@@ -72,12 +77,14 @@ const OurWork = () => {
               onClick={() => handleExpandImg(img)}
               src={img.imageUrl}
               alt={img.title}
-              fill
-              style={{ objectFit: "cover", cursor: "pointer" }}
+              width={600}
+              height={600}
+              className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-105"
             />
-          </div>
+          </motion.div>
         ))}
       </div>
+
       {expandedImg && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
           <div className="relative p-4 bg-white rounded-lg max-w-3xl">

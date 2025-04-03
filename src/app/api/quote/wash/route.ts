@@ -41,16 +41,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
       );
     }
 
-    const quote = await getGptQuote(imageUrls, options, squareFootage, town);
-    console.log("Quote from GPT:", quote);
+    // const quote = await getGptQuote(imageUrls, options, squareFootage, town);
+    // console.log("Quote from GPT:", quote);
 
     if (!imageUrls || imageUrls.length === 0) {
       throw new Error("No images were uploaded");
     }
 
-    const textMessage = `New Quote Request\nName: ${name}\nEmail: ${email}\nTown: ${town}\nPhone: ${phone}\nMessage: ${message}\nImages: ${imageUrls.join(
+    const textMessage = `New Quote Request\nName: ${name}\nEmail: ${email}\nTown: ${town}\nPhone: ${phone}\nOptions: ${options.join(
       ", "
-    )}`;
+    )}\nMessage: ${message}\nImages: ${imageUrls.join(", ")}`;
 
     const mailOptions = {
       from: process.env.EMAIL, // sender address
@@ -59,16 +59,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
       text: textMessage, // plain text body
       html: `<p>${textMessage.replace(/\n/g, "<br>")}</p>`, // html body
     };
-    // const mailOptionsTwo = {
-    //   from: process.env.EMAIL, // sender address
-    //   to: "grahampaintinc@gmail.com", // list of receivers (sending to yourself)
-    //   subject: "New Quote Request", // Subject line
-    //   text: textMessage, // plain text body
-    //   html: `<p>${textMessage.replace(/\n/g, "<br>")}</p>`, // html body
-    // };
+    const mailOptionsTwo = {
+      from: process.env.EMAIL, // sender address
+      to: "grahampaintinc@gmail.com", // list of receivers (sending to yourself)
+      subject: "New Quote Request", // Subject line
+      text: textMessage, // plain text body
+      html: `<p>${textMessage.replace(/\n/g, "<br>")}</p>`, // html body
+    };
 
     await transporter.sendMail(mailOptions);
-    // await transporter.sendMail(mailOptionsTwo);
+    await transporter.sendMail(mailOptionsTwo);
 
     return NextResponse.json({ message: "SMS sent successfully!" });
   } catch (error) {
