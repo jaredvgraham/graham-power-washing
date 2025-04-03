@@ -71,7 +71,7 @@ const BeforeAfter = () => {
             <Image
               onClick={() => handleExpandImg(img)}
               src={img.imageUrl}
-              alt={img.title}
+              alt={`Pressure Washing ${img.title}`}
               width={600}
               height={600}
               className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-105"
