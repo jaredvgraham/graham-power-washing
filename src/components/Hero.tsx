@@ -48,12 +48,12 @@ const Hero = () => {
         transition={{ duration: 1.1, delay: 0.6, ease: "easeOut" }}
         className="w-full md:w-5/6 lg:w-2/3 xl:w-2/4 box"
       >
-        <Video
+        {/* <Video
           src={first}
           muted
           playsInline
           className="object-cover w-full h-auto"
-        />
+        /> */}
       </motion.div>
 
       {/* Button */}
