@@ -37,6 +37,15 @@ const Contact = () => {
               774-487-7616
             </a>
           </p>
+          <p className="text-gray-700 mb-4">
+            <strong>Email:</strong>{" "}
+            <a
+              href="mailto:grahampaintinc@gmail.com"
+              className="text-blue-500 hover:underline"
+            >
+              grahampaintinc@gmail.com
+            </a>
+          </p>
           <h3 className="text-xl font-semibold text-gray-800 mb-4">
             Get in Touch
           </h3>

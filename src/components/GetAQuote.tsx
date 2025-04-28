@@ -15,6 +15,7 @@ const GetAQuote = () => {
     town: "",
     images: [] as File[],
     message: "",
+    options:[],
   });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -56,6 +57,7 @@ const GetAQuote = () => {
         town: "",
         images: [] as File[],
         message: "",
+        options: [],
       });
       setSuccessMessage("Quote request submitted successfully");
       setErrorMessage(null); // Clear any previous error messages

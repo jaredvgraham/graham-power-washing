@@ -141,6 +141,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
   try {
     const { name, email, phone, town, message, imageUrls } = await req.json();
 
+
     if (!process.env.MY_PHONE_NUMBER) {
       throw new Error("MY_PHONE_NUMBER environment variable is not set.");
     }
