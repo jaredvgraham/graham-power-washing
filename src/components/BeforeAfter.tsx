@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { title } from "process";
 import React, { useState } from "react";
 
 interface Img {
@@ -50,6 +51,14 @@ const BeforeAfter = () => {
     {
       title: "House 8",
       imageUrl: "/img16.jpeg",
+    },
+    {
+      title: "House 9",
+      imageUrl: "/red-before.jpeg",
+    },
+    {
+      title: "House 10",
+      imageUrl: "/red-after.jpeg",
     },
   ];
 
