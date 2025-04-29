@@ -48,13 +48,18 @@ export async function POST(req: NextRequest, res: NextResponse) {
       throw new Error("No images were uploaded");
     }
 
-    const textMessage = `New Quote Request\nName: ${name}\nEmail: ${email}\nTown: ${town}\nPhone: ${phone}\nOptions: ${options.join(
-      ", "
-    )}\nMessage: ${message}\nImages: ${imageUrls.map(
-      (url: any, index: number) => {
-        return `Image ${index + 1}: ${url}`;
-      }
-    )}\nSquare Footage: ${squareFootage}`;
+    const textMessage = `New Quote Request
+    Name: ${name}
+    Email: ${email}
+    Town: ${town}
+    Phone: ${phone}
+    Options: ${options.join(", ")}
+    Message: ${message}
+    Images:
+    ${imageUrls
+      .map((url: any, index: number) => `Image ${index + 1}: ${url}`)
+      .join("\n")}
+    Square Footage: ${squareFootage}`;
 
     const mailOptions = {
       from: process.env.EMAIL, // sender address
