@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,22 +9,31 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
-  const [position, setPosition] = React.useState(undefined);
+  const [position, setPosition] = React.useState<string | undefined>(undefined);
   const Router = useRouter();
+  const pathname = usePathname();
+  const [isHomePage, setIsHomePage] = React.useState(false);
+
+  useEffect(() => {
+    setIsHomePage(pathname === "/");
+  }, [pathname]);
+
+  const textColor = isHomePage ? "text-white" : "text-black";
+  const hoverColor = isHomePage ? "hover:text-teal-400" : "hover:text-blue-600";
+
   return (
-    <nav
-      className={`flex items-center w-full thinBox py-4 px-8 sticky top-0 z-30 bg-zinc-300 `}
-    >
+    <nav className="flex items-center w-full py-4 p-2 md:px-8 z-30 absolute top-0 transition-all duration-300 ease-in-out">
       <div className="flex justify-between items-center w-full">
+        {/* Logo */}
         <div className="flex items-center">
           <a className="navbar-item" href="/">
             <Image
-              className=" whiteBox rounded-full"
+              className="whiteBox rounded-full"
               src="/logo.webp"
               alt="Logo"
               width={40}
@@ -34,19 +42,24 @@ const Navbar = () => {
             />
           </a>
         </div>
+
+        {/* Navigation Links */}
         <div className="flex space-x-6 ml-1">
+          {/* Services Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="text-gray-600 hover:text-blue-500">
+              <button
+                className={`${textColor} ${hoverColor} transition-colors`}
+              >
                 Services
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className=" bg-zinc-300 ">
+            <DropdownMenuContent className="bg-zinc-300">
               <DropdownMenuLabel>Services</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuRadioGroup
-                value={position || undefined}
-                onValueChange={setPosition as () => React.SetStateAction<any>}
+                value={position}
+                onValueChange={(value) => setPosition(value)}
               >
                 <DropdownMenuRadioItem
                   value="vinyl-siding-soft-washing"
@@ -89,20 +102,22 @@ const Navbar = () => {
               </DropdownMenuRadioGroup>
             </DropdownMenuContent>
           </DropdownMenu>
+
+          {/* Static Links */}
           <Link
-            className="navbar-item text-gray-600 hover:text-blue-500"
+            className={`navbar-item ${textColor} ${hoverColor} transition-colors`}
             href="/#about"
           >
             About
           </Link>
           <Link
-            className="navbar-item text-gray-600 hover:text-blue-500"
+            className={`navbar-item ${textColor} ${hoverColor} transition-colors`}
             href="/pricing"
           >
             Pricing
           </Link>
           <Link
-            className="navbar-item text-gray-600 hover:text-blue-500"
+            className={`navbar-item ${textColor} ${hoverColor} transition-colors`}
             href="/contact"
           >
             Contact

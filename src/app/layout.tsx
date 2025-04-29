@@ -208,7 +208,9 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <Navbar />
+        <div className="relative">
+          <Navbar />
+        </div>
         {children}
       </body>
     </html>

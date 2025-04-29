@@ -54,7 +54,7 @@ const Reviews = () => {
   ];
 
   return (
-    <div className="p-7 bg-gray-200 mt-4">
+    <div className="p-7 bg-gray-200 ">
       <div className="flex justify-center flex-col mb-8">
         <h1 className="text-center text-3xl font-thin">
           What our customers say
