@@ -76,7 +76,7 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               name: "Graham Power-Washing",
               description:
-                "Graham Power-Washing offers top-quality power washing, painting, and cabinet refinishing services in Buzzards Bay, MA and surrounding areas.",
+                "Graham Power-Washing offers top-quality power washing and painting services in Plymouth, MA and surrounding areas.",
               url: "https://www.grahampowerwashing.com",
               telephone: "7744877616",
               address: {
