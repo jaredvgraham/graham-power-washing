@@ -20,7 +20,7 @@ const Hero = () => {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/10" />
       </div>
 
       {/* Content */}
