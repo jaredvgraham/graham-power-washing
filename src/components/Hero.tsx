@@ -45,9 +45,17 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="text-gray-200 text-lg md:text-xl leading-relaxed text-center md:text-left font-semibold"
           >
-            {`Graham Power Washing delivers expert exterior pressure washing /
-            soft washing services built on trust, quality, and exceptional care
-            for your home or business.`}
+            Graham Power Washing delivers expert exterior{" "}
+            <span className="font-extrabold text-blue-200 ">
+              pressure washing
+            </span>{" "}
+            /{" "}
+            <span className="font-extrabold text-red-400 ">
+              {" "}
+              soft washing services
+            </span>{" "}
+            built on trust, quality, and exceptional care for your home or
+            business.
           </motion.p>
 
           <motion.button
