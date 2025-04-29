@@ -45,9 +45,9 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="text-gray-200 text-lg md:text-xl leading-relaxed text-center md:text-left font-semibold"
           >
-            Graham Power Washing delivers expert exterior cleaning services
-            built on trust, quality, and exceptional care for your home or
-            business.
+            {`Graham Power Washing delivers expert exterior pressure washing /
+            soft washing services built on trust, quality, and exceptional care
+            for your home or business.`}
           </motion.p>
 
           <motion.button
