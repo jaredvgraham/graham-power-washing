@@ -50,7 +50,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     const textMessage = `New Quote Request\nName: ${name}\nEmail: ${email}\nTown: ${town}\nPhone: ${phone}\nOptions: ${options.join(
       ", "
-    )}\nMessage: ${message}\nImages: ${imageUrls.join(", ")}`;
+    )}\nMessage: ${message}\nImages: ${imageUrls.map(
+      (url: any, index: number) => {
+        return `Image ${index + 1}: ${url}`;
+      }
+    )}\nSquare Footage: ${squareFootage}`;
 
     const mailOptions = {
       from: process.env.EMAIL, // sender address
