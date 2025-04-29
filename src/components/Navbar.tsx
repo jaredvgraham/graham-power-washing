@@ -27,7 +27,11 @@ const Navbar = () => {
   const hoverColor = isHomePage ? "hover:text-teal-400" : "hover:text-blue-600";
 
   return (
-    <nav className="flex items-center w-full py-4 p-2 md:px-8 z-30 absolute top-0 transition-all duration-300 ease-in-out">
+    <nav
+      className={`"flex items-center w-full py-4 p-2 md:px-8 z-30 ${
+        isHomePage && "absolute"
+      } `}
+    >
       <div className="flex justify-between items-center w-full">
         {/* Logo */}
         <div className="flex items-center">
@@ -54,7 +58,7 @@ const Navbar = () => {
                 Services
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-zinc-300">
+            <DropdownMenuContent className="bg-white shadow-lg rounded-lg ">
               <DropdownMenuLabel>Services</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuRadioGroup
