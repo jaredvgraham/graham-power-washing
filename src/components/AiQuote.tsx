@@ -43,6 +43,8 @@ const GetAiQuote = () => {
         name: formData.name,
         town: formData.town,
         phone: formData.phone,
+        email: formData.email,
+        phoneNumber: formData.phone,
       });
 
       console.log(adminResponse);

@@ -3,12 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
-    const { name, town, phone } = await req.json();
+    const { name, town, phone, email } = await req.json();
 
     console.log("msg", name, town, phone);
-    
 
-    await createQuote({ name, town, phone });
+    await createQuote({ name, town, phone, email });
 
     return NextResponse.json(
       { message: "Quote created successfully!" },

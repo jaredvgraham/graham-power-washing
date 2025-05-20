@@ -20,6 +20,7 @@ export async function createQuote(data: {
   name: string;
   town: string;
   phone: string;
+  email: string;
 }) {
   const quote = await db.collection("quotes").add({
     ...data,
