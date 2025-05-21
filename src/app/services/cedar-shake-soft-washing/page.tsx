@@ -126,7 +126,7 @@ export default function CedarShakeSoftWashing() {
               "Preserves the wood's natural or painted appearance",
               "Removes mold, mildew, and lichen growth",
               "Minimizes moisture retention and wood decay",
-              "Eco-friendly, gentle cleaning process for untreated and painted cedar",
+              "Gentle cleaning process for untreated and painted cedar",
             ].map((item, i) => (
               <motion.li
                 key={i}

@@ -123,7 +123,7 @@ export default function VinylSidingSoftWashing() {
             {[
               "Low-pressure, surface-safe application",
               "Removes algae, mildew, and organic buildup",
-              "Eco-friendly, biodegradable cleaning agents",
+              "Biodegradable cleaning agents",
               "Helps extend the life of your siding",
             ].map((item, i) => (
               <motion.li
@@ -241,7 +241,7 @@ export default function VinylSidingSoftWashing() {
                 Will soft washing remove green algae and black streaks?
               </h3>
               <p>
-                Absolutely. Our eco-friendly detergents and soft wash technique
+                Absolutely. Our biodegradable detergents and soft wash technique
                 remove algae, mildew, and stains for a like-new appearance.
               </p>
             </div>
@@ -277,7 +277,7 @@ export default function VinylSidingSoftWashing() {
                   name: "Will soft washing remove green algae and black streaks?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Absolutely. Our eco-friendly detergents and soft wash technique remove algae, mildew, and stains for a like-new appearance.",
+                    text: "Absolutely. Our biodegradable detergents and soft wash technique remove algae, mildew, and stains for a like-new appearance.",
                   },
                 },
                 {
