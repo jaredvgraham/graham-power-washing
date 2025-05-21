@@ -235,9 +235,9 @@ export default function PatioPressureWashing() {
                 Will pressure washing remove stains and algae?
               </h3>
               <p>
-                Absolutely. Our process removes dirt, stains, moss, algae, and
+                {`   Absolutely. Our process removes dirt, stains, moss, algae, and
                 other organic growth, restoring your patio's appearance and
-                safety.
+                safety.`}
               </p>
             </div>
             <div>
@@ -245,8 +245,8 @@ export default function PatioPressureWashing() {
                 How soon can I use my patio after cleaning?
               </h3>
               <p>
-                Your patio is ready for use as soon as it's dry—usually within a
-                few hours after we finish.
+                {`   Your patio is ready for use as soon as it's dry—usually within a
+                few hours after we finish.`}
               </p>
             </div>
           </div>

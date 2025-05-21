@@ -100,10 +100,10 @@ export default function DeckPressureWashing() {
           animate="visible"
           className="text-xl text-gray-800 leading-relaxed max-w-3xl mx-auto mb-16 text-center"
         >
-          Restore your deck's appearance and safety with Graham Power Washing.
+          {`Restore your deck's appearance and safety with Graham Power Washing.
           Our pressure washing service removes embedded dirt, algae, and stains
           from both natural wood and composite decking—without damaging the
-          surface.
+          surface.`}
         </motion.p>
 
         <motion.section
@@ -246,8 +246,8 @@ export default function DeckPressureWashing() {
                 How soon can I use my deck after cleaning?
               </h3>
               <p>
-                Your deck is ready for use as soon as it's dry—usually within a
-                few hours after we finish.
+                {`Your deck is ready for use as soon as it's dry—usually within a
+            few hours after we finish.`}
               </p>
             </div>
           </div>

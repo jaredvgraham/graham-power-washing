@@ -226,9 +226,9 @@ export default function CedarShakeSoftWashing() {
                 How often should cedar shake siding be soft washed?
               </h3>
               <p>
-                Most cedar shake siding benefits from soft washing every 1–2
+                {` Most cedar shake siding benefits from soft washing every 1–2
                 years, depending on exposure to shade, moisture, and organic
-                buildup.
+                buildup.`}
               </p>
             </div>
             <div>
@@ -255,8 +255,8 @@ export default function CedarShakeSoftWashing() {
                 How soon can I paint or seal my cedar after soft washing?
               </h3>
               <p>
-                We recommend waiting until the wood is fully dry—usually 24–48
-                hours—before painting or sealing after a soft wash.
+                {` We recommend waiting until the wood is fully dry—usually 24–48
+                hours—before painting or sealing after a soft wash.`}
               </p>
             </div>
           </div>

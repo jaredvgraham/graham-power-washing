@@ -101,9 +101,9 @@ export default function ConcretePressureWashing() {
           animate="visible"
           className="text-xl text-gray-800 leading-relaxed max-w-3xl mx-auto mb-16 text-center"
         >
-          Dirty or stained concrete can drag down your home's curb appeal. Our
+          {` Dirty or stained concrete can drag down your home's curb appeal. Our
           concrete pressure washing service restores a like-new appearance to
-          driveways, walkways, patios, and more—safely and effectively.
+          driveways, walkways, patios, and more—safely and effectively.`}
         </motion.p>
 
         <motion.section
@@ -179,9 +179,9 @@ export default function ConcretePressureWashing() {
             Clean Surfaces, Lasting Results
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto text-center leading-relaxed">
-            Whether you're preparing for a home sale, sealing concrete, or just
+            {`Whether you're preparing for a home sale, sealing concrete, or just
             want to refresh your outdoor space, our team delivers results that
-            speak for themselves.
+            speak for themselves.`}
           </p>
         </motion.section>
 
@@ -237,8 +237,8 @@ export default function ConcretePressureWashing() {
                 How soon can I use my concrete after cleaning?
               </h3>
               <p>
-                Your concrete is ready for use as soon as it's dry—usually
-                within a few hours after we finish.
+                {`Your concrete is ready for use as soon as it's dry—usually
+                within a few hours after we finish.`}
               </p>
             </div>
           </div>

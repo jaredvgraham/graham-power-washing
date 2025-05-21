@@ -222,9 +222,9 @@ export default function VinylSidingSoftWashing() {
                 How often should vinyl siding be soft washed?
               </h3>
               <p>
-                Most homes benefit from soft washing every 1–2 years, but shaded
+                {`  Most homes benefit from soft washing every 1–2 years, but shaded
                 or damp areas may need more frequent cleaning to prevent algae
-                and mildew.
+                and mildew.`}
               </p>
             </div>
             <div>
