@@ -9,23 +9,92 @@ import Reviews from "@/components/Reviews";
 import Services from "@/components/Services";
 import React from "react";
 
-const page = () => {
+export const metadata = {
+  title:
+    "Graham Power Washing | #1 Power Washing Services in Plymouth, MA | Free Quotes",
+  description:
+    "✓ Top-Rated Power Washing in Plymouth, MA ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham & Surrounding Areas",
+  alternates: {
+    canonical: "https://www.grahampowerwashing.com",
+  },
+};
+
+const Page = () => {
   return (
-    <>
-      <section id="home">
+    <main itemScope itemType="https://schema.org/Service">
+      <meta itemProp="name" content="Graham Power Washing" />
+      <meta
+        itemProp="description"
+        content="Professional power washing services in Plymouth, MA and surrounding areas."
+      />
+      <meta
+        itemProp="areaServed"
+        content="Plymouth, MA and surrounding areas"
+      />
+
+      <section
+        id="home"
+        aria-label="Home"
+        itemProp="offers"
+        itemScope
+        itemType="https://schema.org/Offer"
+      >
         <Hero />
       </section>
-      <Reviews />
-      <OurWork />
-      <BeforeAfter />
-      <Services />
-      <section id="about">
+
+      <section
+        id="reviews"
+        aria-label="Customer Reviews"
+        itemProp="aggregateRating"
+        itemScope
+        itemType="https://schema.org/AggregateRating"
+      >
+        <meta itemProp="ratingValue" content="5" />
+        <meta itemProp="reviewCount" content="100+" />
+        <Reviews />
+      </section>
+
+      <section id="our-work" aria-label="Our Work Portfolio">
+        <OurWork />
+      </section>
+
+      <section id="before-after" aria-label="Before and After Gallery">
+        <BeforeAfter />
+      </section>
+
+      <section
+        id="services"
+        aria-label="Our Services"
+        itemProp="hasOfferCatalog"
+        itemScope
+        itemType="https://schema.org/OfferCatalog"
+      >
+        <Services />
+      </section>
+
+      <section
+        id="about"
+        aria-label="About Us"
+        itemProp="provider"
+        itemScope
+        itemType="https://schema.org/LocalBusiness"
+      >
         <AboutUs />
       </section>
-      <Contact />
+
+      <section
+        id="contact"
+        aria-label="Contact Us"
+        itemProp="contactPoint"
+        itemScope
+        itemType="https://schema.org/ContactPoint"
+      >
+        <Contact />
+      </section>
+
       <Footer />
-    </>
+    </main>
   );
 };
 
-export default page;
+export default Page;

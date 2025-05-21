@@ -14,7 +14,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-10">
         <Image
           src="/img1.jpeg"
-          alt="Power Washing Background"
+          alt="Professional Power Washing Service in Plymouth MA - Graham Power Washing crew cleaning exterior surfaces"
           fill
           className="object-cover object-center brightness-75"
           priority
@@ -46,16 +46,14 @@ const Hero = () => {
             className="text-gray-200 text-lg md:text-xl leading-relaxed text-center md:text-left font-semibold"
           >
             Graham Power Washing delivers expert exterior{" "}
-            <span className="font-extrabold text-blue-200 ">
-              pressure washing
-            </span>{" "}
+            <span className="font-extrabold text-blue-200 ">soft washing</span>{" "}
             /{" "}
             <span className="font-extrabold text-red-400 ">
               {" "}
-              soft washing services
+              pressure washing
             </span>{" "}
-            built on trust, quality, and exceptional care for your home or
-            business.
+            in Plymouth and surrounding areas built on trust, quality, and
+            exceptional care for your home or business.
           </motion.p>
 
           <motion.button

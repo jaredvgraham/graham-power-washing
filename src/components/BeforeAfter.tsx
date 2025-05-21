@@ -80,7 +80,7 @@ const BeforeAfter = () => {
             <Image
               onClick={() => handleExpandImg(img)}
               src={img.imageUrl}
-              alt={`Pressure Washing ${img.title}`}
+              alt={`Before and After Power Washing Project - ${img.title} by Graham Power Washing in Plymouth MA`}
               width={600}
               height={600}
               className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-105"
@@ -99,7 +99,7 @@ const BeforeAfter = () => {
             </button>
             <Image
               src={expandedImg.imageUrl}
-              alt={expandedImg.title}
+              alt={`Expanded View: Before and After Power Washing Project - ${expandedImg.title} by Graham Power Washing in Plymouth MA`}
               width={600}
               height={600}
               style={{ objectFit: "contain" }}

@@ -39,7 +39,7 @@ const Navbar = () => {
             <Image
               className="whiteBox rounded-full"
               src="/logo.webp"
-              alt="Logo"
+              alt="Graham Power Washing Logo - Home"
               width={40}
               height={40}
               onClick={() => (window.location.href = "/")}

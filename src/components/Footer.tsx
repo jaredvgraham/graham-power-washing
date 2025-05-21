@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8">
+    <footer className="bg-black text-white py-8" aria-label="Footer">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
@@ -16,6 +16,9 @@ const Footer = () => {
             <a
               href="https://www.facebook.com/p/GRAHAM-PAINTING-POWERWASHING-100063725705465/"
               className="text-gray-400 hover:text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook Page for Graham Power Washing"
             >
               <FaFacebook size={24} />
             </a>

@@ -123,7 +123,7 @@ export default function CedarShakeSoftWashing() {
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-lg text-gray-700 max-w-4xl mx-auto">
             {[
-              "Preserves the wood’s natural or painted appearance",
+              "Preserves the wood's natural or painted appearance",
               "Removes mold, mildew, and lichen growth",
               "Minimizes moisture retention and wood decay",
               "Eco-friendly, gentle cleaning process for untreated and painted cedar",
@@ -214,6 +214,98 @@ export default function CedarShakeSoftWashing() {
             Get a Quote
           </Link>
         </motion.div>
+
+        {/* FAQ Section for SEO */}
+        <section className="mb-24 mt-5" id="faq">
+          <h2 className="text-3xl font-semibold text-center text-gray-900 mb-10">
+            Cedar Shake Soft Washing FAQs
+          </h2>
+          <div className="max-w-3xl mx-auto text-gray-700 text-lg space-y-6">
+            <div>
+              <h3 className="font-bold">
+                How often should cedar shake siding be soft washed?
+              </h3>
+              <p>
+                Most cedar shake siding benefits from soft washing every 1–2
+                years, depending on exposure to shade, moisture, and organic
+                buildup.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                Is soft washing safe for painted cedar shake?
+              </h3>
+              <p>
+                Yes. Our process is gentle and designed to protect both natural
+                and painted cedar surfaces, removing buildup without damaging
+                the finish.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                Will soft washing remove mold and mildew?
+              </h3>
+              <p>
+                Absolutely. Our biodegradable solutions and low-pressure rinse
+                effectively remove mold, mildew, and lichen from cedar siding.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                How soon can I paint or seal my cedar after soft washing?
+              </h3>
+              <p>
+                We recommend waiting until the wood is fully dry—usually 24–48
+                hours—before painting or sealing after a soft wash.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQPage Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "How often should cedar shake siding be soft washed?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Most cedar shake siding benefits from soft washing every 1–2 years, depending on exposure to shade, moisture, and organic buildup.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Is soft washing safe for painted cedar shake?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes. Our process is gentle and designed to protect both natural and painted cedar surfaces, removing buildup without damaging the finish.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Will soft washing remove mold and mildew?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Absolutely. Our biodegradable solutions and low-pressure rinse effectively remove mold, mildew, and lichen from cedar siding.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How soon can I paint or seal my cedar after soft washing?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We recommend waiting until the wood is fully dry—usually 24–48 hours—before painting or sealing after a soft wash.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </main>
     </>
   );

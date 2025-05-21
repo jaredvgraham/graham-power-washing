@@ -101,7 +101,7 @@ export default function ConcretePressureWashing() {
           animate="visible"
           className="text-xl text-gray-800 leading-relaxed max-w-3xl mx-auto mb-16 text-center"
         >
-          Dirty or stained concrete can drag down your home’s curb appeal. Our
+          Dirty or stained concrete can drag down your home's curb appeal. Our
           concrete pressure washing service restores a like-new appearance to
           driveways, walkways, patios, and more—safely and effectively.
         </motion.p>
@@ -179,7 +179,7 @@ export default function ConcretePressureWashing() {
             Clean Surfaces, Lasting Results
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto text-center leading-relaxed">
-            Whether you’re preparing for a home sale, sealing concrete, or just
+            Whether you're preparing for a home sale, sealing concrete, or just
             want to refresh your outdoor space, our team delivers results that
             speak for themselves.
           </p>
@@ -204,6 +204,90 @@ export default function ConcretePressureWashing() {
             Get a Quote
           </Link>
         </motion.div>
+
+        {/* FAQ Section for SEO */}
+        <section className="mb-24 mt-5" id="faq">
+          <h2 className="text-3xl font-semibold text-center text-gray-900 mb-10">
+            Concrete Pressure Washing FAQs
+          </h2>
+          <div className="max-w-3xl mx-auto text-gray-700 text-lg space-y-6">
+            <div>
+              <h3 className="font-bold">
+                How often should I have my concrete surfaces pressure washed?
+              </h3>
+              <p>
+                Most driveways, walkways, and patios benefit from annual
+                cleaning, but high-traffic or heavily stained areas may need
+                more frequent service.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-bold">
+                Is pressure washing safe for all types of concrete?
+              </h3>
+              <p>
+                Yes. We adjust our equipment and cleaning solutions to safely
+                clean all types of concrete, including stamped, colored, and
+                exposed aggregate.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                How soon can I use my concrete after cleaning?
+              </h3>
+              <p>
+                Your concrete is ready for use as soon as it's dry—usually
+                within a few hours after we finish.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQPage Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "How often should I have my concrete surfaces pressure washed?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Most driveways, walkways, and patios benefit from annual cleaning, but high-traffic or heavily stained areas may need more frequent service.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Will pressure washing remove oil stains from my driveway?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Pressure washing can remove many surface stains, but deep oil stains may require special treatment. We use degreasers and stain removers for best results.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Is pressure washing safe for all types of concrete?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes. We adjust our equipment and cleaning solutions to safely clean all types of concrete, including stamped, colored, and exposed aggregate.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How soon can I use my concrete after cleaning?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Your concrete is ready for use as soon as it's dry—usually within a few hours after we finish.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </main>
     </>
   );

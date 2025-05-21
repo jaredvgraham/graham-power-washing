@@ -100,7 +100,7 @@ export default function DeckPressureWashing() {
           animate="visible"
           className="text-xl text-gray-800 leading-relaxed max-w-3xl mx-auto mb-16 text-center"
         >
-          Restore your deck’s appearance and safety with Graham Power Washing.
+          Restore your deck's appearance and safety with Graham Power Washing.
           Our pressure washing service removes embedded dirt, algae, and stains
           from both natural wood and composite decking—without damaging the
           surface.
@@ -120,7 +120,7 @@ export default function DeckPressureWashing() {
             {[
               "Improves safety by removing slippery buildup",
               "Restores natural beauty and color",
-              "Extends the life of your deck’s material",
+              "Extends the life of your deck's material",
               "Prepares surfaces for staining or sealing",
             ].map((item, i) => (
               <motion.li
@@ -204,6 +204,99 @@ export default function DeckPressureWashing() {
             Get a Quote
           </Link>
         </motion.div>
+
+        {/* FAQ Section for SEO */}
+        <section className="mb-24 mt-5" id="faq">
+          <h2 className="text-3xl font-semibold text-center text-gray-900 mb-10">
+            Deck Pressure Washing FAQs
+          </h2>
+          <div className="max-w-3xl mx-auto text-gray-700 text-lg space-y-6">
+            <div>
+              <h3 className="font-bold">
+                How often should I have my deck pressure washed?
+              </h3>
+              <p>
+                Most decks benefit from professional cleaning once a year, but
+                shaded or high-traffic decks may need more frequent service to
+                prevent mold and algae.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                Will pressure washing damage my wood or composite deck?
+              </h3>
+              <p>
+                No. We use the correct pressure and nozzles for your deck
+                material, ensuring a safe and effective clean without causing
+                splintering or surface damage.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                Can you remove old stains, paint, or sealant?
+              </h3>
+              <p>
+                Pressure washing can remove some old finishes, but for complete
+                removal, additional stripping or sanding may be required. We can
+                advise on the best approach for your deck.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                How soon can I use my deck after cleaning?
+              </h3>
+              <p>
+                Your deck is ready for use as soon as it's dry—usually within a
+                few hours after we finish.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQPage Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "How often should I have my deck pressure washed?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Most decks benefit from professional cleaning once a year, but shaded or high-traffic decks may need more frequent service to prevent mold and algae.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Will pressure washing damage my wood or composite deck?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "No. We use the correct pressure and nozzles for your deck material, ensuring a safe and effective clean without causing splintering or surface damage.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Can you remove old stains, paint, or sealant?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Pressure washing can remove some old finishes, but for complete removal, additional stripping or sanding may be required. We can advise on the best approach for your deck.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How soon can I use my deck after cleaning?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Your deck is ready for use as soon as it's dry—usually within a few hours after we finish.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </main>
     </>
   );

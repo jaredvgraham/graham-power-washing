@@ -6,31 +6,110 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Graham Power-Washing",
+  title:
+    "Graham Power Washing | #1 Power Washing Services in Plymouth, MA | Free Quotes",
   description:
-    "Graham Power-Washing offers top-quality power washing, painting, and cabinet refinishing services in Buzzards Bay, MA and surrounding areas. Serving residential and commercial clients across Middleboro, Scituate, Hingham, Plymouth, Falmouth, and more.",
+    "✓ Top-Rated Power Washing in Plymouth, MA ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham & Surrounding Areas",
   keywords: [
-    "power washing",
+    "power washing plymouth ma",
+    "pressure washing plymouth",
+    "house washing plymouth",
+    "vinyl siding cleaning plymouth",
+    "vinyl siding power washing plymouth",
+    "vinyl siding soft washing plymouth",
+    "vinyl siding soft washing",
+    "cedar siding cleaning plymouth",
+    "cedar siding power washing plymouth",
+    "cedar siding soft washing plymouth",
+    "cedar siding soft washing",
+    "deck cleaning plymouth",
+    "patio cleaning plymouth",
+    "driveway cleaning plymouth",
+    "roof cleaning plymouth",
+    "exterior painting plymouth",
     "power washing near me",
-    "painting",
-    "Buzzards Bay power washing",
-    "Plymouth power washing",
-    "Deck Power Washing",
-    "Patios Power Washing",
-    "House Power Washing",
-    "Massachusetts power washing",
-    "Graham Power-Washing",
-    "exterior cleaning",
-    "home maintenance",
+    "pressure washing near me",
+    "house washing near me",
+    "deck cleaning near me",
+    "patio cleaning near me",
+    "driveway cleaning near me",
+    "roof cleaning near me",
+    "exterior painting near me",
+    "power washing scituate",
+    "power washing hingham",
+    "power washing falmouth",
+    "power washing buzzards bay",
+    "power washing middleboro",
+    "power washing marshfield",
+    "power washing duxbury",
+    "power washing kingston",
+    "power washing carver",
+    "power washing wareham",
+    "power washing sandwich",
+    "power washing mashpee",
+    "power washing osterville",
+    "power washing hyannis",
+    "power washing barnstable",
+    "power washing cape cod",
+    "power washing south shore",
+    "power washing south coast",
+    "power washing massachusetts",
+    "power washing ma",
+    "power washing services",
+    "pressure washing services",
+    "house washing services",
+    "deck cleaning services",
+    "patio cleaning services",
+    "driveway cleaning services",
+    "roof cleaning services",
+    "exterior painting services",
     "residential power washing",
     "commercial power washing",
-    "Buzzards Bay",
-    "Middleboro",
-    "Scituate",
-    "Hingham",
-    "Plymouth",
-    "Falmouth",
+    "home maintenance",
+    "exterior cleaning",
+    "graham power washing",
+    "graham power washing",
+    "graham painting",
+    "graham power washing services",
+    "graham power washing near me",
+    "graham power washing scituate",
+    "graham power washing hingham",
+    "graham power washing falmouth",
+    "graham power washing buzzards bay",
   ],
+  openGraph: {
+    title:
+      "Graham Power Washing | #1 Power Washing Services in Plymouth, MA | Free Quotes",
+    description:
+      "✓ Top-Rated Power Washing in Plymouth, MA ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham & Surrounding Areas",
+    url: "https://www.grahampowerwashing.com",
+    siteName: "Graham Power Washing",
+    images: [
+      {
+        url: "/img1.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Graham Power Washing - Professional Power Washing Services in Plymouth, MA",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://www.grahampowerwashing.com",
+  },
 };
 
 export default function RootLayout({
@@ -89,10 +168,10 @@ export default function RootLayout({
               },
               openingHours: ["Mo-Su 08:00-18:00"],
               areaServed: [
+                "Plymouth",
                 "Middleboro",
                 "Scituate",
                 "Hingham",
-                "Plymouth",
                 "Falmouth",
                 "Centerville",
                 "Hanover",
@@ -208,9 +287,9 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <div className="relative">
+        <nav aria-label="Main Navigation" className="relative">
           <Navbar />
-        </div>
+        </nav>
         {children}
       </body>
     </html>

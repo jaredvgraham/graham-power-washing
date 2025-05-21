@@ -210,6 +210,88 @@ export default function VinylSidingSoftWashing() {
             Get a Quote
           </Link>
         </motion.div>
+
+        {/* FAQ Section for SEO */}
+        <section className="mb-24 mt-5" id="faq">
+          <h2 className="text-3xl font-semibold text-center text-gray-900 mb-10">
+            Vinyl Siding Soft Washing FAQs
+          </h2>
+          <div className="max-w-3xl mx-auto text-gray-700 text-lg space-y-6">
+            <div>
+              <h3 className="font-bold">
+                How often should vinyl siding be soft washed?
+              </h3>
+              <p>
+                Most homes benefit from soft washing every 1–2 years, but shaded
+                or damp areas may need more frequent cleaning to prevent algae
+                and mildew.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                Is soft washing safe for all types of vinyl siding?
+              </h3>
+              <p>
+                Yes. Our low-pressure process is safe for all vinyl siding types
+                and colors, and will not cause warping or damage.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                Will soft washing remove green algae and black streaks?
+              </h3>
+              <p>
+                Absolutely. Our eco-friendly detergents and soft wash technique
+                remove algae, mildew, and stains for a like-new appearance.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQPage Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "How often should vinyl siding be soft washed?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Most homes benefit from soft washing every 1–2 years, but shaded or damp areas may need more frequent cleaning to prevent algae and mildew.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Is soft washing safe for all types of vinyl siding?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes. Our low-pressure process is safe for all vinyl siding types and colors, and will not cause warping or damage.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Will soft washing remove green algae and black streaks?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Absolutely. Our eco-friendly detergents and soft wash technique remove algae, mildew, and stains for a like-new appearance.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How soon can I paint or touch up my siding after soft washing?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We recommend waiting until the siding is fully dry—usually 24–48 hours—before painting or making repairs after a soft wash.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </main>
     </>
   );

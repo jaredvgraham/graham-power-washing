@@ -3,7 +3,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Link } from "lucide-react";
+import Link from "next/link";
 
 export default function PatioPressureWashing() {
   const fadeInUp = {
@@ -190,11 +190,11 @@ export default function PatioPressureWashing() {
           initial="hidden"
           animate="visible"
           custom={4}
-          className="bg-gradient-to-tr from-blue-700 to-blue-500 text-white p-12 rounded-3xl shadow-2xl text-center"
+          className="bg-gradient-to-tr from-blue-700 to-blue-500 text-white p-12 rounded-3xl shadow-2xl text-center mb-5"
         >
           <h3 className="text-3xl font-bold mb-4">Request a Quote</h3>
           <p className="mb-6 text-lg opacity-90">
-            {`Let’s refresh your patio. Contact us today for a quote or to
+            {`Let's refresh your patio. Contact us today for a quote or to
             schedule service.`}
           </p>
           <Link
@@ -204,6 +204,98 @@ export default function PatioPressureWashing() {
             Get a Quote
           </Link>
         </motion.div>
+
+        {/* FAQ Section for SEO */}
+        <section className="mb-24" id="faq">
+          <h2 className="text-3xl font-semibold text-center text-gray-900 mb-10">
+            Patio Pressure Washing FAQs
+          </h2>
+          <div className="max-w-3xl mx-auto text-gray-700 text-lg space-y-6">
+            <div>
+              <h3 className="font-bold">
+                How often should I have my patio pressure washed?
+              </h3>
+              <p>
+                Most patios benefit from professional pressure washing once a
+                year, but high-traffic or shaded areas may need more frequent
+                cleaning to prevent moss and algae buildup.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                Is pressure washing safe for all patio materials?
+              </h3>
+              <p>
+                Yes! We adjust our pressure and cleaning solutions to safely
+                clean concrete, pavers, stone, and more—without causing damage.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                Will pressure washing remove stains and algae?
+              </h3>
+              <p>
+                Absolutely. Our process removes dirt, stains, moss, algae, and
+                other organic growth, restoring your patio's appearance and
+                safety.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold">
+                How soon can I use my patio after cleaning?
+              </h3>
+              <p>
+                Your patio is ready for use as soon as it's dry—usually within a
+                few hours after we finish.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQPage Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "How often should I have my patio pressure washed?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Most patios benefit from professional pressure washing once a year, but high-traffic or shaded areas may need more frequent cleaning to prevent moss and algae buildup.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Is pressure washing safe for all patio materials?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes! We adjust our pressure and cleaning solutions to safely clean concrete, pavers, stone, and more—without causing damage.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Will pressure washing remove stains and algae?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Absolutely. Our process removes dirt, stains, moss, algae, and other organic growth, restoring your patio's appearance and safety.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How soon can I use my patio after cleaning?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Your patio is ready for use as soon as it's dry—usually within a few hours after we finish.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </main>
     </>
   );

@@ -76,7 +76,7 @@ const OurWork = () => {
             <Image
               onClick={() => handleExpandImg(img)}
               src={img.imageUrl}
-              alt={`Pressure Washing ${img.title}`}
+              alt={`Power Washing Project - ${img.title} by Graham Power Washing in Plymouth MA`}
               width={600}
               height={600}
               className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-105"
@@ -96,7 +96,7 @@ const OurWork = () => {
             </button>
             <Image
               src={expandedImg.imageUrl}
-              alt={expandedImg.title}
+              alt={`Expanded View: Power Washing Project - ${expandedImg.title} by Graham Power Washing in Plymouth MA`}
               width={600}
               height={600}
               style={{ objectFit: "contain" }}
