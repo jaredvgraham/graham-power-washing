@@ -39,22 +39,23 @@ const Hero = () => {
             <br />
           </motion.h1>
 
-          <motion.p
+          <motion.h2
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
             className="text-gray-200 text-lg md:text-xl leading-relaxed text-center md:text-left font-semibold"
           >
-            Graham Power Washing delivers expert exterior{" "}
+            Graham Power Washing delivers Top-Rated{" "}
             <span className="font-extrabold text-blue-200 ">soft washing</span>{" "}
             /{" "}
             <span className="font-extrabold text-red-400 ">
               {" "}
               pressure washing
             </span>{" "}
-            in Plymouth and surrounding areas built on trust, quality, and
-            exceptional care for your home or business.
-          </motion.p>
+            in Plymouth MA, South Shore MA, Cape Cod MA, and surrounding areas
+            built on trust, quality, and exceptional care for your home or
+            business.
+          </motion.h2>
 
           <motion.button
             onClick={() => router.push("/quote")}
