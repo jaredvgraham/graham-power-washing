@@ -13,7 +13,7 @@ export const metadata = {
   title:
     "Graham Power Washing | #1 Power Washing Services in Plymouth, MA | Free Quotes",
   description:
-    "✓ Top-Rated Power Washing in Plymouth, MA ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham & Surrounding Areas",
+    "✓ Top-Rated Power Washing in Plymouth, MA ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham & Surrounding Areas ✓ Power Washing Near Me ✓ Pressure Washing Near Me",
   alternates: {
     canonical: "https://www.grahampowerwashing.com",
   },
