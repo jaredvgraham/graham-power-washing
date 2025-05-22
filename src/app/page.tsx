@@ -12,7 +12,7 @@ import React from "react";
 
 export const metadata = {
   title:
-    "Graham Power Washing | #1 Power Washing Services in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas | Free Quotes",
+    "Graham Power Washing | Top-Rated Power Washing Services in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas | Free Quotes",
   description:
     "✓ Top-Rated Power Washing in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham, Duxbury, Carver, Marshfield, Pembroke, Hanson, Wareham, Hanover, Norwell, Bourne, East Bridgewater, Bridgewater, Whitman, Lakeville, Sandwich, South Shore MA, and Cape Cod MA ✓ Power Washing Near Me ✓ Pressure Washing Near Me",
   alternates: {
