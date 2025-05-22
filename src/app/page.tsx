@@ -65,8 +65,11 @@ const Page = () => {
                 name: "Graham Power Washing",
                 address: {
                   "@type": "PostalAddress",
-                  addressLocality: "Plymouth",
+                  streetAddress: "4 Winchester Avenue",
+                  addressLocality: "Buzzards Bay",
                   addressRegion: "MA",
+                  postalCode: "02532",
+                  addressCountry: "US",
                 },
               },
             }),
