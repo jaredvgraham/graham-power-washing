@@ -51,7 +51,27 @@ const Page = () => {
         itemType="https://schema.org/AggregateRating"
       >
         <meta itemProp="ratingValue" content="5" />
-        <meta itemProp="reviewCount" content="100+" />
+        <meta itemProp="reviewCount" content="100" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "AggregateRating",
+              ratingValue: 5,
+              reviewCount: 100,
+              itemReviewed: {
+                "@type": "LocalBusiness",
+                name: "Graham Power Washing",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Plymouth",
+                  addressRegion: "MA",
+                },
+              },
+            }),
+          }}
+        />
         <Reviews />
       </section>
 
