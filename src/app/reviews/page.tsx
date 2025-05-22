@@ -71,7 +71,7 @@ const Reviews = () => {
         <button className="bg-stone-400 text-white py-2 px-4 rounded-lg  hover:bg-stone-500 transition duration-300">
           <a href="https://www.homeadvisor.com/rated.GrahamPainting.43994090.html">
             {" "}
-            Not convinced? Check out our reviews on HomeAdvisor!{" "}
+            Check out more reviews on HomeAdvisor!{" "}
           </a>
         </button>
       </div>

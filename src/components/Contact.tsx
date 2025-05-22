@@ -1,7 +1,8 @@
 "use client";
 import axios from "axios";
 import React from "react";
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaHome } from "react-icons/fa";
+import GetAiQuote from "./AiQuote";
 
 const phoneCall = {
   phone: "Phone Call",
@@ -47,20 +48,28 @@ const Contact = () => {
               grahampaintinc@gmail.com
             </a>
           </p>
-          {/* facebook link */}
-          <a
-            href="https://www.facebook.com/p/GRAHAM-PAINTING-POWERWASHING-100063725705465/"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700 transition font-semibold"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook Page for Graham Power Washing"
-          >
-            <FaFacebook size={20} />
-            Facebook
-          </a>
-          <h3 className="text-xl font-semibold text-gray-800 mb-4 mt-4">
-            Get in Touch
-          </h3>
+          {/* facebook and home advisor links */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-4 sm:justify-start justify-center items-center">
+            <a
+              href="https://www.facebook.com/p/GRAHAM-PAINTING-POWERWASHING-100063725705465/"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700 transition font-semibold"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook Page for Graham Power Washing"
+            >
+              <FaFacebook size={20} />
+              Facebook
+            </a>
+            <a
+              href="https://www.homeadvisor.com/rated.GrahamPainting.43994090.html"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-full shadow hover:bg-orange-600 transition font-semibold"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaHome size={20} />
+              HomeAdvisor
+            </a>
+          </div>
           <p className="text-gray-600 mb-4">
             Justin is available to answer your calls and provide you with the
             best powerwashing services. Feel free to call or text anytime during

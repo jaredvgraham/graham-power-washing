@@ -1,4 +1,5 @@
 import AboutUs from "@/components/AboutUs";
+import GetAiQuote from "@/components/AiQuote";
 import BeforeAfter from "@/components/BeforeAfter";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -89,6 +90,7 @@ const Page = () => {
         itemScope
         itemType="https://schema.org/ContactPoint"
       >
+        <GetAiQuote />
         <Contact />
       </section>
 
