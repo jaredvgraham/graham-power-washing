@@ -21,14 +21,6 @@ const BeforeAfter = () => {
 
   const projects = [
     {
-      title: "House 1",
-      imageUrl: "/img9.jpeg",
-    },
-    {
-      title: "House 2",
-      imageUrl: "/img10.jpeg",
-    },
-    {
       title: "House 3",
       imageUrl: "/img11.jpeg",
     },

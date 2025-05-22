@@ -44,10 +44,7 @@ const OurWork = () => {
       title: "House 6",
       imageUrl: "/img6.jpeg",
     },
-    {
-      title: "House 7",
-      imageUrl: "/img7.jpeg",
-    },
+
     {
       title: "House 8",
       imageUrl: "/img8.jpeg",
