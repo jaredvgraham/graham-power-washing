@@ -52,6 +52,18 @@ const OurWork = () => {
       title: "House 8",
       imageUrl: "/img8.jpeg",
     },
+    // {
+    //   title: "House 9",
+    //   imageUrl: "/new1.png",
+    // },
+    // {
+    //   title: "House 10",
+    //   imageUrl: "/img10.jpeg",
+    // },
+    // {
+    //   title: "House 11",
+    //   imageUrl: "/img11.jpeg",
+    // },
   ];
 
   return (
