@@ -71,29 +71,6 @@ export default function AreasServedPage() {
           Get a Free Quote
         </Link>
       </div>
-      {/* LocalBusiness Schema for serviceArea */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "Graham Power Washing",
-            url: "https://www.grahampowerwashing.com",
-            telephone: "7744877616",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "4 Winchester Avenue",
-              addressLocality: "Buzzards Bay",
-              addressRegion: "MA",
-              postalCode: "02532",
-              addressCountry: "US",
-            },
-            areaServed: AREAS,
-            sameAs: ["https://www.facebook.com/profile.php?id=100063725705465"],
-          }),
-        }}
-      />
     </main>
   );
 }

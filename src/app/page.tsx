@@ -32,6 +32,8 @@ const Page = () => {
               "@context": "http://schema.org",
               "@type": "LocalBusiness",
               name: "Graham Painting, Inc.",
+              image: "https://www.grahampowerwashing.com/img1.jpeg",
+              priceRange: "$$",
               description:
                 "Graham Painting, Inc. offers top-quality power washing in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas.",
               url: "https://www.grahampowerwashing.com",
@@ -166,13 +168,7 @@ const Page = () => {
           <Services />
         </section>
 
-        <section
-          id="about"
-          aria-label="About Us"
-          itemProp="provider"
-          itemScope
-          itemType="https://schema.org/LocalBusiness"
-        >
+        <section id="about" aria-label="About Us">
           <AboutUs />
         </section>
 
