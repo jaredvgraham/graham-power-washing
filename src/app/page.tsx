@@ -82,7 +82,9 @@ const Page = () => {
         itemScope
         itemType="https://schema.org/ContactPoint"
       >
-        <GetAiQuote />
+        <div id="quote-form">
+          <GetAiQuote />
+        </div>
         <Contact />
       </section>
 

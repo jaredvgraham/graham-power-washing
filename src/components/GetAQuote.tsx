@@ -5,8 +5,10 @@ import { useState, useRef } from "react";
 import { type PutBlobResult } from "@vercel/blob";
 import { upload } from "@vercel/blob/client";
 import ContactPage from "@/app/contact/page";
+import { useRouter } from "next/navigation";
 
 const GetAQuote = () => {
+  const router = useRouter();
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -15,7 +17,7 @@ const GetAQuote = () => {
     town: "",
     images: [] as File[],
     message: "",
-    options:[],
+    options: [],
   });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -61,6 +63,7 @@ const GetAQuote = () => {
       });
       setSuccessMessage("Quote request submitted successfully");
       setErrorMessage(null); // Clear any previous error messages
+      router.push("/thank-you");
     } catch (error) {
       if (isAxiosError(error)) {
         console.error(error.response?.data);

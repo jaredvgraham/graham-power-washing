@@ -3,6 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 import nodemailer from "nodemailer";
 
+console.log("process.env.EMAIL", process.env.EMAIL);
+console.log("process.env.EMAIL_PASS", process.env.EMAIL_PASS);
+
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,

@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import { type PutBlobResult } from "@vercel/blob";
 import { upload } from "@vercel/blob/client";
 import ContactPage from "@/app/contact/page";
+import { useRouter } from "next/navigation";
 
 const GetAiQuote = () => {
   const inputFileRef = useRef<HTMLInputElement>(null);
@@ -22,6 +23,7 @@ const GetAiQuote = () => {
   const [blobUrls, setBlobUrls] = useState<string[]>([]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     setIsSubmitting(true);
@@ -59,6 +61,7 @@ const GetAiQuote = () => {
 
       setSuccessMessage("Quote request submitted successfully");
       setErrorMessage(null); // Clear any previous error messages
+      router.push("/thank-you");
     } catch (error) {
       if (isAxiosError(error)) {
         console.error(error.response?.data);
