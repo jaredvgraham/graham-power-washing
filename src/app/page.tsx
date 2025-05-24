@@ -113,6 +113,12 @@ const Page = () => {
               sameAs: [
                 "https://www.facebook.com/profile.php?id=100063725705465",
               ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "7744877616",
+                contactType: "customer service",
+                areaServed: "US",
+              },
             }),
           }}
         />
