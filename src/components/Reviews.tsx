@@ -74,14 +74,26 @@ const Reviews = () => {
           </motion.div>
         ))}
       </div>
-
-      <div className="flex justify-start ml-8">
-        <button
-          onClick={() => router.push("/reviews")}
-          className="bg-stone-400 text-white py-2 px-4 rounded-lg hover:bg-stone-500 transition duration-300"
-        >
-          See More Reviews
-        </button>
+      <div className="flex justify-between">
+        <div className="flex justify-start ml-8">
+          <button
+            onClick={() => router.push("/reviews")}
+            className="bg-stone-400 text-white py-2 px-4 rounded-lg hover:bg-stone-500 transition duration-300"
+          >
+            See More Reviews
+          </button>
+        </div>
+        {/* leave a review button */}
+        <div className="flex justify-end mr-8">
+          <a
+            className="bg-yellow-600 text-white py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300"
+            href="https://g.page/r/Ce-IiV_Ozzm3EAI/review"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Leave a Review
+          </a>
+        </div>
       </div>
     </div>
   );
