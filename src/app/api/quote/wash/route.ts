@@ -80,7 +80,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     };
 
     await transporter.sendMail(mailOptions);
-    await transporter.sendMail(mailOptionsTwo);
+    // await transporter.sendMail(mailOptionsTwo);
 
     return NextResponse.json({ message: "SMS sent successfully!" });
   } catch (error) {
