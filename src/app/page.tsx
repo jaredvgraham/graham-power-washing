@@ -10,6 +10,7 @@ import Reviews from "@/components/Reviews";
 import Services from "@/components/Services";
 import React from "react";
 import Head from "next/head";
+import GReviews from "@/components/GReviews";
 
 export const metadata = {
   title:
@@ -184,6 +185,8 @@ const Page = () => {
           </div>
           <Contact />
         </section>
+
+        <GReviews />
 
         <Footer />
       </main>
