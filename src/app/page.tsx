@@ -31,11 +31,11 @@ const Page = () => {
             __html: JSON.stringify({
               "@context": "http://schema.org",
               "@type": "LocalBusiness",
-              name: "Graham Painting, Inc.",
+              name: "Graham Painting & Power Washing",
               image: "https://www.grahampowerwashing.com/img1.jpeg",
               priceRange: "$$",
               description:
-                "Graham Painting, Inc. offers top-quality power washing in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas.",
+                "Graham Painting & Power Washing offers top-quality power washing in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas.",
               url: "https://www.grahampowerwashing.com",
               telephone: "7744877616",
               address: {
@@ -129,11 +129,11 @@ const Page = () => {
         <meta itemProp="name" content="Graham Power Washing" />
         <meta
           itemProp="description"
-          content="Professional power washing services in Plymouth, MA and surrounding areas."
+          content="Professional power washing services in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas."
         />
         <meta
           itemProp="areaServed"
-          content="Plymouth, MA and surrounding areas"
+          content="Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas"
         />
 
         <section
