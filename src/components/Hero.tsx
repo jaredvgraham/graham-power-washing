@@ -53,9 +53,9 @@ const Hero = () => {
               pressure washing
             </span>{" "}
             in Plymouth, MA, South Shore, MA, Cape Cod, MA, and surrounding
-            areas. If you're looking for power washing near you, our services
-            are built on trust, quality, and exceptional care for your home or
-            business.
+            areas. If you&apos;re looking for power washing near you, our
+            services are built on trust, quality, and exceptional care for your
+            home or business.
           </motion.h2>
 
           <motion.button
