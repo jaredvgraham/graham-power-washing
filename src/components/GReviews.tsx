@@ -18,7 +18,7 @@ const GReviews = () => {
           </span>
         </div>
         <h2 className="text-xl font-semibold mb-2 text-yellow-600 text-center">
-          We'd Love Your Feedback!
+          {`We'd Love Your Feedback!`}
         </h2>
         <p className="mb-6 text-gray-600 text-center">
           If you enjoyed our service, please take a moment to leave us a review
