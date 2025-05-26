@@ -6,8 +6,8 @@ import GetAiQuote from "@/components/AiQuote";
 const ContactPage = () => {
   return (
     <>
-      <Contact />
       <GetAiQuote />
+      <Contact />
     </>
   );
 };
