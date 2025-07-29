@@ -4,8 +4,8 @@ import axios, { isAxiosError } from "axios";
 import { useState, useRef } from "react";
 import { type PutBlobResult } from "@vercel/blob";
 import { upload } from "@vercel/blob/client";
-import ContactPage from "@/app/contact/page";
 import { useRouter } from "next/navigation";
+import { FaPaperclip, FaTrash } from "react-icons/fa";
 
 const GetAiQuote = () => {
   const inputFileRef = useRef<HTMLInputElement>(null);
@@ -19,16 +19,13 @@ const GetAiQuote = () => {
     options: [] as string[],
   });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [blobUrls, setBlobUrls] = useState<string[]>([]);
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    setIsSubmitting(true);
     e.preventDefault();
-    console.log(formData.images.length);
+    setIsSubmitting(true);
+    setErrorMessage(null);
 
     try {
       const uploadedBlobUrls = await Promise.all(
@@ -41,7 +38,7 @@ const GetAiQuote = () => {
         })
       );
 
-      const adminResponse = await axios.post("/api/admin/quote", {
+      await axios.post("/api/admin/quote", {
         name: formData.name,
         town: formData.town,
         phone: formData.phone,
@@ -49,18 +46,11 @@ const GetAiQuote = () => {
         phoneNumber: formData.phone,
       });
 
-      console.log(adminResponse);
-      console.log("formData", formData);
-
-      const res = await axios.post("/api/quote/wash", {
+      await axios.post("/api/quote/wash", {
         ...formData,
         imageUrls: uploadedBlobUrls,
       });
-      console.log("sent data");
-      console.log(res);
 
-      setSuccessMessage("Quote request submitted successfully");
-      setErrorMessage(null); // Clear any previous error messages
       router.push("/thank-you");
     } catch (error) {
       if (isAxiosError(error)) {
@@ -77,8 +67,6 @@ const GetAiQuote = () => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
-      console.log(filesArray);
-
       setFormData((prevState) => ({
         ...prevState,
         images: [...prevState.images, ...filesArray],
@@ -86,211 +74,213 @@ const GetAiQuote = () => {
     }
   };
 
-  return (
-    <div className="py-12">
-      <div className="container mx-auto text-center mb-12">
-        <h1 className="text-4xl font-light text-gray-800">Get A Quote</h1>
-        <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
-          Fill out the form below to get a finalized quote today.
-        </p>
-      </div>
-      <div className="container mx-auto px-4">
-        <form
-          className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg"
-          onSubmit={handleSubmit}
-        >
-          <label
-            className="block text-gray-700 text-lg font-semibold mb-2"
-            htmlFor="name"
-          >
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full p-3 mb-4 border rounded-lg"
-            placeholder="e.g., John Doe"
-            required
-          />
-          <label
-            className="block text-gray-700 text-lg font-semibold mb-2"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            className="w-full p-3 mb-4 border rounded-lg"
-            placeholder="e.g., example@example.com"
-            required
-          />
-          <label
-            className="block text-gray-700 text-lg font-semibold mb-2"
-            htmlFor="town"
-          >
-            Town
-          </label>
-          <input
-            type="text"
-            id="town"
-            value={formData.town}
-            onChange={(e) => setFormData({ ...formData, town: e.target.value })}
-            className="w-full p-3 mb-4 border rounded-lg"
-            placeholder="e.g., Plymouth"
-            required
-          />
-          <label
-            className="block text-gray-700 text-lg font-semibold mb-2"
-            htmlFor="phone"
-          >
-            Phone
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            value={formData.phone}
-            onChange={(e) =>
-              setFormData({ ...formData, phone: e.target.value })
-            }
-            className="w-full p-3 mb-4 border rounded-lg"
-            placeholder="e.g., 555-555-5555"
-            required
-          />
+  const removeImage = (index: number) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      images: prevState.images.filter((_, i) => i !== index),
+    }));
+  };
 
-          <label
-            className="block text-gray-700 text-lg font-semibold mb-2"
-            htmlFor="options"
-          >
-            Options
-          </label>
-          <div className="w-full p-3 mb-4 border rounded-lg">
+  const handleOptionChange = (option: string) => {
+    setFormData((prevState) => {
+      const newOptions = prevState.options.includes(option)
+        ? prevState.options.filter((o) => o !== option)
+        : [...prevState.options, option];
+      return { ...prevState, options: newOptions };
+    });
+  };
+
+  const inputClasses =
+    "w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:ring-primary focus:border-primary transition-all";
+  const labelClasses = "block text-gray-700 text-sm font-semibold mb-2";
+
+  return (
+    <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200/80 w-full">
+      <h2 className="text-3xl font-bold text-gray-800 mb-2">
+        Get a Free Quote
+      </h2>
+      <p className="text-gray-600 mb-6">
+        Fill out the form below and we&apos;ll get back to you shortly.
+      </p>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="name" className={labelClasses}>
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+              className={inputClasses}
+              placeholder="e.g., John Doe"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className={labelClasses}>
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              className={inputClasses}
+              placeholder="e.g., john.doe@example.com"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="phone" className={labelClasses}>
+              Phone
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData({ ...formData, phone: e.target.value })
+              }
+              className={inputClasses}
+              placeholder="e.g., (555) 555-5555"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="town" className={labelClasses}>
+              Town
+            </label>
+            <input
+              type="text"
+              id="town"
+              value={formData.town}
+              onChange={(e) =>
+                setFormData({ ...formData, town: e.target.value })
+              }
+              className={inputClasses}
+              placeholder="e.g., Plymouth"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className={labelClasses}>Services Interested In</label>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
             {[
-              "house",
-              "deck",
-              "walkway",
-              "porch",
-              "patio",
-              "Shed",
-              "Detached Garage",
-              "Stone Walls",
-              "Fence",
+              "House Wash",
+              "Deck Cleaning",
+              "Walkway Cleaning",
+              "Porch Cleaning",
+              "Patio Cleaning",
+              "Shed Wash",
+              "Fence Cleaning",
+              "Stone Wall Cleaning",
             ].map((option) => (
-              <label key={option} className="flex items-center space-x-2 mb-2">
+              <label
+                key={option}
+                className="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors"
+              >
                 <input
                   type="checkbox"
                   value={option}
                   checked={formData.options.includes(option)}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      setFormData({
-                        ...formData,
-                        options: [...formData.options, option],
-                      });
-                    } else {
-                      setFormData({
-                        ...formData,
-                        options: formData.options.filter((o) => o !== option),
-                      });
-                    }
-                  }}
+                  onChange={() => handleOptionChange(option)}
+                  className="h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary"
                 />
-                <span className="capitalize">{option.replace(/-/g, " ")}</span>
+                <span className="text-sm font-medium text-gray-700 capitalize">
+                  {option.replace(/-/g, " ")}
+                </span>
               </label>
             ))}
           </div>
+        </div>
 
-          <label
-            className="block text-gray-700 text-lg font-semibold mb-2"
-            htmlFor="images"
-          >
-            Images (Of Selected Options)
+        <div>
+          <label htmlFor="images" className={labelClasses}>
+            Project Images
           </label>
+          <div
+            className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md cursor-pointer hover:border-primary/80"
+            onClick={() => inputFileRef.current?.click()}
+          >
+            <div className="space-y-1 text-center">
+              <FaPaperclip className="mx-auto h-12 w-12 text-gray-400" />
+              <div className="flex text-sm text-gray-600">
+                <p className="pl-1">
+                  Drag and drop or click to upload (up to 5 images)
+                </p>
+              </div>
+              <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+            </div>
+          </div>
           <input
+            ref={inputFileRef}
             type="file"
             id="images"
-            required
             multiple
             onChange={handleFileChange}
-            className="w-full p-3 mb-4 border rounded-lg"
+            className="hidden"
+            accept="image/*"
           />
           {formData.images.length > 0 && (
-            <div className="flex flex-wrap gap-4">
+            <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {formData.images.map((file, index) => (
-                <div key={index} className="bg-gray-100 p-2 rounded-lg">
-                  <p
-                    onClick={() =>
-                      setFormData({
-                        ...formData,
-                        images: formData.images.filter((img) => img !== file),
-                      })
-                    }
-                  >
-                    x
-                  </p>
+                <div key={index} className="relative group">
                   <img
                     src={URL.createObjectURL(file)}
                     alt={file.name}
-                    className="w-20 h-20 object-cover rounded-lg"
+                    className="w-full h-24 object-cover rounded-lg"
                   />
+                  <div
+                    className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
+                    onClick={() => removeImage(index)}
+                  >
+                    <FaTrash size={12} />
+                  </div>
                 </div>
               ))}
             </div>
           )}
+        </div>
 
-          <label
-            className="block text-gray-700 text-lg font-semibold mb-2"
-            htmlFor="message"
-          >
+        <div>
+          <label htmlFor="message" className={labelClasses}>
             Message
           </label>
           <textarea
             id="message"
             value={formData.message}
-            className="w-full p-3 mb-4 border rounded-lg"
-            placeholder="Tell us about your project..."
+            className={`${inputClasses} min-h-[120px]`}
+            placeholder="Tell us anything else we should know about your project."
             onChange={(e) =>
               setFormData({ ...formData, message: e.target.value })
             }
             required
           ></textarea>
-          {isSubmitting ? (
-            <button
-              type="button"
-              className="w-full bg-gray-500 text-white py-3 rounded-lg cursor-not-allowed"
-              disabled
-            >
-              Submitting...
-            </button>
-          ) : (
-            <>
-              <button
-                type="submit"
-                className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300"
-              >
-                Submit
-              </button>
-              {errorMessage && (
-                <div className="mt-4 text-red-500">
-                  <p>{errorMessage}</p>
-                </div>
-              )}
-            </>
-          )}
+        </div>
 
-          {successMessage && (
-            <div className="mt-4 text-green-500">
-              <p>{successMessage}</p>
+        <div>
+          <button
+            type="submit"
+            className="w-full bg-primary text-primary-foreground font-semibold py-3 px-6 rounded-lg hover:bg-primary/90 transition-all duration-300 shadow-md disabled:bg-gray-400 disabled:cursor-not-allowed"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Get My Quote"}
+          </button>
+          {errorMessage && (
+            <div className="mt-4 text-red-600 bg-red-100 p-3 rounded-lg">
+              <p>{errorMessage}</p>
             </div>
           )}
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };

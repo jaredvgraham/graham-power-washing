@@ -3,7 +3,7 @@ import React from "react";
 
 const GReviews = () => {
   return (
-    <section className="my-16 flex flex-col items-center justify-center">
+    <section className="my-16 bg-gray-50 flex flex-col items-center justify-center">
       <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-8 max-w-lg w-full flex flex-col items-center">
         <div className="flex items-center mb-3">
           <Image

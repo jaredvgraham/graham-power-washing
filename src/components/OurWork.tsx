@@ -68,7 +68,7 @@ const OurWork = () => {
   ];
 
   return (
-    <div className="bg-gray-100 py-12">
+    <div className="bg-gray-50 py-12">
       <div className="container mx-auto text-center mb-12">
         <h1 className="text-4xl font-light text-gray-800">Our Work</h1>
         <p className="text-gray-600 mt-4">

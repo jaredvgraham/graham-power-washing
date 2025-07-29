@@ -1,104 +1,159 @@
 "use client";
 import Image from "next/image";
-import { title } from "process";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { FaTimes } from "react-icons/fa";
 
-interface Img {
+interface BeforeAfterImage {
   title: string;
-  imageUrl: string;
+  beforeUrl: string;
+  afterUrl: string;
 }
 
 const BeforeAfter = () => {
-  const [expandedImg, setExpandedImg] = useState<Img | null>(null);
+  const [expandedProject, setExpandedProject] =
+    useState<BeforeAfterImage | null>(null);
 
-  const handleExpandImg = (img: Img) => {
-    setExpandedImg(img);
+  const handleExpandProject = (project: BeforeAfterImage) => {
+    setExpandedProject(project);
   };
 
   const handleCloseModal = () => {
-    setExpandedImg(null);
+    setExpandedProject(null);
   };
 
-  const projects = [
+  const projects: BeforeAfterImage[] = [
     {
-      title: "House 3",
-      imageUrl: "/img11.jpeg",
+      title: "Siding Cleaning",
+      beforeUrl: "/red-before.jpeg",
+      afterUrl: "/red-after.jpeg",
     },
     {
-      title: "House 4",
-      imageUrl: "/img12.jpeg",
+      title: "Deck Restoration",
+      beforeUrl: "/img11.jpeg",
+      afterUrl: "/img12.jpeg",
     },
     {
-      title: "House 5",
-      imageUrl: "/img13.jpeg",
+      title: "Patio Cleaning",
+      beforeUrl: "/img13.jpeg",
+      afterUrl: "/img14.jpeg",
     },
     {
-      title: "House 6",
-      imageUrl: "/img14.jpeg",
-    },
-    {
-      title: "House 7",
-      imageUrl: "/img15.jpeg",
-    },
-    {
-      title: "House 8",
-      imageUrl: "/img16.jpeg",
-    },
-    {
-      title: "House 9",
-      imageUrl: "/red-before.jpeg",
-    },
-    {
-      title: "House 10",
-      imageUrl: "/red-after.jpeg",
+      title: "Fence Washing",
+      beforeUrl: "/img15.jpeg",
+      afterUrl: "/img16.jpeg",
     },
   ];
 
   return (
-    <div className="bg-gray-100 py-12">
-      <div className="container mx-auto text-center mb-12">
-        <h1 className="text-4xl font-light text-gray-800">Before and After</h1>
-        <p className="text-gray-600 mt-4">
-          Check out some before and after photos
-        </p>
+    <div className="bg-gray-50 py-20 sm:py-28">
+      <div className="container mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            Before & After
+          </h1>
+          <p className="mt-4 text-lg leading-8 text-gray-600">
+            See the transformative power of our services.
+          </p>
+        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer"
+              onClick={() => handleExpandProject(project)}
+            >
+              <div className="grid grid-cols-2">
+                <div className="relative">
+                  <Image
+                    src={project.beforeUrl}
+                    alt={`Before shot of ${project.title}`}
+                    width={600}
+                    height={600}
+                    className="object-cover h-64 w-full"
+                  />
+                  <div className="absolute bottom-0 left-0 bg-black/70 text-white px-3 py-1 font-semibold">
+                    Before
+                  </div>
+                </div>
+                <div className="relative">
+                  <Image
+                    src={project.afterUrl}
+                    alt={`After shot of ${project.title}`}
+                    width={600}
+                    height={600}
+                    className="object-cover h-64 w-full"
+                  />
+                  <div className="absolute bottom-0 right-0 bg-primary/80 text-white px-3 py-1 font-semibold">
+                    After
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6">
-        {projects.map((img, index) => (
-          <div
-            key={index}
-            className="relative overflow-hidden rounded-lg shadow-lg box"
-            style={{ aspectRatio: "1 / 1" }}
+
+      {expandedProject && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50 p-4"
+          onClick={handleCloseModal}
+        >
+          <motion.div
+            initial={{ scale: 0.9, y: -20 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.9, y: 20 }}
+            className="relative bg-white rounded-lg max-w-5xl w-full"
+            onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              onClick={() => handleExpandImg(img)}
-              src={img.imageUrl}
-              alt={`Before and After Power Washing Project - ${img.title} by Graham Power Washing in Plymouth MA`}
-              width={600}
-              height={600}
-              className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-105"
-            />
-          </div>
-        ))}
-      </div>
-      {expandedImg && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
-          <div className="relative p-4 bg-white rounded-lg max-w-3xl">
             <button
-              className="absolute top-2 right-2 text-gray-700 text-2xl"
+              className="absolute -top-4 -right-4 text-white bg-primary rounded-full p-2 z-10 hover:bg-primary/80 transition-colors"
               onClick={handleCloseModal}
             >
-              &times;
+              <FaTimes size={20} />
             </button>
-            <Image
-              src={expandedImg.imageUrl}
-              alt={`Expanded View: Before and After Power Washing Project - ${expandedImg.title} by Graham Power Washing in Plymouth MA`}
-              width={600}
-              height={600}
-              style={{ objectFit: "contain" }}
-            />
-            <p className="text-center mt-4">{expandedImg.title}</p>
-          </div>
-        </div>
+            <div className="p-6">
+              <h2 className="text-3xl font-bold text-center mb-6">
+                {expandedProject.title}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold mb-2">Before</h3>
+                  <Image
+                    src={expandedProject.beforeUrl}
+                    alt={`Before shot of ${expandedProject.title}`}
+                    width={800}
+                    height={800}
+                    className="rounded-lg shadow-md"
+                  />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold mb-2">After</h3>
+                  <Image
+                    src={expandedProject.afterUrl}
+                    alt={`After shot of ${expandedProject.title}`}
+                    width={800}
+                    height={800}
+                    className="rounded-lg shadow-md"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
       )}
     </div>
   );

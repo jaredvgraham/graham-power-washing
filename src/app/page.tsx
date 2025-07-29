@@ -126,7 +126,11 @@ const Page = () => {
           }}
         />
       </Head>
-      <main itemScope itemType="https://schema.org/Service">
+      <main
+        itemScope
+        itemType="https://schema.org/Service"
+        className="bg-gray-50"
+      >
         <meta itemProp="name" content="Graham Power Washing" />
         <meta
           itemProp="description"
@@ -179,11 +183,11 @@ const Page = () => {
           itemProp="contactPoint"
           itemScope
           itemType="https://schema.org/ContactPoint"
+          className="bg-gray-50"
         >
           <div id="quote-form">
-            <GetAiQuote />
+            <Contact />
           </div>
-          <Contact />
         </section>
 
         <GReviews />

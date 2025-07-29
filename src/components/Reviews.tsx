@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaQuoteLeft } from "react-icons/fa";
 
 type ReviewCardProps = {
   review: string;
@@ -12,19 +12,22 @@ type ReviewCardProps = {
 
 const ReviewCard = ({ review, author, rating }: ReviewCardProps) => {
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 transform transition duration-500 hover:scale-105 h-full">
+    <div className="bg-gray-50 border border-gray-200/80 shadow-lg rounded-xl p-6 h-full flex flex-col transition-transform duration-300 hover:-translate-y-2">
+      <FaQuoteLeft className="text-3xl text-primary/50 mb-4" />
       <div className="flex items-center mb-4">
         {[...Array(5)].map((_, index) => (
           <FaStar
             key={index}
             className={`mr-1 ${
-              index < rating ? "text-yellow-500" : "text-gray-300"
+              index < rating ? "text-yellow-400" : "text-gray-300"
             }`}
           />
         ))}
       </div>
-      <p className="text-gray-700 italic mb-4">&quot;{review}&quot;</p>
-      <p className="text-gray-600 font-semibold text-right">- {author}</p>
+      <p className="text-gray-600 italic mb-4 flex-grow">
+        &quot;{review}&quot;
+      </p>
+      <p className="text-gray-800 font-semibold text-right">- {author}</p>
     </div>
   );
 };
@@ -54,39 +57,40 @@ const Reviews = () => {
   ];
 
   return (
-    <div className="p-7 bg-gray-200 ">
-      <div className="flex justify-center flex-col mb-8">
-        <h1 className="text-center text-3xl font-thin">
-          What our customers say
-        </h1>
-      </div>
+    <div className="py-20 sm:py-28 bg-white">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            What Our Customers Say
+          </h1>
+          <p className="mt-4 text-lg leading-8 text-gray-600">
+            Real stories from our happy clients.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8">
-        {reviews.map((r, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: index * 0.15 }}
-          >
-            <ReviewCard {...r} />
-          </motion.div>
-        ))}
-      </div>
-      <div className="flex justify-between">
-        <div className="flex justify-start ml-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {reviews.map((r, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              className="h-full"
+            >
+              <ReviewCard {...r} />
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-6">
           <button
             onClick={() => router.push("/reviews")}
-            className="bg-stone-400 text-white py-2 px-4 rounded-lg hover:bg-stone-500 transition duration-300"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-md font-semibold transition-all duration-300 shadow-lg"
           >
             See More Reviews
           </button>
-        </div>
-        {/* leave a review button */}
-        <div className="flex justify-end mr-8">
           <a
-            className="bg-yellow-600 text-white py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300"
+            className="bg-yellow-500 text-white hover:bg-yellow-600 px-8 py-3 rounded-md font-semibold transition-all duration-300 shadow-lg"
             href="https://g.page/r/Ce-IiV_Ozzm3EAI/review"
             target="_blank"
             rel="noopener noreferrer"
