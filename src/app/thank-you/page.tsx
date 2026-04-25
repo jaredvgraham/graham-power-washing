@@ -1,9 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import MetaPixelLead from "@/components/MetaPixelLead";
 
 export default function ThankYouPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      <MetaPixelLead />
       <div className="bg-white p-8 rounded-lg shadow-lg text-center">
         <h1 className="text-3xl font-bold mb-4 text-green-600">Thank You!</h1>
         <p className="text-lg mb-6 text-gray-700">

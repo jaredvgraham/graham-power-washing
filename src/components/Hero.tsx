@@ -9,7 +9,7 @@ const Hero = () => {
   const router = useRouter();
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center bg-black overflow-hidden">
+    <section className="relative pb-4 w-full h-screen flex items-center justify-center bg-black overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 z-10">
         <Image
