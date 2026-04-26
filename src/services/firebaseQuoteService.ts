@@ -20,12 +20,18 @@ export async function createQuote(data: {
   name: string;
   town: string;
   phone: string;
-  email: string;
+  email?: string;
 }) {
-  const quote = await db.collection("quotes").add({
-    ...data,
+  const payload: Record<string, unknown> = {
+    name: data.name,
+    town: data.town,
+    phone: data.phone,
     createdAt: FieldValue.serverTimestamp(),
-  });
+  };
+  if (data.email?.trim()) {
+    payload.email = data.email.trim();
+  }
+  const quote = await db.collection("quotes").add(payload);
   return quote.id;
 }
 

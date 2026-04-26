@@ -76,7 +76,6 @@ export const metadata: Metadata = {
     "deck cleaning plymouth",
     "patio cleaning plymouth",
     "driveway cleaning plymouth",
-    "roof cleaning plymouth",
     "exterior painting plymouth",
     "power washing near me",
     "pressure washing near me",
@@ -84,7 +83,6 @@ export const metadata: Metadata = {
     "deck cleaning near me",
     "patio cleaning near me",
     "driveway cleaning near me",
-    "roof cleaning near me",
     "exterior painting near me",
     "power washing scituate",
     "power washing hingham",
@@ -106,7 +104,6 @@ export const metadata: Metadata = {
     "deck cleaning services",
     "patio cleaning services",
     "driveway cleaning services",
-    "roof cleaning services",
     "exterior painting services",
     "residential power washing",
     "commercial power washing",
@@ -163,7 +160,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         {/* Google Tag Manager */}
         <script

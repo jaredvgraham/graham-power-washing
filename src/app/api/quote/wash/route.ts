@@ -1,4 +1,3 @@
-import { getGptQuote } from "@/services/getGptQuote";
 import { NextRequest, NextResponse } from "next/server";
 
 import nodemailer from "nodemailer";
@@ -37,32 +36,54 @@ export async function POST(req: NextRequest, res: NextResponse) {
       imageUrls,
       options,
     });
-    if (!name || !email || !phone || !town || !message || !options) {
+    const optionsList = Array.isArray(options)
+      ? options.map((o: string) => String(o).trim()).filter(Boolean)
+      : [];
+
+    if (!name?.trim() || !phone?.trim() || !town?.trim()) {
       return NextResponse.json(
-        { error: "All fields are required" },
-        { status: 400 }
+        {
+          error: "Name, phone, and town are required",
+          details: "Missing required fields",
+        },
+        { status: 400 },
+      );
+    }
+
+    if (optionsList.length === 0) {
+      return NextResponse.json(
+        {
+          error: "Please select what you need cleaned",
+          details: "Service is required",
+        },
+        { status: 400 },
       );
     }
 
     // const quote = await getGptQuote(imageUrls, options, squareFootage, town);
     // console.log("Quote from GPT:", quote);
 
-    if (!imageUrls || imageUrls.length === 0) {
-      throw new Error("No images were uploaded");
-    }
+    const urls = Array.isArray(imageUrls)
+      ? imageUrls.filter((u: unknown) => typeof u === "string" && u.length > 0)
+      : [];
+
+    const imagesBlock =
+      urls.length > 0
+        ? urls
+            .map((url: string, index: number) => `Image ${index + 1}: ${url}`)
+            .join("\n")
+        : "No photos uploaded";
 
     const textMessage = `New Quote Request
-    Name: ${name}
-    Email: ${email}
-    Town: ${town}
-    Phone: ${phone}
-    Options: ${options.join(", ")}
-    Message: ${message}
+    Name: ${name.trim()}
+    Email: ${email?.trim() || "Not provided"}
+    Town: ${town.trim()}
+    Phone: ${phone.trim()}
+    Options: ${optionsList.join(", ")}
+    Message: ${message?.trim() || "—"}
     Images:
-    ${imageUrls
-      .map((url: any, index: number) => `Image ${index + 1}: ${url}`)
-      .join("\n")}
-    Square Footage: ${squareFootage}`;
+    ${imagesBlock}
+    Square Footage: ${squareFootage ?? "—"}`;
 
     const mailOptions = {
       from: process.env.EMAIL, // sender address
@@ -87,7 +108,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     console.log("Error sending SMS:", error);
     return NextResponse.json(
       { error: "Failed to send SMS", details: error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
