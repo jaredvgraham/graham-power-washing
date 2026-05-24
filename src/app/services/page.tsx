@@ -45,10 +45,23 @@ const SERVICES = [
   },
 ];
 
+const PAINTING_SERVICES = [
+  {
+    name: "Exterior Painting",
+    description:
+      "Professional exterior painting for siding, trim, decks, fences, and more—proper prep for a long-lasting finish.",
+  },
+  {
+    name: "Interior Painting",
+    description:
+      "Interior painting for walls, ceilings, trim, and doors. Clean lines, careful prep, and a flawless finish.",
+  },
+];
+
 export const metadata = {
   title: "Our Services | Graham Power Washing",
   description:
-    "Explore all professional power washing and soft washing services offered by Graham Power Washing in Plymouth, MA and the South Shore.",
+    "Explore professional power washing, soft washing, and interior & exterior painting services from Graham Power Washing in Plymouth, MA and the South Shore.",
   alternates: {
     canonical: "https://www.grahampowerwashing.com/services",
   },
@@ -59,9 +72,9 @@ export default function ServicesPage() {
     <main className="max-w-4xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-center mb-8">Our Services</h1>
       <p className="text-lg text-gray-700 text-center mb-10 max-w-2xl mx-auto">
-        Graham Power Washing offers a full range of exterior cleaning services
-        for homes and businesses in Plymouth, the South Shore, and Cape Cod.
-        Click below to learn more about each service:
+        Graham Power Washing offers a full range of exterior cleaning and
+        painting services for homes and businesses in Plymouth, the South
+        Shore, and Cape Cod. Click below to learn more about each service:
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
         {SERVICES.map((service) => (
@@ -94,6 +107,33 @@ export default function ServicesPage() {
               className="mt-auto text-blue-700 font-semibold underline"
             >
               Learn More
+            </Link>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-3xl font-bold text-center mb-6">Painting Services</h2>
+      <p className="text-lg text-gray-700 text-center mb-8 max-w-2xl mx-auto">
+        We also offer professional interior and exterior painting. Contact us
+        for a free quote on your next project.
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+        {PAINTING_SERVICES.map((service) => (
+          <div
+            key={service.name}
+            className="bg-gray-100 rounded-lg p-6 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <h2 className="text-2xl font-semibold mb-2 text-blue-900">
+                {service.name}
+              </h2>
+              <p className="text-gray-700 mb-4">{service.description}</p>
+            </div>
+            <Link
+              href="/quote"
+              className="mt-auto text-blue-700 font-semibold underline"
+            >
+              Get a Quote
             </Link>
           </div>
         ))}

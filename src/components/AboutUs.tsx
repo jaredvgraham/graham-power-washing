@@ -10,9 +10,10 @@ const AboutUs = () => {
         <p className="text-gray-600 mt-4 max-w-3xl mx-auto p-2">
           Welcome to Graham Painting and Power-Washing! We are a family-owned
           business run by two brothers, Justin and Jared, who have been
-          providing top-quality power washing and painting services for over a
-          decade. Specializing in all aspects of power washing, we take pride in
-          handling jobs of any size with the utmost professionalism and care.
+          providing top-quality power washing and interior &amp; exterior
+          painting services for over a decade. Specializing in power washing and
+          painting, we take pride in handling jobs of any size with the utmost
+          professionalism and care.
         </p>
       </div>
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-8 px-6">
@@ -49,8 +50,8 @@ const AboutUs = () => {
         <p className="text-gray-600 max-w-3xl mx-auto p-3  ">
           At Graham Power-Washing, we believe in delivering exceptional results
           and building long-lasting relationships with our clients. Whether
-          it&apos;s a small residential house or a large commercial building, we
-          have the expertise and equipment to get the job done right.
+          you need a soft wash, pressure wash, or fresh interior or exterior
+          paint, we have the expertise and equipment to get the job done right.
         </p>
       </div>
     </div>

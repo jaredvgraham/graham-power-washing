@@ -60,12 +60,26 @@ const Services = () => {
         "Enhance the clarity and brightness of your home or business with our professional window cleaning services. We remove dirt, grime, and streaks for a spotless finish.",
       icon: "🪟",
     },
+    {
+      id: 11,
+      title: "Exterior Painting",
+      description:
+        "Refresh your home’s curb appeal with professional exterior painting. We prep surfaces properly and apply durable finishes to siding, trim, decks, and more.",
+      icon: "🎨",
+    },
+    {
+      id: 12,
+      title: "Interior Painting",
+      description:
+        "Transform your living spaces with careful interior painting. From walls and ceilings to trim and doors, we deliver clean lines and a flawless finish.",
+      icon: "🖌️",
+    },
   ];
 
   return (
     <div className="container mx-auto py-8 px-4">
       <h2 className="text-3xl font-bold text-center mb-8">
-        Power Washing Services
+        Power Washing &amp; Painting Services
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service) => (

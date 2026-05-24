@@ -22,6 +22,7 @@ const TRUST_BULLETS = [
   "Licensed & insured",
   "Free quote with no obligation",
   "Safe soft washing for siding, decks, patios, and walkways",
+  "Interior & exterior painting available",
   "Fast local response — real people, not a call center",
 ] as const;
 
@@ -67,6 +68,8 @@ const SERVICE_CHECKBOXES = [
   "Shed Wash",
   "Fence Cleaning",
   "Stone Wall Cleaning",
+  "Exterior Painting",
+  "Interior Painting",
 ] as const;
 
 /** Slate surfaces + brighter blue accents (CTAs, links, focus) */

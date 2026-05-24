@@ -29,7 +29,7 @@ const AREAS = [
 export const metadata = {
   title: "Areas Served | Graham Power Washing",
   description:
-    "Graham Power Washing provides professional power washing, soft washing, and exterior cleaning services throughout Plymouth, Kingston, Duxbury, Carver, Marshfield, Pembroke, Hanson, Wareham, Hanover, Norwell, Bourne, East Bridgewater, Bridgewater, Whitman, Lakeville, Sandwich, and all South Shore & Cape Cod. See all towns and cities we serve.",
+    "Graham Power Washing provides professional power washing, soft washing, interior & exterior painting, and exterior cleaning services throughout Plymouth, Kingston, Duxbury, Carver, Marshfield, Pembroke, Hanson, Wareham, Hanover, Norwell, Bourne, East Bridgewater, Bridgewater, Whitman, Lakeville, Sandwich, and all South Shore & Cape Cod. See all towns and cities we serve.",
   alternates: {
     canonical: "https://www.grahampowerwashing.com/areas-served",
   },
@@ -43,7 +43,8 @@ export default function AreasServedPage() {
         Graham Power Washing proudly serves homeowners and businesses across
         Plymouth, Kingston, Duxbury, Carver, Marshfield, Pembroke, Hanson,
         Wareham, Hanover, Norwell, Bourne, East Bridgewater, Bridgewater,
-        Whitman, Lakeville, Sandwich, and all of the South Shore and Cape Cod.
+        Whitman, Lakeville, Sandwich, and all of the South Shore and Cape Cod
+        with power washing, soft washing, and interior &amp; exterior painting.
         If you don&apos;t see your area listed,{" "}
         <Link href="/contact" className="text-blue-700 underline">
           contact us

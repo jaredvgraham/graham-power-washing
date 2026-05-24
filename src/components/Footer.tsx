@@ -9,7 +9,8 @@ const Footer = () => {
           <div className="mb-4 md:mb-0">
             <h2 className="text-xl font-semibold">Graham Power-Washing</h2>
             <p className="text-gray-400">
-              Providing top-quality power washing services for over a decade.
+              Providing top-quality power washing and interior &amp; exterior
+              painting services for over a decade.
             </p>
           </div>
           <div className="flex flex-col items-center md:items-end space-y-4 md:space-y-0 md:space-x-8 md:flex-row">
