@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import ConditionalNavbar from "@/components/ConditionalNavbar";
 
 const inter = Inter({ subsets: ["latin"] });
 //
@@ -242,9 +242,7 @@ export default function RootLayout({
   fbq('track', 'PageView');
           `}
         </Script>
-        <nav aria-label="Main Navigation" className="relative">
-          <Navbar />
-        </nav>
+        <ConditionalNavbar />
         {children}
       </body>
     </html>
