@@ -86,21 +86,6 @@ export default function QrLanding() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-gray-50" />
 
         <div className="relative z-10 flex h-full flex-col items-center justify-end px-6 pb-28 text-center">
-          <motion.div
-            {...fadeUp}
-            transition={{ duration: 0.6 }}
-            className="mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-white/15 shadow-2xl ring-4 ring-white/25 backdrop-blur-sm"
-          >
-            <Image
-              src="/logo.webp"
-              alt="Graham Power Washing logo"
-              width={68}
-              height={68}
-              className="rounded-full"
-              priority
-            />
-          </motion.div>
-
           <motion.h1
             {...fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
