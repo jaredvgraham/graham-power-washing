@@ -78,6 +78,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.grahampowerwashing.com/privacy-policy</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.grahampowerwashing.com/reviews</loc>
     <lastmod>2024-03-20</lastmod>
     <changefreq>daily</changefreq>

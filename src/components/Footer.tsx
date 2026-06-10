@@ -46,6 +46,11 @@ const Footer = () => {
                     Contact
                   </a>
                 </li>
+                <li>
+                  <a href="/privacy-policy" className="hover:text-white">
+                    Privacy Policy
+                  </a>
+                </li>
               </ul>
             </nav>
             <div className="flex space-x-6">
