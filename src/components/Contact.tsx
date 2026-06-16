@@ -65,7 +65,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.4, delay: 0.05 }}
-            className="lg:w-1/3 bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-200/80"
+            className="order-2 lg:order-1 lg:w-1/3 bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-200/80"
           >
             <h2 className="text-3xl font-bold text-gray-800 mb-6">
               Contact Information
@@ -119,7 +119,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.4, delay: 0.08 }}
-            className="lg:w-2/3"
+            className="order-1 lg:order-2 lg:w-2/3"
           >
             <GetAiQuote />
           </motion.div>

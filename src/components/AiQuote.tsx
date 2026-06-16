@@ -206,15 +206,15 @@ const GetAiQuote = () => {
   };
 
   const inputClasses =
-    "w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 shadow-sm placeholder:text-slate-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20";
+    "w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-base text-slate-900 shadow-sm placeholder:text-slate-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:px-4 sm:py-3";
   const labelClasses =
-    "mb-2 block text-sm font-semibold tracking-tight text-slate-700";
+    "mb-1.5 block text-sm font-semibold tracking-tight text-slate-700 sm:mb-2";
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-slate-50">
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:py-12 lg:py-14">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_min(440px,42%)] lg:gap-12 lg:items-start">
-          <div className="space-y-8 lg:max-w-xl">
+    <div className="bg-slate-50">
+      <div className="mx-auto max-w-6xl px-4 py-4 sm:py-12 lg:py-14">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_min(440px,42%)] lg:gap-12 lg:items-start">
+          <div className="hidden space-y-8 lg:block lg:max-w-xl">
             <header className="space-y-5 text-left">
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
                 Graham Power Washing
@@ -312,9 +312,17 @@ const GetAiQuote = () => {
             <ServiceAreaMap compact showCta={false} />
           </div>
 
-          <div id="quote-form" className="scroll-mt-24 lg:scroll-mt-28">
-            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-              <div className="mb-5 flex flex-wrap items-center gap-2 text-xs text-slate-600">
+          <div id="quote-form" className="scroll-mt-20 lg:scroll-mt-28">
+            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-8">
+              <div className="mb-3 lg:hidden">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  Graham Power Washing
+                </p>
+                <h1 className="mt-1 text-2xl font-bold tracking-tight text-slate-900">
+                  Get a Fast Free Quote
+                </h1>
+              </div>
+              <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-slate-600 sm:mb-5">
                 <span className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 font-medium">
                   <Lock className="h-3.5 w-3.5 text-slate-500" aria-hidden />
                   Secure form
@@ -327,20 +335,19 @@ const GetAiQuote = () => {
                   Licensed & insured
                 </span>
               </div>
-              <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-5">
-                <p className="text-sm leading-relaxed text-slate-600">
-                  Local exterior cleaning for homeowners across Plymouth County
-                  and Cape Cod.
+              <div className="mb-4 rounded-lg border border-blue-100 bg-blue-50/70 p-3 sm:mb-6 sm:p-5">
+                <p className="text-sm font-medium leading-relaxed text-slate-700">
+                  Fast free quote for Plymouth County &amp; Cape Cod homes.
                 </p>
                 <a
                   href={`tel:${clientData.phone}`}
-                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 underline decoration-slate-300 underline-offset-2 transition hover:text-blue-800 hover:decoration-blue-600"
+                  className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 underline decoration-slate-300 underline-offset-2 transition hover:text-blue-800 hover:decoration-blue-600 sm:mt-3"
                 >
                   <Phone className="h-4 w-4 shrink-0" aria-hidden />
                   Prefer to call? {formatPhoneDisplay(clientData.phone)}
                 </a>
               </div>
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-5">
                 <div>
                   <label htmlFor="name" className={labelClasses}>
                     Name
@@ -398,21 +405,21 @@ const GetAiQuote = () => {
                 </div>
                 <div>
                   <span id="services-label" className={labelClasses}>
-                    Service interested in
+                    What do you need cleaned?
                   </span>
-                  <p className="mb-3 text-xs text-slate-500">
+                  <p className="mb-2 text-xs text-slate-500 sm:mb-3">
                     Select all that apply — e.g. house wash, deck, patio,
                     walkway…
                   </p>
                   <div
-                    className="grid grid-cols-2 gap-3 md:grid-cols-3"
+                    className="grid grid-cols-2 gap-2 md:grid-cols-3"
                     role="group"
                     aria-labelledby="services-label"
                   >
                     {SERVICE_CHECKBOXES.map((option) => (
                       <label
                         key={option}
-                        className="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200 bg-white p-3 shadow-sm transition-colors hover:border-slate-300 hover:bg-slate-50/80"
+                        className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 bg-white px-2.5 py-2 shadow-sm transition-colors hover:border-slate-300 hover:bg-slate-50/80 sm:gap-3 sm:p-3"
                       >
                         <input
                           type="checkbox"
@@ -421,7 +428,7 @@ const GetAiQuote = () => {
                           onChange={() => handleOptionChange(option)}
                           className="h-4 w-4 shrink-0 rounded border-slate-300 text-blue-600 accent-blue-600 focus:ring-blue-500/30"
                         />
-                        <span className="text-sm font-medium capitalize text-slate-700">
+                        <span className="text-xs font-medium capitalize leading-tight text-slate-700 sm:text-sm">
                           {option.replace(/-/g, " ")}
                         </span>
                       </label>
@@ -471,109 +478,118 @@ const GetAiQuote = () => {
                     />
                   )}
                 </div>
-                <div>
-                  <label htmlFor="email" className={labelClasses}>
-                    Email{" "}
-                    <span className="font-normal text-slate-500">
-                      (optional)
-                    </span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    autoComplete="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className={inputClasses}
-                    placeholder="you@email.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className={labelClasses}>
-                    Message{" "}
-                    <span className="font-normal text-slate-500">
-                      (optional)
-                    </span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    className={`${inputClasses} min-h-[100px] resize-y`}
-                    placeholder="Anything else we should know?"
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
-                  />
-                </div>
-                <div className="border-t border-slate-100 pt-5">
-                  <label htmlFor="images" className={labelClasses}>
-                    Optional: Upload photos if you want a more accurate
-                    estimate.
-                  </label>
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    aria-label="Optional: upload project photos"
-                    className="mt-2 flex cursor-pointer justify-center rounded-lg border-2 border-dashed border-slate-200 bg-slate-50/80 px-4 py-8 transition hover:border-slate-300 hover:bg-white"
-                    onClick={() => inputFileRef.current?.click()}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        inputFileRef.current?.click();
-                      }
-                    }}
-                  >
-                    <div className="space-y-1 text-center">
-                      <FaPaperclip className="mx-auto h-10 w-10 text-slate-400" />
-                      <p className="text-sm text-slate-600">
-                        Tap to add photos — not required
-                      </p>
-                      <p className="text-xs text-slate-500">
-                        PNG, JPG, GIF up to 10MB each
-                      </p>
+                <details className="rounded-lg border border-slate-200 bg-slate-50/60">
+                  <summary className="cursor-pointer px-3 py-2.5 text-sm font-semibold text-slate-700">
+                    Add optional details or photos
+                  </summary>
+                  <div className="space-y-3 border-t border-slate-200 p-3 sm:space-y-5 sm:p-4">
+                    <div>
+                      <label htmlFor="email" className={labelClasses}>
+                        Email{" "}
+                        <span className="font-normal text-slate-500">
+                          (optional)
+                        </span>
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        autoComplete="email"
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
+                        className={inputClasses}
+                        placeholder="you@email.com"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="message" className={labelClasses}>
+                        Message{" "}
+                        <span className="font-normal text-slate-500">
+                          (optional)
+                        </span>
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        className={`${inputClasses} min-h-[80px] resize-y`}
+                        placeholder="Anything else we should know?"
+                        onChange={(e) =>
+                          setFormData({ ...formData, message: e.target.value })
+                        }
+                      />
+                    </div>
+                    <div className="border-t border-slate-200 pt-3 sm:pt-5">
+                      <label htmlFor="images" className={labelClasses}>
+                        Photos{" "}
+                        <span className="font-normal text-slate-500">
+                          (optional)
+                        </span>
+                      </label>
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        aria-label="Optional: upload project photos"
+                        className="mt-2 flex cursor-pointer justify-center rounded-lg border-2 border-dashed border-slate-200 bg-white px-4 py-5 transition hover:border-slate-300 hover:bg-slate-50 sm:py-8"
+                        onClick={() => inputFileRef.current?.click()}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            inputFileRef.current?.click();
+                          }
+                        }}
+                      >
+                        <div className="space-y-1 text-center">
+                          <FaPaperclip className="mx-auto h-7 w-7 text-slate-400 sm:h-10 sm:w-10" />
+                          <p className="text-sm text-slate-600">
+                            Tap to add photos
+                          </p>
+                          <p className="text-xs text-slate-500">
+                            PNG, JPG, GIF up to 10MB each
+                          </p>
+                        </div>
+                      </div>
+                      <input
+                        ref={inputFileRef}
+                        type="file"
+                        id="images"
+                        multiple
+                        onChange={handleFileChange}
+                        className="sr-only"
+                        accept="image/*"
+                      />
+                      {formData.images.length > 0 && (
+                        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                          {formData.images.map((file, index) => (
+                            <div
+                              key={`${file.name}-${index}`}
+                              className="relative group"
+                            >
+                              <img
+                                src={URL.createObjectURL(file)}
+                                alt=""
+                                className="h-24 w-full rounded-lg object-cover"
+                              />
+                              <button
+                                type="button"
+                                className="absolute right-1 top-1 rounded-full bg-slate-700 p-1.5 text-white opacity-90 shadow transition hover:bg-slate-800 hover:opacity-100"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  removeImage(index);
+                                }}
+                                aria-label={`Remove ${file.name}`}
+                              >
+                                <FaTrash size={12} />
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <input
-                    ref={inputFileRef}
-                    type="file"
-                    id="images"
-                    multiple
-                    onChange={handleFileChange}
-                    className="sr-only"
-                    accept="image/*"
-                  />
-                  {formData.images.length > 0 && (
-                    <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                      {formData.images.map((file, index) => (
-                        <div
-                          key={`${file.name}-${index}`}
-                          className="relative group"
-                        >
-                          <img
-                            src={URL.createObjectURL(file)}
-                            alt=""
-                            className="h-24 w-full rounded-lg object-cover"
-                          />
-                          <button
-                            type="button"
-                            className="absolute right-1 top-1 rounded-full bg-slate-700 p-1.5 text-white opacity-90 shadow transition hover:bg-slate-800 hover:opacity-100"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              removeImage(index);
-                            }}
-                            aria-label={`Remove ${file.name}`}
-                          >
-                            <FaTrash size={12} />
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                </details>
                 <div className="pt-1">
                   {errorMessage && (
                     <div className="mt-4 rounded-lg border border-slate-200 bg-slate-100 p-4 text-sm text-slate-800">
