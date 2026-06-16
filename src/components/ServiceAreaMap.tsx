@@ -30,7 +30,7 @@ const ServiceAreaMap = ({
   const Wrapper = compact ? "div" : "section";
   const wrapperClass = compact
     ? className
-    : `bg-white py-12 ${className}`;
+    : `bg-white py-20 sm:py-24 ${className}`;
 
   return (
     <Wrapper className={wrapperClass}>
@@ -38,10 +38,17 @@ const ServiceAreaMap = ({
         {(heading || subheading) && (
           <div className="text-center mb-10">
             {heading && (
-              <h2 className="text-4xl font-light text-gray-800">{heading}</h2>
+              <>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-600">
+                  Service Area
+                </p>
+                <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
+                  {heading}
+                </h2>
+              </>
             )}
             {subheading && (
-              <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
+              <p className="text-slate-600 mt-4 max-w-3xl mx-auto">
                 {subheading}
               </p>
             )}
@@ -54,7 +61,7 @@ const ServiceAreaMap = ({
             alt={imageAlt}
             width={819}
             height={1024}
-            className="h-auto w-full rounded-2xl"
+            className="h-auto w-full rounded-3xl border border-slate-200 bg-slate-50 shadow-sm"
             sizes={
               compact
                 ? "(max-width: 1024px) 100vw, 480px"
@@ -68,7 +75,7 @@ const ServiceAreaMap = ({
             {areas.map((area) => (
               <div
                 key={area}
-                className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-2 text-sm text-gray-800 shadow-sm"
+                className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-800 shadow-sm"
               >
                 <MapPin className="h-4 w-4 shrink-0 text-blue-600" aria-hidden />
                 <span>{area}</span>
@@ -79,16 +86,16 @@ const ServiceAreaMap = ({
 
         {showCta && (
           <div className="mt-10 text-center">
-            <p className="text-gray-600">
+            <p className="text-slate-600">
               Don&apos;t see your town?{" "}
-              <Link href="/contact" className="text-blue-700 underline">
+              <Link href="/contact" className="font-semibold text-blue-700 underline">
                 Contact us
               </Link>{" "}
               — we may still be able to help.
             </p>
             <Link
               href="/quote"
-              className="mt-4 inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-blue-700"
+              className="mt-4 inline-flex items-center justify-center rounded-full bg-red-600 px-8 py-3.5 text-base font-bold text-white shadow-sm transition hover:bg-red-700"
             >
               Get a Free Quote
             </Link>

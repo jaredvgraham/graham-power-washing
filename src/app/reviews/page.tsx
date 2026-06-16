@@ -61,13 +61,17 @@ const ReviewsPage = async () => {
     : FALLBACK_REVIEWS;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-slate-50 py-16">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="mb-10 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Customer Reviews
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-600">
+            Customer Proof
+          </p>
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
+            <span className="text-red-600">Customer</span>{" "}
+            <span className="text-blue-600">Reviews</span>
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-slate-600">
             See what homeowners across the South Shore &amp; Cape Cod are saying.
           </p>
         </div>
@@ -101,7 +105,7 @@ const ReviewsPage = async () => {
             href="https://www.homeadvisor.com/rated.GrahamPainting.43994090.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-8 py-3 font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-8 py-3 font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
           >
             More reviews on HomeAdvisor
           </a>

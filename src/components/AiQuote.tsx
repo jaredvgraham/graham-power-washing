@@ -83,9 +83,9 @@ const HOW_FOUND_OPTIONS = [
   "Other",
 ] as const;
 
-/** Slate surfaces + brighter blue accents (CTAs, links, focus) */
+/** Slate surfaces with red primary actions and blue support accents. */
 const ctaClasses =
-  "inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3.5 text-center text-base font-semibold text-white shadow-sm transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto";
+  "inline-flex w-full items-center justify-center rounded-lg bg-red-600 px-6 py-3.5 text-center text-base font-semibold text-white shadow-sm transition hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 sm:w-auto";
 
 const GetAiQuote = () => {
   const inputFileRef = useRef<HTMLInputElement>(null);
@@ -216,20 +216,23 @@ const GetAiQuote = () => {
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_min(440px,42%)] lg:gap-12 lg:items-start">
           <div className="hidden space-y-8 lg:block lg:max-w-xl">
             <header className="space-y-5 text-left">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-red-600">
                 Graham Power Washing
               </p>
               <h1 className="text-3xl font-normal tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-tight">
-                <span className="text-red-500 font-bold">Soft Wash</span>{" "}
-                Special for Plymouth County &amp; Cape Cod Homes
+                <span className="text-red-600 font-bold">Soft Wash</span>{" "}
+                Special for{" "}
+                <span className="font-bold text-blue-700">Plymouth County</span>{" "}
+                &amp; Cape Cod Homes
               </h1>
               <p className="text-lg leading-relaxed text-slate-600">
-                Get a fast, free exterior cleaning quote for siding, decks,
-                patios, walkways, and more.
+                Get a fast, free power washing quote for siding, decks, patios,
+                walkways, concrete, house washing, and more.
               </p>
               <p className="leading-relaxed text-slate-600">
-                Safe low-pressure cleaning for algae, mildew, dirt, and grime —
-                without damaging your home&apos;s exterior.
+                Safe low-pressure soft washing and professional pressure washing
+                for algae, mildew, dirt, and grime without damaging your
+                home&apos;s exterior.
               </p>
               <a href="#quote-form" className={ctaClasses}>
                 Request My Free Estimate
@@ -337,7 +340,8 @@ const GetAiQuote = () => {
               </div>
               <div className="mb-4 rounded-lg border border-blue-100 bg-blue-50/70 p-3 sm:mb-6 sm:p-5">
                 <p className="text-sm font-medium leading-relaxed text-slate-700">
-                  Fast free quote for Plymouth County &amp; Cape Cod homes.
+                  Takes about 60 seconds. Photos are optional, but they can help
+                  us quote more accurately.
                 </p>
                 <a
                   href={`tel:${clientData.phone}`}
@@ -598,7 +602,7 @@ const GetAiQuote = () => {
                   )}
                   <button
                     type="submit"
-                    className="w-full rounded-lg bg-blue-600 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500"
+                    className="w-full rounded-lg bg-red-600 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Sending…" : "Request My Free Estimate"}

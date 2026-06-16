@@ -12,6 +12,8 @@ import {
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { Phone } from "lucide-react";
+import { clientData } from "@/../config";
 
 const Navbar = () => {
   const [position, setPosition] = React.useState<string | undefined>(undefined);
@@ -24,31 +26,34 @@ const Navbar = () => {
   }, [pathname]);
 
   const textColor = isHomePage ? "text-white" : "text-black";
-  const hoverColor = isHomePage ? "hover:text-teal-400" : "hover:text-blue-600";
+  const hoverColor = isHomePage ? "hover:text-blue-200" : "hover:text-blue-600";
+  const quoteHref = isHomePage ? "#quote-form" : "/quote";
 
   return (
-    <nav
-      className={`"flex items-center w-full py-4 p-2 md:px-8 z-30 ${
-        isHomePage && "absolute"
-      } `}
+    <div
+      className={`inset-x-0 z-30 w-full px-3 py-3 sm:px-6 lg:px-8 ${
+        isHomePage
+          ? "absolute top-0"
+          : "sticky top-0 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur"
+      }`}
     >
-      <div className="flex justify-between items-center w-full">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3">
         {/* Logo */}
-        <div className="flex items-center">
-          <a className="navbar-item" href="/">
+        <div className="flex shrink-0 items-center">
+          <Link className="navbar-item" href="/">
             <Image
               className="whiteBox rounded-full"
               src="/logo.webp"
               alt="Graham Power Washing Logo - Home"
-              width={40}
-              height={40}
-              onClick={() => (window.location.href = "/")}
+              width={44}
+              height={44}
+              priority
             />
-          </a>
+          </Link>
         </div>
 
         {/* Navigation Links */}
-        <div className="flex space-x-6 ml-1">
+        <div className="hidden items-center gap-6 md:flex">
           {/* Services Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -140,8 +145,27 @@ const Navbar = () => {
             Contact
           </Link>
         </div>
+        <div className="ml-auto flex items-center gap-2">
+          <a
+            href={`tel:${clientData.phone}`}
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-full border text-sm font-semibold transition md:hidden ${
+              isHomePage
+                ? "border-blue-400/40 bg-blue-600 text-white hover:bg-blue-500"
+                : "border-blue-200 bg-blue-50 text-blue-700 hover:bg-white"
+            }`}
+            aria-label="Call Graham Power Washing"
+          >
+            <Phone className="h-5 w-5" aria-hidden />
+          </a>
+          <Link
+            href={quoteHref}
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-red-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-red-700 sm:px-5"
+          >
+            Free Quote
+          </Link>
+        </div>
       </div>
-    </nav>
+    </div>
   );
 };
 

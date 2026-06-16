@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import ConditionalNavbar from "@/components/ConditionalNavbar";
 import BackHomeButton from "@/components/BackHomeButton";
+import StickyMobileCta from "@/components/StickyMobileCta";
 
 const inter = Inter({ subsets: ["latin"] });
 //
@@ -246,6 +247,7 @@ export default function RootLayout({
         <ConditionalNavbar />
         <BackHomeButton />
         {children}
+        <StickyMobileCta />
       </body>
     </html>
   );

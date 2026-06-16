@@ -3,8 +3,8 @@ import React from "react";
 
 const GReviews = () => {
   return (
-    <section className="my-16 bg-gray-50 flex flex-col items-center justify-center">
-      <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-8 max-w-lg w-full flex flex-col items-center">
+    <section className="bg-slate-50 px-4 py-16 flex flex-col items-center justify-center">
+      <div className="bg-white border border-red-100 rounded-3xl shadow-sm p-8 max-w-lg w-full flex flex-col items-center">
         <div className="flex items-center mb-3">
           <Image
             src="/g-logo.png"
@@ -13,14 +13,15 @@ const GReviews = () => {
             width={32}
             height={32}
           />
-          <span className="text-2xl font-bold text-gray-800">
+          <span className="text-2xl font-bold text-slate-900">
             Google Reviews
           </span>
         </div>
-        <h2 className="text-xl font-semibold mb-2 text-yellow-600 text-center">
-          {`We'd Love Your Feedback!`}
+        <h2 className="text-xl font-bold mb-2 text-center">
+          <span className="text-red-600">We&apos;d Love</span>{" "}
+          <span className="text-blue-600">Your Feedback!</span>
         </h2>
-        <p className="mb-6 text-gray-600 text-center">
+        <p className="mb-6 text-slate-600 text-center leading-7">
           If you enjoyed our service, please take a moment to leave us a review
           on Google. Your feedback means the world to us!
         </p>
@@ -28,7 +29,7 @@ const GReviews = () => {
           href="https://g.page/r/Ce-IiV_Ozzm3EAI/review"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-red-500 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition"
+          className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-full font-bold shadow-sm transition hover:bg-blue-700"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

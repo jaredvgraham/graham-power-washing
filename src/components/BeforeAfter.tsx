@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
+import Link from "next/link";
 
 interface BeforeAfterImage {
   title: string;
@@ -29,24 +30,24 @@ const BeforeAfter = () => {
       afterUrl: "/red-after.jpeg",
     },
     {
-      title: "Deck Restoration",
+      title: "House Washing",
       beforeUrl: "/img11.jpeg",
       afterUrl: "/img12.jpeg",
     },
     {
-      title: "Patio Cleaning",
+      title: "House Washing",
       beforeUrl: "/img13.jpeg",
       afterUrl: "/img14.jpeg",
     },
     {
-      title: "Fence Washing",
+      title: "Deck Washing",
       beforeUrl: "/img15.jpeg",
       afterUrl: "/img16.jpeg",
     },
   ];
 
   return (
-    <div className="bg-gray-50 py-20 sm:py-28">
+    <div className="bg-slate-950 py-20 text-white sm:py-28">
       <div className="container mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -55,11 +56,17 @@ const BeforeAfter = () => {
           transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Before & After
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
+            Before &amp; After
+          </p>
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <span className="text-red-400">Pressure Washing</span>{" "}
+            <span className="text-blue-300">Before &amp; After</span>
           </h1>
-          <p className="mt-4 text-lg leading-8 text-gray-600">
-            See the transformative power of our services.
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+            See how the right pressure washing and soft washing method can
+            revive siding, decks, patios, fences, and exterior surfaces for
+            South Shore and Cape Cod homes.
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -70,7 +77,7 @@ const BeforeAfter = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.35, delay: (index % 2) * 0.05 }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer"
+              className="group cursor-pointer overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] shadow-2xl shadow-black/20"
               onClick={() => handleExpandProject(project)}
             >
               <div className="grid grid-cols-2">
@@ -80,9 +87,9 @@ const BeforeAfter = () => {
                     alt={`Before shot of ${project.title}`}
                     width={600}
                     height={600}
-                    className="object-cover h-64 w-full"
+                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute bottom-0 left-0 bg-black/70 text-white px-3 py-1 font-semibold">
+                  <div className="absolute bottom-0 left-0 bg-slate-950/80 text-white px-3 py-1 font-semibold">
                     Before
                   </div>
                 </div>
@@ -92,15 +99,28 @@ const BeforeAfter = () => {
                     alt={`After shot of ${project.title}`}
                     width={600}
                     height={600}
-                    className="object-cover h-64 w-full"
+                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute bottom-0 right-0 bg-primary/80 text-white px-3 py-1 font-semibold">
+                  <div className="absolute bottom-0 right-0 bg-blue-600/90 text-white px-3 py-1 font-semibold">
                     After
                   </div>
                 </div>
               </div>
+              <div className="border-t border-white/10 px-5 py-4">
+                <p className="text-sm font-semibold text-white">
+                  {project.title}
+                </p>
+              </div>
             </motion.div>
           ))}
+        </div>
+        <div className="mt-14 text-center">
+          <Link
+            href="/quote"
+            className="inline-flex items-center justify-center rounded-full bg-red-600 px-8 py-3.5 text-base font-bold text-white shadow-sm transition hover:bg-red-700"
+          >
+            Request My Free Estimate
+          </Link>
         </div>
       </div>
 

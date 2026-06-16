@@ -1,10 +1,8 @@
 import AboutUs from "@/components/AboutUs";
 import GetAiQuote from "@/components/AiQuote";
 import BeforeAfter from "@/components/BeforeAfter";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
 import OurWork from "@/components/OurWork";
 import Reviews from "@/components/Reviews";
 import ServiceAreaMap from "@/components/ServiceAreaMap";
@@ -152,6 +150,17 @@ const Page = () => {
           <Hero />
         </section>
 
+        <section
+          id="contact"
+          aria-label="Get a Free Quote"
+          itemProp="contactPoint"
+          itemScope
+          itemType="https://schema.org/ContactPoint"
+          className="bg-slate-50"
+        >
+          <GetAiQuote />
+        </section>
+
         <section id="reviews" aria-label="Customer Reviews">
           <Reviews />
         </section>
@@ -180,19 +189,6 @@ const Page = () => {
 
         <section id="areas-served" aria-label="Areas We Serve">
           <ServiceAreaMap />
-        </section>
-
-        <section
-          id="contact"
-          aria-label="Contact Us"
-          itemProp="contactPoint"
-          itemScope
-          itemType="https://schema.org/ContactPoint"
-          className="bg-gray-50"
-        >
-          <div id="quote-form">
-            <Contact />
-          </div>
         </section>
 
         <GReviews />

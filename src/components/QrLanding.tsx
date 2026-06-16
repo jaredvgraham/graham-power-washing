@@ -42,24 +42,24 @@ const TRUST_ITEMS = [
   {
     icon: ShieldCheck,
     label: "Licensed & insured",
-    color: "bg-blue-50 text-blue-600",
+    color: "bg-red-50 text-red-600",
   },
   { icon: Star, label: "5-star rated", color: "bg-amber-50 text-amber-600" },
   { icon: Sparkles, label: "1,000+ projects", color: "bg-red-50 text-red-600" },
-  { icon: Phone, label: "Free quotes", color: "bg-green-50 text-green-600" },
+  { icon: Phone, label: "Free quotes", color: "bg-blue-50 text-blue-600" },
 ] as const;
 
 const btnCall =
   "flex w-full items-center justify-center gap-3 rounded-xl border-2 border-blue-600 bg-white px-5 py-3.5 text-sm font-semibold text-blue-700 transition hover:border-blue-700 hover:bg-blue-600 hover:text-white";
 
 const btnQuote =
-  "flex w-full items-center justify-center gap-2 rounded-xl border-2 border-green-600 bg-white px-5 py-3.5 text-sm font-semibold text-green-700 transition hover:border-green-700 hover:bg-green-600 hover:text-white";
+  "flex w-full items-center justify-center gap-2 rounded-xl border-2 border-red-600 bg-red-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:border-red-700 hover:bg-red-700";
 
 const btnStickyCall =
   "flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-blue-600 bg-white py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-700 hover:bg-blue-600 hover:text-white";
 
 const btnStickyQuote =
-  "flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-green-600 bg-white py-3 text-sm font-semibold text-green-700 transition hover:border-green-700 hover:bg-green-600 hover:text-white";
+  "flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-red-600 bg-red-600 py-3 text-sm font-semibold text-white transition hover:border-red-700 hover:bg-red-700";
 
 const REVIEW = {
   text: "Unbelievable job at my house!! They did my house, deck, pool deck, and pool fence. Highly recommend — exceptional work and a very reasonable price.",
@@ -103,7 +103,7 @@ export default function QrLanding() {
           >
             Soft washing, pressure washing &amp; painting
             <br />
-            <span className="text-blue-200">
+            <span className="text-red-200">
               Plymouth County &amp; Cape Cod
             </span>
           </motion.p>
@@ -174,7 +174,7 @@ export default function QrLanding() {
             {SERVICES.map(({ label, icon: Icon }) => (
               <li
                 key={label}
-                className="flex items-center gap-3 rounded-xl border border-gray-100 bg-white px-4 py-3.5 shadow-sm transition hover:border-blue-100 hover:shadow-md"
+                className="flex items-center gap-3 rounded-xl border border-gray-100 bg-white px-4 py-3.5 shadow-sm transition hover:border-red-100 hover:shadow-md"
               >
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
                   <Icon className="h-4 w-4" aria-hidden />
@@ -223,10 +223,10 @@ export default function QrLanding() {
         <motion.section
           {...fadeUp}
           transition={{ duration: 0.3, delay: 0.16 }}
-          className="flex gap-4 rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-5 shadow-sm"
+          className="flex gap-4 rounded-2xl border border-red-100 bg-gradient-to-br from-red-50 to-white p-5 shadow-sm"
           aria-label="Service area"
         >
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-blue-200 bg-white text-blue-600">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-200 bg-white text-red-600">
             <MapPin className="h-5 w-5" aria-hidden />
           </span>
           <div>
@@ -253,7 +253,7 @@ export default function QrLanding() {
               href={clientData.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-blue-200 hover:text-blue-700"
+              className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-red-200 hover:text-red-700"
             >
               <Facebook className="h-4 w-4" aria-hidden />
               Facebook
@@ -262,7 +262,7 @@ export default function QrLanding() {
               href={clientData.social.homeAdvisor}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-green-200 hover:text-green-700"
+              className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-blue-200 hover:text-blue-700"
             >
               <Home className="h-4 w-4" aria-hidden />
               HomeAdvisor

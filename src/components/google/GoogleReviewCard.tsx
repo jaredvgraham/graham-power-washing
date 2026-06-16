@@ -13,14 +13,12 @@ export type GoogleReviewCardData = {
 };
 
 const AVATAR_COLORS = [
-  "bg-blue-500",
+  "bg-red-600",
   "bg-red-500",
-  "bg-green-600",
-  "bg-amber-500",
-  "bg-purple-500",
-  "bg-teal-500",
-  "bg-pink-500",
-  "bg-indigo-500",
+  "bg-blue-600",
+  "bg-blue-500",
+  "bg-slate-700",
+  "bg-slate-900",
 ];
 
 function colorForName(name: string) {

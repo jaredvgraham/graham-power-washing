@@ -73,12 +73,12 @@ export default function ConcretePressureWashing() {
         </script>
       </Head>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
-          className="relative h-[500px] w-full overflow-hidden rounded-3xl shadow-xl mb-16"
+          className="relative h-[500px] w-full overflow-hidden rounded-3xl shadow-2xl shadow-slate-300/60 mb-16"
         >
           <Image
             src="/concrete-pressure-wash.png"
@@ -87,9 +87,13 @@ export default function ConcretePressureWashing() {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent z-10" />
+          <div className="absolute left-0 top-0 z-10 h-1.5 w-full bg-red-600" />
           <div className="absolute bottom-10 left-10 z-20">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white drop-shadow-lg">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-red-300">
+              Graham Power Washing
+            </p>
+            <h1 className="text-4xl sm:text-5xl font-black text-white drop-shadow-lg">
               Concrete Pressure Washing
             </h1>
           </div>
@@ -99,7 +103,7 @@ export default function ConcretePressureWashing() {
           variants={fadeInUp}
           initial="hidden"
           animate="visible"
-          className="text-xl text-gray-800 leading-relaxed max-w-3xl mx-auto mb-16 text-center"
+          className="text-xl text-slate-700 leading-relaxed max-w-3xl mx-auto mb-16 text-center"
         >
           {` Dirty or stained concrete can drag down your home's curb appeal. Our
           concrete pressure washing service restores a like-new appearance to
@@ -113,10 +117,10 @@ export default function ConcretePressureWashing() {
           custom={1}
           className="mb-16"
         >
-          <h2 className="text-3xl font-semibold text-center text-gray-900 mb-10">
+          <h2 className="text-3xl font-bold text-center text-slate-950 mb-10">
             Benefits of Concrete Pressure Washing
           </h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-lg text-gray-700 max-w-4xl mx-auto">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-lg text-slate-700 max-w-4xl mx-auto">
             {[
               "Eliminates years of built-up grime and stains",
               "Improves curb appeal and property value",
@@ -125,11 +129,11 @@ export default function ConcretePressureWashing() {
             ].map((item, i) => (
               <motion.li
                 key={i}
-                className="relative pl-8"
+                className="relative rounded-2xl border border-slate-200 bg-white p-5 pl-12 shadow-sm"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring" }}
               >
-                <span className="absolute left-0 top-1 text-blue-600 text-xl">
+                <span className="absolute left-5 top-5 text-red-600 text-xl">
                   ✓
                 </span>
                 {item}
@@ -145,10 +149,10 @@ export default function ConcretePressureWashing() {
           custom={2}
           className="mb-20"
         >
-          <h2 className="text-3xl font-semibold text-center text-gray-900 mb-10">
+          <h2 className="text-3xl font-bold text-center text-slate-950 mb-10">
             Our Cleaning Process
           </h2>
-          <div className="max-w-3xl mx-auto text-gray-700 text-lg space-y-6">
+          <div className="max-w-3xl mx-auto rounded-3xl border border-slate-200 bg-white p-6 text-slate-700 text-lg space-y-6 shadow-sm">
             <p>
               <strong>1. Evaluation:</strong> We assess the concrete surface to
               identify stains, buildup, or sensitive areas.
@@ -175,10 +179,10 @@ export default function ConcretePressureWashing() {
           custom={3}
           className="mb-24"
         >
-          <h2 className="text-3xl font-semibold text-center text-gray-900 mb-10">
+          <h2 className="text-3xl font-bold text-center text-slate-950 mb-10">
             Clean Surfaces, Lasting Results
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto text-center leading-relaxed">
+          <p className="text-lg text-slate-700 max-w-3xl mx-auto text-center leading-relaxed">
             {`Whether you're preparing for a home sale, sealing concrete, or just
             want to refresh your outdoor space, our team delivers results that
             speak for themselves.`}
@@ -190,7 +194,7 @@ export default function ConcretePressureWashing() {
           initial="hidden"
           animate="visible"
           custom={4}
-          className="bg-gradient-to-tr from-blue-700 to-blue-500 text-white p-12 rounded-3xl shadow-2xl text-center"
+          className="bg-gradient-to-br from-slate-950 via-slate-900 to-red-950 text-white p-8 sm:p-12 rounded-3xl shadow-2xl text-center"
         >
           <h3 className="text-3xl font-bold mb-4">Request a Quote</h3>
           <p className="mb-6 text-lg opacity-90">
@@ -199,7 +203,7 @@ export default function ConcretePressureWashing() {
           </p>
           <Link
             href="/quote"
-            className="inline-block bg-white text-blue-700 font-semibold py-3 px-8 rounded-full shadow-md hover:bg-gray-100 transition"
+            className="inline-block bg-red-600 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:bg-red-700 transition"
           >
             Get a Quote
           </Link>
@@ -207,10 +211,10 @@ export default function ConcretePressureWashing() {
 
         {/* FAQ Section for SEO */}
         <section className="mb-24 mt-5" id="faq">
-          <h2 className="text-3xl font-semibold text-center text-gray-900 mb-10">
+          <h2 className="text-3xl font-bold text-center text-slate-950 mb-10">
             Concrete Pressure Washing FAQs
           </h2>
-          <div className="max-w-3xl mx-auto text-gray-700 text-lg space-y-6">
+          <div className="max-w-3xl mx-auto text-slate-700 text-lg space-y-6">
             <div>
               <h3 className="font-bold">
                 How often should I have my concrete surfaces pressure washed?

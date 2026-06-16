@@ -33,7 +33,7 @@ export default function GoogleRatingSummary({
   const value = rating ?? 0;
 
   return (
-    <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-5 rounded-2xl border border-gray-200 bg-white px-8 py-6 shadow-sm sm:flex-row sm:justify-between">
+    <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-5 rounded-2xl border border-red-100 bg-white px-8 py-6 shadow-sm sm:flex-row sm:justify-between">
       <div className="flex items-center gap-3">
         <GoogleG className="h-9 w-9" />
         <div className="text-left">

@@ -99,19 +99,21 @@ const cardVariants = {
 
 const Services = () => {
   return (
-    <section className="bg-slate-50 py-20 sm:py-24">
+    <section className="bg-slate-950 py-20 text-white sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-400">
             What We Do
           </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Power Washing &amp; Painting Services
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <span className="text-red-400">Power Washing</span>,{" "}
+            <span className="text-blue-300">Soft Washing</span> &amp; Painting
+            Services
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-slate-600">
-            Professional exterior cleaning and painting for homes and businesses
-            across the South Shore and Cape Cod — done safely, thoroughly, and
-            with care.
+          <p className="mt-4 text-lg leading-relaxed text-slate-300">
+            Professional house washing, soft washing, concrete pressure washing,
+            deck cleaning, patio cleaning, and painting for homes and businesses
+            in Plymouth, the South Shore, and Cape Cod.
           </p>
         </div>
 
@@ -120,17 +122,17 @@ const Services = () => {
             const Icon = service.icon;
             const CardInner = (
               <>
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-600 group-hover:text-white">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-300 transition-colors duration-300 group-hover:bg-blue-600 group-hover:text-white">
                   <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden />
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900">
+                <h3 className="text-lg font-semibold text-white">
                   {service.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-300">
                   {service.description}
                 </p>
                 {service.href && (
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600">
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-300">
                     Learn more
                     <ArrowRight
                       className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -142,7 +144,7 @@ const Services = () => {
             );
 
             const baseClasses =
-              "group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg";
+              "group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.06] p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/50 hover:bg-white/[0.09] hover:shadow-2xl hover:shadow-blue-950/20";
 
             return (
               <motion.div
@@ -168,14 +170,14 @@ const Services = () => {
         <div className="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href="/quote"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-blue-700"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-red-600 px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-red-700"
           >
             Get a Free Quote
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-8 py-3.5 text-base font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-8 py-3.5 text-base font-semibold text-white transition hover:bg-white/15"
           >
             View All Services
           </Link>
