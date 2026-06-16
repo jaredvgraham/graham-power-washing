@@ -8,6 +8,7 @@ interface Quote {
   name: string;
   town: string;
   phone: string;
+  howYouFoundUs?: string;
 }
 
 const PhoneCalls = () => {
@@ -53,6 +54,11 @@ const PhoneCalls = () => {
             <p>
               <strong>Phone:</strong> {quote.phone}
             </p>
+            {quote.howYouFoundUs && (
+              <p>
+                <strong>How they found us:</strong> {quote.howYouFoundUs}
+              </p>
+            )}
           </div>
         ))}
         {quotes.length === 0 && (

@@ -22,6 +22,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       email,
       phone,
       town,
+      howYouFoundUs,
       message,
       imageUrls,
       options,
@@ -32,6 +33,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       email,
       phone,
       town,
+      howYouFoundUs,
       message,
       imageUrls,
       options,
@@ -40,10 +42,15 @@ export async function POST(req: NextRequest, res: NextResponse) {
       ? options.map((o: string) => String(o).trim()).filter(Boolean)
       : [];
 
-    if (!name?.trim() || !phone?.trim() || !town?.trim()) {
+    if (
+      !name?.trim() ||
+      !phone?.trim() ||
+      !town?.trim() ||
+      !howYouFoundUs?.trim()
+    ) {
       return NextResponse.json(
         {
-          error: "Name, phone, and town are required",
+          error: "Name, phone, town, and how you found us are required",
           details: "Missing required fields",
         },
         { status: 400 },
@@ -79,6 +86,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     Email: ${email?.trim() || "Not provided"}
     Town: ${town.trim()}
     Phone: ${phone.trim()}
+    How they found us: ${howYouFoundUs.trim()}
     Options: ${optionsList.join(", ")}
     Message: ${message?.trim() || "—"}
     Images:

@@ -21,6 +21,7 @@ export async function createQuote(data: {
   town: string;
   phone: string;
   email?: string;
+  howYouFoundUs?: string;
 }) {
   const payload: Record<string, unknown> = {
     name: data.name,
@@ -30,6 +31,9 @@ export async function createQuote(data: {
   };
   if (data.email?.trim()) {
     payload.email = data.email.trim();
+  }
+  if (data.howYouFoundUs?.trim()) {
+    payload.howYouFoundUs = data.howYouFoundUs.trim();
   }
   const quote = await db.collection("quotes").add(payload);
   return quote.id;

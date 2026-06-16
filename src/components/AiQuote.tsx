@@ -72,6 +72,16 @@ const SERVICE_CHECKBOXES = [
   "Interior Painting",
 ] as const;
 
+const HOW_FOUND_OPTIONS = [
+  "Google search",
+  "Facebook",
+  "Instagram",
+  "Yard sign or saw our truck",
+  "Friend or neighbor referral",
+  "Previous customer",
+  "Other",
+] as const;
+
 /** Slate surfaces + brighter blue accents (CTAs, links, focus) */
 const ctaClasses =
   "inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3.5 text-center text-base font-semibold text-white shadow-sm transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto";
@@ -83,6 +93,8 @@ const GetAiQuote = () => {
     email: "",
     phone: "",
     town: "",
+    howYouFoundUs: "",
+    howYouFoundUsOther: "",
     options: [] as string[],
     images: [] as File[],
     message: "",
@@ -104,6 +116,17 @@ const GetAiQuote = () => {
       return;
     }
 
+    const howYouFoundUs =
+      formData.howYouFoundUs === "Other"
+        ? formData.howYouFoundUsOther.trim()
+        : formData.howYouFoundUs.trim();
+
+    if (!howYouFoundUs) {
+      setErrorMessage("Please tell us how you found us.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const uploadedBlobUrls = await Promise.all(
         formData.images.map(async (file) => {
@@ -119,6 +142,7 @@ const GetAiQuote = () => {
         name: formData.name.trim(),
         town: formData.town.trim(),
         phone: formData.phone.trim(),
+        howYouFoundUs,
         ...(formData.email.trim() ? { email: formData.email.trim() } : {}),
         phoneNumber: formData.phone.trim(),
       });
@@ -128,6 +152,7 @@ const GetAiQuote = () => {
         email: formData.email.trim(),
         phone: formData.phone.trim(),
         town: formData.town.trim(),
+        howYouFoundUs,
         message: formData.message.trim(),
         imageUrls: uploadedBlobUrls,
         options: formData.options,
@@ -399,6 +424,49 @@ const GetAiQuote = () => {
                       </label>
                     ))}
                   </div>
+                </div>
+                <div>
+                  <label htmlFor="howYouFoundUs" className={labelClasses}>
+                    How did you find us?
+                  </label>
+                  <select
+                    id="howYouFoundUs"
+                    name="howYouFoundUs"
+                    value={formData.howYouFoundUs}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        howYouFoundUs: e.target.value,
+                        howYouFoundUsOther: "",
+                      })
+                    }
+                    className={inputClasses}
+                    required
+                  >
+                    <option value="">Select one…</option>
+                    {HOW_FOUND_OPTIONS.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  {formData.howYouFoundUs === "Other" && (
+                    <input
+                      type="text"
+                      id="howYouFoundUsOther"
+                      name="howYouFoundUsOther"
+                      value={formData.howYouFoundUsOther}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          howYouFoundUsOther: e.target.value,
+                        })
+                      }
+                      className={`${inputClasses} mt-3`}
+                      placeholder="Please tell us how you heard about us"
+                      required
+                    />
+                  )}
                 </div>
                 <div>
                   <label htmlFor="email" className={labelClasses}>
