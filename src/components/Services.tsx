@@ -150,8 +150,8 @@ const Services = () => {
                 variants={cardVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: (index % 3) * 0.08 }}
+                viewport={{ once: true, amount: 0.05 }}
+                transition={{ duration: 0.3, delay: (index % 2) * 0.04 }}
               >
                 {service.href ? (
                   <Link href={service.href} className={baseClasses}>

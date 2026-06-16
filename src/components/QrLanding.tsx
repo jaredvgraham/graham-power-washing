@@ -88,7 +88,7 @@ export default function QrLanding() {
         <div className="relative z-10 flex h-full flex-col items-center justify-end px-6 pb-28 text-center">
           <motion.h1
             {...fadeUp}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.35 }}
             className="text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg"
           >
             <span className="text-red-400">Graham</span>{" "}
@@ -98,7 +98,7 @@ export default function QrLanding() {
 
           <motion.p
             {...fadeUp}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.35, delay: 0.04 }}
             className="mt-2 max-w-xs text-sm font-medium leading-relaxed text-gray-200"
           >
             Soft washing, pressure washing &amp; painting
@@ -114,7 +114,7 @@ export default function QrLanding() {
       <div className="relative z-20 mx-auto -mt-20 max-w-md px-5">
         <motion.div
           {...fadeUp}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.35, delay: 0.08 }}
           className="overflow-hidden rounded-2xl border border-white/80 bg-white shadow-xl shadow-black/10"
         >
           <div className="h-1 bg-gradient-to-r from-red-500 via-red-400 to-red-600" />
@@ -137,7 +137,7 @@ export default function QrLanding() {
         {/* Trust grid */}
         <motion.section
           {...fadeUp}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
           className="grid grid-cols-2 gap-3"
           aria-label="Why choose us"
         >
@@ -161,7 +161,7 @@ export default function QrLanding() {
         {/* Services */}
         <motion.section
           {...fadeUp}
-          transition={{ duration: 0.5, delay: 0.45 }}
+          transition={{ duration: 0.3, delay: 0.12 }}
           aria-labelledby="qr-services-heading"
         >
           <h2
@@ -190,7 +190,7 @@ export default function QrLanding() {
         {/* Review */}
         <motion.section
           {...fadeUp}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.3, delay: 0.14 }}
           className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
           aria-label="Customer review"
         >
@@ -222,7 +222,7 @@ export default function QrLanding() {
         {/* Location */}
         <motion.section
           {...fadeUp}
-          transition={{ duration: 0.5, delay: 0.55 }}
+          transition={{ duration: 0.3, delay: 0.16 }}
           className="flex gap-4 rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-5 shadow-sm"
           aria-label="Service area"
         >
@@ -244,7 +244,7 @@ export default function QrLanding() {
         {/* Social + website */}
         <motion.section
           {...fadeUp}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.3, delay: 0.18 }}
           className="flex flex-col gap-3"
           aria-label="Links"
         >

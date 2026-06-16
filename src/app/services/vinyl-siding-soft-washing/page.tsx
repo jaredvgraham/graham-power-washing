@@ -12,8 +12,8 @@ export default function VinylSidingSoftWashing() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.2,
-        duration: 0.6,
+        delay: i * 0.06,
+        duration: 0.35,
         ease: "easeOut",
       },
     }),
@@ -77,7 +77,7 @@ export default function VinylSidingSoftWashing() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.4 }}
           className="relative h-[500px] w-full overflow-hidden rounded-3xl shadow-xl mb-16"
         >
           <Image

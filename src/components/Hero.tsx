@@ -30,7 +30,7 @@ const Hero = () => {
           <motion.h1
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.45 }}
             className="text-white text-4xl md:text-6xl font-extrabold leading-tight text-center md:text-left border-b-4 border-red-500 pb-2"
           >
             <span className="text-red-500  drop-shadow-lg">Graham</span>{" "}
@@ -42,7 +42,7 @@ const Hero = () => {
           <motion.h2
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            transition={{ duration: 0.45, delay: 0.08 }}
             className="text-gray-200 text-lg md:text-xl leading-relaxed text-center md:text-left font-semibold"
           >
             Graham Power Washing delivers Top-Rated{" "}
@@ -66,7 +66,7 @@ const Hero = () => {
             onClick={() => router.push("/quote")}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
+            transition={{ duration: 0.4, delay: 0.15 }}
             className="mt-4 px-8 py-4 bg-green-500 hover:bg-green-600 text-white rounded-full font-semibold shadow-lg transition-all duration-300 self-center md:self-start"
           >
             Get a Free Quote
@@ -77,7 +77,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.6 }}
+          transition={{ duration: 0.45, delay: 0.18 }}
           className="flex md:flex-1 w-full md:w-auto md:justify-center justify-end  items-center mt-10 md:mt-0"
         >
           <div className="relative w-full max-w-sm md:w-96 md:h-96 bg-white/10 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center p-8 border border-white/20">

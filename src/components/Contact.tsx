@@ -45,8 +45,8 @@ const Contact = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
@@ -63,8 +63,8 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ duration: 0.4, delay: 0.05 }}
             className="lg:w-1/3 bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-200/80"
           >
             <h2 className="text-3xl font-bold text-gray-800 mb-6">
@@ -117,8 +117,8 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ duration: 0.4, delay: 0.08 }}
             className="lg:w-2/3"
           >
             <GetAiQuote />

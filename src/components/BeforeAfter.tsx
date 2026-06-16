@@ -51,8 +51,8 @@ const BeforeAfter = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
@@ -68,8 +68,8 @@ const BeforeAfter = () => {
               key={index}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: index * 0.15 }}
+              viewport={{ once: true, amount: 0.05 }}
+              transition={{ duration: 0.35, delay: (index % 2) * 0.05 }}
               className="bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer"
               onClick={() => handleExpandProject(project)}
             >

@@ -51,8 +51,8 @@ const ReviewsClient = ({
               key={`${r.author}-${index}`}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: (index % 3) * 0.12 }}
+              viewport={{ once: true, amount: 0.05 }}
+              transition={{ duration: 0.35, delay: (index % 2) * 0.04 }}
               className="h-full"
             >
               <GoogleReviewCard {...r} />
