@@ -1,30 +1,6 @@
 import React from "react";
 import Link from "next/link";
-
-const AREAS = [
-  "Plymouth",
-  "Kingston",
-  "Duxbury",
-  "Carver",
-  "Marshfield",
-  "Pembroke",
-  "Hanson",
-  "Wareham",
-  "Hanover",
-  "Norwell",
-  "Bourne",
-  "East Bridgewater",
-  "Bridgewater",
-  "Whitman",
-  "Lakeville",
-  "Sandwich",
-  "Scituate",
-  "Hingham",
-  "Falmouth",
-  "Buzzards Bay",
-  "South Shore",
-  "Cape Cod",
-];
+import ServiceAreaMap from "@/components/ServiceAreaMap";
 
 export const metadata = {
   title: "Areas Served | Graham Power Washing",
@@ -51,17 +27,8 @@ export default function AreasServedPage() {
         </Link>
         —we may still be able to help!
       </p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-12">
-        {AREAS.map((area) => (
-          <div
-            key={area}
-            className="bg-gray-100 rounded-lg p-3 text-center text-gray-800 shadow-sm"
-          >
-            {area}
-          </div>
-        ))}
-      </div>
-      <div className="text-center mt-8">
+      <ServiceAreaMap heading="" subheading="" showCta={false} className="py-0" />
+      <div className="text-center mt-12">
         <Link
           href="/services"
           className="text-blue-700 font-semibold underline mr-4"

@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import OurWork from "@/components/OurWork";
 import Reviews from "@/components/Reviews";
+import ServiceAreaMap from "@/components/ServiceAreaMap";
 import Services from "@/components/Services";
 import React from "react";
 import Head from "next/head";
@@ -175,6 +176,10 @@ const Page = () => {
 
         <section id="about" aria-label="About Us">
           <AboutUs />
+        </section>
+
+        <section id="areas-served" aria-label="Areas We Serve">
+          <ServiceAreaMap />
         </section>
 
         <section

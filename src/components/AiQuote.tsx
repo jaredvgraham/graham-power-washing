@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { FaPaperclip, FaTrash } from "react-icons/fa";
 import { Lock, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { clientData } from "@/../config";
+import ServiceAreaMap from "@/components/ServiceAreaMap";
 
 function formatPhoneDisplay(digits: string) {
   const d = digits.replace(/\D/g, "");
@@ -307,6 +308,8 @@ const GetAiQuote = () => {
                 ))}
               </div>
             </div>
+
+            <ServiceAreaMap compact showCta={false} />
           </div>
 
           <div id="quote-form" className="scroll-mt-24 lg:scroll-mt-28">
