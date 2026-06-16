@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MessageSquareText, Phone } from "lucide-react";
@@ -17,10 +18,51 @@ const HIDDEN_PREFIXES = [
 
 export default function StickyMobileCta() {
   const pathname = usePathname();
+  const [quoteFormActive, setQuoteFormActive] = useState(false);
   const hidden = HIDDEN_PREFIXES.some((prefix) => pathname?.startsWith(prefix));
   const quoteHref = pathname === "/" ? "#quote-form" : "/quote";
 
-  if (hidden) return null;
+  useEffect(() => {
+    if (pathname !== "/") {
+      setQuoteFormActive(false);
+      return;
+    }
+
+    const quoteForm = document.getElementById("quote-form");
+    if (!quoteForm) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setQuoteFormActive(entry.isIntersecting);
+      },
+      {
+        rootMargin: "-10% 0px -20% 0px",
+        threshold: 0.05,
+      },
+    );
+
+    const handleFocusIn = () => setQuoteFormActive(true);
+    const handleFocusOut = () => {
+      window.setTimeout(() => {
+        if (!quoteForm.contains(document.activeElement)) {
+          const rect = quoteForm.getBoundingClientRect();
+          setQuoteFormActive(rect.top < window.innerHeight && rect.bottom > 0);
+        }
+      }, 0);
+    };
+
+    observer.observe(quoteForm);
+    quoteForm.addEventListener("focusin", handleFocusIn);
+    quoteForm.addEventListener("focusout", handleFocusOut);
+
+    return () => {
+      observer.disconnect();
+      quoteForm.removeEventListener("focusin", handleFocusIn);
+      quoteForm.removeEventListener("focusout", handleFocusOut);
+    };
+  }, [pathname]);
+
+  if (hidden || quoteFormActive) return null;
 
   return (
     <>
