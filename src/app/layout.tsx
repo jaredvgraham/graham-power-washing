@@ -208,6 +208,20 @@ export default function RootLayout({
             `,
           }}
         />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16667175667"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-16667175667');
+            `,
+          }}
+        />
       </head>
       <body className={`${inter.className} bg-gray-100`}>
         {/* Google Tag Manager (noscript) */}
