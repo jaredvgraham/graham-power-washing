@@ -10,13 +10,9 @@ import {
   ShieldCheck,
   Star,
 } from "lucide-react";
-import { clientData } from "@/../config";
+import { phoneDisplay, phoneTelHref } from "@/lib/phone";
 
 const Hero = () => {
-  const formattedPhone = `(${clientData.phone.slice(0, 3)}) ${clientData.phone.slice(
-    3,
-    6,
-  )}-${clientData.phone.slice(6)}`;
 
   const trustPoints = [
     "Licensed & insured",
@@ -93,11 +89,11 @@ const Hero = () => {
               <ArrowRight className="h-5 w-5" aria-hidden />
             </a>
             <a
-              href={`tel:${clientData.phone}`}
+              href={phoneTelHref}
               className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-4 text-base font-bold text-white shadow-xl shadow-blue-950/30 transition hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <Phone className="h-5 w-5" aria-hidden />
-              Call {formattedPhone}
+              Call {phoneDisplay}
             </a>
           </motion.div>
 

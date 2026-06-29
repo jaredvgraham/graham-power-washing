@@ -1,6 +1,6 @@
 import React from "react";
 import { FaFacebook } from "react-icons/fa";
-import { clientData } from "@/../config";
+import { phoneDisplay, phoneTelHref } from "@/lib/phone";
 
 const Footer = () => {
   return (
@@ -24,10 +24,10 @@ const Footer = () => {
                 Get a Free Quote
               </a>
               <a
-                href={`tel:${clientData.phone}`}
+                href={phoneTelHref}
                 className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-blue-700"
               >
-                Call {clientData.phone}
+                Call {phoneDisplay}
               </a>
             </div>
           </div>

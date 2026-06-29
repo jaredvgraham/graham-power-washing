@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { clientData } from "@/../config";
+import { formatPhoneDisplay, phoneTelHref } from "@/lib/phone";
 import { Phone, Mail, MapPin, Facebook, House } from "lucide-react";
 import { motion } from "framer-motion";
 import GetAiQuote from "./AiQuote";
@@ -9,8 +10,8 @@ const contactDetails = [
   {
     icon: <Phone size={24} className="text-blue-600" />,
     label: "Phone",
-    value: clientData.phone,
-    href: `tel:${clientData.phone}`,
+    value: formatPhoneDisplay(),
+    href: phoneTelHref,
   },
   {
     icon: <Mail size={24} className="text-blue-600" />,

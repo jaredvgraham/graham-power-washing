@@ -18,17 +18,7 @@ import {
   SprayCan,
 } from "lucide-react";
 import { clientData } from "@/../config";
-
-function formatPhoneDisplay(digits: string) {
-  const d = digits.replace(/\D/g, "");
-  if (d.length === 10) {
-    return `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`;
-  }
-  return digits;
-}
-
-const phoneDisplay = formatPhoneDisplay(clientData.phone);
-const phoneHref = `tel:+1${clientData.phone.replace(/\D/g, "")}`;
+import { phoneDisplay, phoneTelHref } from "@/lib/phone";
 
 const SERVICES = [
   { label: "House Soft Washing", icon: SprayCan },
@@ -119,7 +109,7 @@ export default function QrLanding() {
         >
           <div className="h-1 bg-gradient-to-r from-red-500 via-red-400 to-red-600" />
           <div className="space-y-3 p-5">
-            <a href={phoneHref} className={btnCall}>
+            <a href={phoneTelHref} className={btnCall}>
               <span className="flex h-8 w-8 items-center justify-center rounded-full border border-blue-200 bg-blue-50">
                 <Phone className="h-4 w-4 text-blue-600" aria-hidden />
               </span>
@@ -282,7 +272,7 @@ export default function QrLanding() {
       <div className="fixed inset-x-0 bottom-0 z-50">
         <div className="mx-auto max-w-md border-t border-gray-200/80 bg-white/90 px-4 py-3 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] backdrop-blur-lg pb-[max(0.75rem,env(safe-area-inset-bottom))]">
           <div className="flex gap-3">
-            <a href={phoneHref} className={btnStickyCall}>
+            <a href={phoneTelHref} className={btnStickyCall}>
               <Phone className="h-4 w-4" aria-hidden />
               Call
             </a>

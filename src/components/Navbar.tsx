@@ -13,7 +13,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Phone } from "lucide-react";
-import { clientData } from "@/../config";
+import { phoneTelHref } from "@/lib/phone";
 
 const Navbar = () => {
   const [position, setPosition] = React.useState<string | undefined>(undefined);
@@ -147,7 +147,7 @@ const Navbar = () => {
         </div>
         <div className="ml-auto flex items-center gap-2">
           <a
-            href={`tel:${clientData.phone}`}
+            href={phoneTelHref}
             className={`inline-flex h-11 w-11 items-center justify-center rounded-full border text-sm font-semibold transition md:hidden ${
               isHomePage
                 ? "border-blue-400/40 bg-blue-600 text-white hover:bg-blue-500"

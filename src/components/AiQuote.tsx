@@ -8,15 +8,8 @@ import { useRouter } from "next/navigation";
 import { FaPaperclip, FaTrash } from "react-icons/fa";
 import { Lock, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { clientData } from "@/../config";
+import { formatPhoneDisplay, phoneTelHref } from "@/lib/phone";
 import ServiceAreaMap from "@/components/ServiceAreaMap";
-
-function formatPhoneDisplay(digits: string) {
-  const d = digits.replace(/\D/g, "");
-  if (d.length === 10) {
-    return `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`;
-  }
-  return digits;
-}
 
 const TRUST_BULLETS = [
   "Serving Plymouth County & Cape Cod",
@@ -344,7 +337,7 @@ const GetAiQuote = () => {
                   us quote more accurately.
                 </p>
                 <a
-                  href={`tel:${clientData.phone}`}
+                  href={phoneTelHref}
                   className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 underline decoration-slate-300 underline-offset-2 transition hover:text-blue-800 hover:decoration-blue-600 sm:mt-3"
                 >
                   <Phone className="h-4 w-4 shrink-0" aria-hidden />

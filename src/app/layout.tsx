@@ -208,6 +208,7 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Google Ads base tag (AW-16667175667) — required for website call conversion tracking */}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-16667175667"
@@ -257,6 +258,16 @@ export default function RootLayout({
   fbq('init', '357074613153516');
   fbq('track', 'PageView');
           `}
+        </Script>
+        {/* Google Ads website call conversion tracking.
+            For eligible Google Ads visitors, Google dynamically replaces the
+            visible business number (774) 487-7616 with a Google forwarding number. */}
+        <Script id="google-ads-phone-conversion" strategy="afterInteractive">
+          {`
+    gtag('config', 'AW-16667175667/xFFtCNut8MccEPPVw4s-', {
+      'phone_conversion_number': '(774) 487-7616'
+    });
+  `}
         </Script>
         <ConditionalNavbar />
         <BackHomeButton />

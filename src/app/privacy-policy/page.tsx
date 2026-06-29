@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { clientData } from "@/../config";
-
-function formatPhoneDisplay(digits: string) {
-  const d = digits.replace(/\D/g, "");
-  if (d.length === 10) {
-    return `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`;
-  }
-  return digits;
-}
-
-const phoneDisplay = formatPhoneDisplay(clientData.phone);
-const phoneHref = `tel:+1${clientData.phone.replace(/\D/g, "")}`;
+import { phoneDisplay, phoneTelHref } from "@/lib/phone";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Graham Painting Inc",
@@ -141,7 +131,7 @@ export default function PrivacyPolicyPage() {
             <p className="mt-1">
               Phone:{" "}
               <a
-                href={phoneHref}
+                href={phoneTelHref}
                 className="text-blue-700 underline hover:text-blue-800"
               >
                 {phoneDisplay}
