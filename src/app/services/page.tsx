@@ -44,6 +44,14 @@ const SERVICES = [
     image: "/deck-pressure-wash.png",
     alt: "Deck Pressure Washing Service",
   },
+  {
+    name: "Window Cleaning",
+    href: "/services/window-cleaning",
+    description:
+      "Streak-free interior and exterior window cleaning — screens, sills, and tracks included.",
+    image: "/window-cleaning.png",
+    alt: "Window Cleaning Service",
+  },
 ];
 
 const PAINTING_SERVICES = [
@@ -62,7 +70,7 @@ const PAINTING_SERVICES = [
 export const metadata = {
   title: "Our Services | Graham Power Washing",
   description:
-    "Explore professional power washing, soft washing, and interior & exterior painting services from Graham Power Washing in Plymouth, MA and the South Shore.",
+    "Explore professional power washing, soft washing, window cleaning, and interior & exterior painting services from Graham Power Washing in Plymouth, MA and the South Shore.",
   alternates: {
     canonical: "https://www.grahampowerwashing.com/services",
   },
@@ -77,13 +85,14 @@ export default function ServicesPage() {
             Graham Services
           </p>
           <h1 className="mt-3 text-4xl font-black tracking-tight sm:text-6xl">
-            Power washing, pressure washing, soft washing, and painting services.
+            Power washing, soft washing, window cleaning, and painting
+            services.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
             Graham Power Washing provides house washing, vinyl siding soft
             washing, deck cleaning, patio pressure washing, concrete cleaning,
-            and interior &amp; exterior painting in Plymouth, the South Shore,
-            and Cape Cod.
+            window cleaning, and interior &amp; exterior painting in Plymouth,
+            the South Shore, and Cape Cod.
           </p>
           <Link
             href="/quote"

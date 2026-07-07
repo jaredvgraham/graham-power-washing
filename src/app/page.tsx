@@ -15,7 +15,7 @@ export const metadata = {
   title:
     "Graham Power Washing | Top-Rated Power Washing Services in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas | Free Quotes",
   description:
-    "✓ Top-Rated Power Washing & Painting in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas ✓ Interior & Exterior Painting ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham, Duxbury, Carver, Marshfield, Pembroke, Hanson, Wareham, Hanover, Norwell, Bourne, East Bridgewater, Bridgewater, Whitman, Lakeville, Sandwich, South Shore MA, and Cape Cod MA ✓ Power Washing Near Me ✓ Pressure Washing Near Me",
+    "✓ Top-Rated Power Washing, Window Cleaning & Painting in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas ✓ Interior & Exterior Painting ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham, Duxbury, Carver, Marshfield, Pembroke, Hanson, Wareham, Hanover, Norwell, Bourne, East Bridgewater, Bridgewater, Whitman, Lakeville, Sandwich, South Shore MA, and Cape Cod MA ✓ Power Washing Near Me ✓ Pressure Washing Near Me",
   alternates: {
     canonical: "https://www.grahampowerwashing.com",
   },
@@ -35,7 +35,7 @@ const Page = () => {
               image: "https://www.grahampowerwashing.com/img1.jpeg",
               priceRange: "$$",
               description:
-                "Graham Painting & Power Washing offers top-quality power washing and interior & exterior painting in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas.",
+                "Graham Painting & Power Washing offers top-quality power washing, window cleaning, and interior & exterior painting in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas.",
               url: "https://www.grahampowerwashing.com",
               telephone: "7744877616",
               address: {
@@ -133,7 +133,7 @@ const Page = () => {
         <meta itemProp="name" content="Graham Power Washing" />
         <meta
           itemProp="description"
-          content="Professional power washing and interior & exterior painting services in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas."
+          content="Professional power washing, window cleaning, and interior & exterior painting services in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas."
         />
         <meta
           itemProp="areaServed"

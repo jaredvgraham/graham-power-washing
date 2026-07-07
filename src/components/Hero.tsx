@@ -69,8 +69,9 @@ const Hero = () => {
             transition={{ duration: 0.45, delay: 0.08 }}
             className="mx-auto mt-5 max-w-2xl text-lg font-medium leading-8 text-slate-200 sm:text-xl lg:mx-0"
           >
-            Professional house washing, pressure washing, soft washing, and
-            interior &amp; exterior painting for South Shore and Cape Cod homes.
+            Professional house washing, pressure washing, soft washing, window
+            cleaning, and interior &amp; exterior painting for South Shore and
+            Cape Cod homes.
             Send a few details and we&apos;ll follow up with a free, no-pressure
             quote.
           </motion.p>

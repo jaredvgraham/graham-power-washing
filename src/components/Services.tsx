@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
+  AppWindow,
   ArrowRight,
   Building2,
   Droplets,
@@ -39,6 +40,13 @@ const SERVICES: Service[] = [
       "Specialized soft washing for cedar shake siding that lifts dirt and organic growth while protecting the natural wood.",
     icon: Home,
     href: "/services/cedar-shake-soft-washing",
+  },
+  {
+    title: "Window Cleaning",
+    description:
+      "Streak-free interior and exterior window washing — including screens, sills, and tracks — for more light in and a better view out.",
+    icon: AppWindow,
+    href: "/services/window-cleaning",
   },
   {
     title: "Driveway Pressure Washing",
@@ -112,8 +120,8 @@ const Services = () => {
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-slate-300">
             Professional house washing, soft washing, concrete pressure washing,
-            deck cleaning, patio cleaning, and painting for homes and businesses
-            in Plymouth, the South Shore, and Cape Cod.
+            deck cleaning, patio cleaning, window cleaning, and painting for
+            homes and businesses in Plymouth, the South Shore, and Cape Cod.
           </p>
         </div>
 

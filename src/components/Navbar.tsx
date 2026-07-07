@@ -108,6 +108,12 @@ const Navbar = () => {
                 >
                   Patio Pressure Washing
                 </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem
+                  value="window-cleaning"
+                  onClick={() => Router.push("/services/window-cleaning")}
+                >
+                  Window Cleaning
+                </DropdownMenuRadioItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuRadioItem
                   value="exterior-painting"

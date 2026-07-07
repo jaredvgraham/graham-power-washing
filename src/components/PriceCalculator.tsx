@@ -20,8 +20,8 @@ const PricingPage: React.FC = () => {
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
             Every property is different. Send us the basics for house washing,
             pressure washing, soft washing, concrete cleaning, deck cleaning,
-            patio washing, or painting, and we&apos;ll follow up with a clear
-            quote.
+            patio washing, window cleaning, or painting, and we&apos;ll follow
+            up with a clear quote.
           </p>
           <Link
             href="#quote-form"

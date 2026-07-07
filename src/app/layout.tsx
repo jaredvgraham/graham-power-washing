@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title:
     "Graham Power Washing | Top-Rated Power Washing Services in Plymouth, MA | Free Quotes",
   description:
-    "✓ Top-Rated Power Washing in Plymouth, MA, South Shore, Cape Cod, and surrounding areas ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham & Surrounding Areas",
+    "✓ Top-Rated Power Washing & Window Cleaning in Plymouth, MA, South Shore, Cape Cod, and surrounding areas ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham & Surrounding Areas",
   keywords: [
     "power washing plymouth ma",
     "power washing near me",
@@ -67,6 +67,27 @@ export const metadata: Metadata = {
     "soft washing services in south shore",
     "soft washing services in cape cod",
     "soft washing services in massachusetts",
+    "window cleaning plymouth ma",
+    "window cleaning near me",
+    "window cleaning services",
+    "window cleaning services near me",
+    "window washing plymouth ma",
+    "window washing near me",
+    "window washing services",
+    "residential window cleaning",
+    "exterior window cleaning",
+    "interior window cleaning",
+    "window cleaning south shore",
+    "window cleaning cape cod",
+    "window cleaning kingston ma",
+    "window cleaning duxbury ma",
+    "window cleaning marshfield ma",
+    "window cleaning pembroke ma",
+    "window cleaning wareham ma",
+    "window cleaning bourne ma",
+    "window cleaning sandwich ma",
+    "window cleaning scituate",
+    "window cleaning hingham",
     "vinyl siding cleaning plymouth",
     "vinyl siding power washing plymouth",
     "vinyl siding soft washing plymouth",
@@ -128,7 +149,7 @@ export const metadata: Metadata = {
     title:
       "Graham Power Washing | Top-Rated Power Washing Services in Plymouth, MA | Free Quotes",
     description:
-      "✓ Top-Rated Power Washing in Plymouth, MA ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham & Surrounding Areas",
+      "✓ Top-Rated Power Washing & Window Cleaning in Plymouth, MA ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham & Surrounding Areas",
     url: "https://www.grahampowerwashing.com",
     siteName: "Graham Power Washing",
     images: [

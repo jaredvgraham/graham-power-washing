@@ -25,6 +25,7 @@ const SERVICES = [
   { label: "Deck & Patio", icon: Droplets },
   { label: "Driveways & Concrete", icon: Droplets },
   { label: "Vinyl & Cedar Siding", icon: ShieldCheck },
+  { label: "Window Cleaning", icon: Droplets },
   { label: "Interior & Exterior Painting", icon: Paintbrush },
 ] as const;
 

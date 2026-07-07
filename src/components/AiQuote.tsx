@@ -62,6 +62,7 @@ const SERVICE_CHECKBOXES = [
   "Shed Wash",
   "Fence Cleaning",
   "Stone Wall Cleaning",
+  "Window Cleaning",
   "Exterior Painting",
   "Interior Painting",
 ] as const;
