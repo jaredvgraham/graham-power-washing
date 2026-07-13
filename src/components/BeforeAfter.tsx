@@ -25,6 +25,31 @@ const BeforeAfter = () => {
 
   const projects: BeforeAfterImage[] = [
     {
+      title: "Cedar Soft Wash",
+      beforeUrl: "/IMG_7743.jpeg",
+      afterUrl: "/IMG_7750.jpeg",
+    },
+    {
+      title: "Coastal Cedar Soft Wash",
+      beforeUrl: "/IMG_7555.jpeg",
+      afterUrl: "/IMG_7567.jpeg",
+    },
+    {
+      title: "Cedar Soft Wash",
+      beforeUrl: "/before1.jpeg",
+      afterUrl: "/after1.jpeg",
+    },
+    {
+      title: "Vinyl Soft Wash",
+      beforeUrl: "/IMG_7696.jpeg",
+      afterUrl: "/IMG_7699.jpeg",
+    },
+    {
+      title: "House Washing",
+      beforeUrl: "/IMG_7729.jpeg",
+      afterUrl: "/IMG_7730.jpeg",
+    },
+    {
       title: "Siding Cleaning",
       beforeUrl: "/red-before.jpeg",
       afterUrl: "/red-after.jpeg",
@@ -38,11 +63,6 @@ const BeforeAfter = () => {
       title: "House Washing",
       beforeUrl: "/img13.jpeg",
       afterUrl: "/img14.jpeg",
-    },
-    {
-      title: "Deck Washing",
-      beforeUrl: "/img15.jpeg",
-      afterUrl: "/img16.jpeg",
     },
   ];
 

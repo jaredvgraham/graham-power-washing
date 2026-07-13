@@ -7,6 +7,7 @@ import Link from "next/link";
 interface Img {
   title: string;
   imageUrl: string;
+  objectPosition?: string;
 }
 
 const OurWork = () => {
@@ -21,49 +22,91 @@ const OurWork = () => {
   };
 
   const projects = [
+    // Biggest / most flattering first
     {
-      title: "House 1",
+      title: "Estate Soft Wash",
+      imageUrl: "/IMG_7768.jpeg",
+    },
+    {
+      title: "Coastal Cedar Soft Wash",
+      imageUrl: "/IMG_7567.jpeg",
+    },
+    {
+      title: "Cedar Soft Wash Result",
+      imageUrl: "/after1.jpeg",
+    },
+    {
+      title: "Cedar Soft Wash Result",
+      imageUrl: "/IMG_7750.jpeg",
+    },
+    {
+      title: "House Wash & Soft Wash",
+      imageUrl: "/new1.jpeg",
+    },
+    {
+      title: "Soft Wash in Progress",
+      imageUrl: "/hero1.jpeg",
+    },
+    {
+      title: "Window Cleaning",
+      imageUrl: "/windowclean.jpeg",
+      objectPosition: "object-[18%_center]",
+    },
+    {
+      title: "Cedar Soft Wash Result",
+      imageUrl: "/IMG_7465.jpeg",
+    },
+    {
+      title: "House Wash",
       imageUrl: "/img1.jpeg",
     },
     {
-      title: "House 2",
+      title: "House Wash",
+      imageUrl: "/img5.jpeg",
+    },
+    // Dispersed mid / filler
+    {
+      title: "Vinyl Soft Wash Result",
+      imageUrl: "/IMG_7699.jpeg",
+    },
+    {
+      title: "House Wash",
       imageUrl: "/img2.jpeg",
     },
     {
-      title: "House 3",
-      imageUrl: "/img3.jpeg",
-    },
-    {
-      title: "House 4",
+      title: "House Wash",
       imageUrl: "/img4.jpeg",
     },
     {
-      title: "House 5",
-      imageUrl: "/img5.jpeg",
-    },
-    {
-      title: "House 6",
-      imageUrl: "/img6.jpeg",
-    },
-
-    {
-      title: "House 8",
-      imageUrl: "/img8.jpeg",
-    },
-    {
-      title: "House 9",
+      title: "House Wash",
       imageUrl: "/new1.jpg",
     },
     {
-      title: "House 10",
+      title: "House Wash Result",
+      imageUrl: "/IMG_7730.jpeg",
+    },
+    {
+      title: "House Wash",
+      imageUrl: "/img8.jpeg",
+    },
+    {
+      title: "House Wash",
+      imageUrl: "/img3.jpeg",
+    },
+    {
+      title: "House Wash",
       imageUrl: "/new2.jpg",
     },
     {
-      title: "House 11",
+      title: "House Wash",
       imageUrl: "/new3.jpg",
     },
     {
-      title: "House 12",
+      title: "House Wash",
+      imageUrl: "/img6.jpeg",
+    },
+    {
+      title: "House Wash",
       imageUrl: "/new4.jpg",
     },
   ];
@@ -101,7 +144,7 @@ const OurWork = () => {
               alt={`Power Washing Project - ${img.title} by Graham Power Washing in Plymouth MA`}
               width={600}
               height={600}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${img.objectPosition ?? "object-center"}`}
             />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/75 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <p className="text-left text-sm font-semibold text-white">

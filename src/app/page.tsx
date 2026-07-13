@@ -32,7 +32,7 @@ const Page = () => {
               "@context": "http://schema.org",
               "@type": "LocalBusiness",
               name: "Graham Painting & Power Washing",
-              image: "https://www.grahampowerwashing.com/img1.jpeg",
+              image: "https://www.grahampowerwashing.com/hero1.jpeg",
               priceRange: "$$",
               description:
                 "Graham Painting & Power Washing offers top-quality power washing, window cleaning, and interior & exterior painting in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas.",
