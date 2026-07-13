@@ -89,7 +89,7 @@ const Hero = () => {
             </a>
           </div>
           <p className="text-sm font-medium text-white/65">
-            Licensed &amp; insured · Serving homes from Plymouth to the Cape
+            Licensed &amp; insured · Serving Plymouth, the South Shore &amp; Cape Cod
           </p>
         </motion.div>
       </div>
