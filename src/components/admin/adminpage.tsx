@@ -1,7 +1,7 @@
-import PhoneCalls from "@/components/admin/phoneCalls";
+import LeadsAdmin from "@/components/admin/LeadsAdmin";
 
 const AdminPage = () => {
-  return <PhoneCalls />;
+  return <LeadsAdmin />;
 };
 
 export default AdminPage;

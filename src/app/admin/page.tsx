@@ -1,5 +1,5 @@
-import PhoneCalls from "@/components/admin/phoneCalls";
+import LeadsAdmin from "@/components/admin/LeadsAdmin";
 
 export default function AdminPage() {
-  return <PhoneCalls />;
+  return <LeadsAdmin />;
 }

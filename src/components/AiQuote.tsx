@@ -154,6 +154,7 @@ const GetAiQuote = ({
         howYouFoundUs,
         ...(formData.email.trim() ? { email: formData.email.trim() } : {}),
         message: formData.message.trim(),
+        services: formData.options,
         options: formData.options,
         imageUrls: uploadedBlobUrls,
       };

@@ -72,9 +72,14 @@ export async function createLead(data: CreateLeadInput) {
   return Lead.create(payload);
 }
 
+/** Website quote/ad leads only — exclude legacy phone-call records. */
+const QUOTE_LEAD_FILTER = { source: { $ne: "phone" as const } };
+
 export async function getLeads() {
   await connectDB();
-  const leads = await Lead.find().sort({ createdAt: -1 }).lean();
+  const leads = await Lead.find(QUOTE_LEAD_FILTER)
+    .sort({ createdAt: -1 })
+    .lean();
   return leads.map((lead) => ({
     id: String(lead._id),
     name: lead.name,
@@ -95,5 +100,5 @@ export async function getLeads() {
 
 export async function getLeadCount() {
   await connectDB();
-  return Lead.countDocuments();
+  return Lead.countDocuments(QUOTE_LEAD_FILTER);
 }
