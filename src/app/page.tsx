@@ -1,163 +1,61 @@
 import AboutUs from "@/components/AboutUs";
 import GetAiQuote from "@/components/AiQuote";
 import BeforeAfter from "@/components/BeforeAfter";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import OurWork from "@/components/OurWork";
 import Reviews from "@/components/Reviews";
 import ServiceAreaMap from "@/components/ServiceAreaMap";
 import Services from "@/components/Services";
-import React from "react";
-import Head from "next/head";
 import GReviews from "@/components/GReviews";
+import { SERVICE_AREAS } from "@/data/serviceAreas";
+import { localBusinessJsonLd, SITE_URL } from "@/lib/seo/localSeo";
 
 export const metadata = {
   title:
-    "Graham Power Washing | Top-Rated Power Washing Services in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas | Free Quotes",
+    "Graham Power Washing | Power Washing South Shore & Cape Cod | Free Quotes",
   description:
-    "✓ Top-Rated Power Washing, Window Cleaning & Painting in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas ✓ Interior & Exterior Painting ✓ Same-Day Service Available ✓ Licensed & Insured ✓ 5-Star Reviews ✓ Free Quotes ✓ Serving Plymouth, Scituate, Hingham, Duxbury, Carver, Marshfield, Pembroke, Hanson, Wareham, Hanover, Norwell, Bourne, East Bridgewater, Bridgewater, Whitman, Lakeville, Sandwich, South Shore MA, and Cape Cod MA ✓ Power Washing Near Me ✓ Pressure Washing Near Me",
+    "Top-rated soft washing, pressure washing, window cleaning, and painting for Plymouth, the South Shore, and Cape Cod. Licensed & insured. Free quotes.",
   alternates: {
     canonical: "https://www.grahampowerwashing.com",
   },
 };
 
+const homepageJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Graham Power Washing",
+      publisher: { "@id": `${SITE_URL}/#business` },
+    },
+    localBusinessJsonLd({
+      description:
+        "Graham Power Washing offers soft washing, pressure washing, window cleaning, and interior & exterior painting across Plymouth County, the South Shore, and Cape Cod.",
+      areaServed: SERVICE_AREAS.filter((a) => a.setting !== "regional").map(
+        (area) => ({
+          "@type": "City",
+          name: `${area.name}, Massachusetts`,
+        }),
+      ),
+    }),
+  ],
+};
+
 const Page = () => {
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "http://schema.org",
-              "@type": "LocalBusiness",
-              name: "Graham Painting & Power Washing",
-              image: "https://www.grahampowerwashing.com/hero1.jpeg",
-              priceRange: "$$",
-              description:
-                "Graham Painting & Power Washing offers top-quality power washing, window cleaning, and interior & exterior painting in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas.",
-              url: "https://www.grahampowerwashing.com",
-              telephone: "7744877616",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "4 Winchester Avenue",
-                addressLocality: "Buzzards Bay",
-                addressRegion: "MA",
-                postalCode: "02532",
-                addressCountry: "US",
-              },
-              openingHours: ["Mo-Su 08:00-18:00"],
-              areaServed: [
-                "Plymouth",
-                "Duxbury",
-                "Buzzards Bay",
-                "Marshfield",
-                "Middleboro",
-                "Scituate",
-                "Hingham",
-                "Falmouth",
-                "Centerville",
-                "Hanover",
-                "Lakeville",
-                "Bridgewater",
-                "Rockland",
-                "Chatham",
-                "Norwell",
-                "Sagamore Beach",
-                "Monument Beach",
-                "Wellfleet",
-                "East Sandwich",
-                "West Harwich",
-                "Mattapoisett",
-                "Rochester",
-                "Forestdale",
-                "Humarock",
-                "Monponsett",
-                "West Bridgewater",
-                "Hyannis",
-                "Manomet",
-                "Kingston",
-                "West Barnstable",
-                "Sagamore",
-                "Mashpee",
-                "East Falmouth",
-                "Eastham",
-                "Hanson",
-                "Sandwich",
-                "Whitman",
-                "East Wareham",
-                "Onset",
-                "Pembroke",
-                "North Carver",
-                "South Carver",
-                "East Weymouth",
-                "Carver",
-                "East Bridgewater",
-                "North Scituate",
-                "South Yarmouth",
-                "White Horse Beach",
-                "North Eastham",
-                "North Truro",
-                "West Chatham",
-                "West Hyannisport",
-                "Plympton",
-                "Osterville",
-                "North Marshfield",
-                "North Pembroke",
-                "West Yarmouth",
-                "Marion",
-                "North Falmouth",
-                "West Wareham",
-                "Wareham",
-                "South Weymouth",
-                "Marshfield Hills",
-              ],
-              sameAs: [
-                "https://www.facebook.com/profile.php?id=100063725705465",
-              ],
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "7744877616",
-                contactType: "customer service",
-                areaServed: "US",
-              },
-            }),
-          }}
-        />
-      </Head>
-      <main
-        itemScope
-        itemType="https://schema.org/Service"
-        className="bg-gray-50"
-      >
-        <meta itemProp="name" content="Graham Power Washing" />
-        <meta
-          itemProp="description"
-          content="Professional power washing, window cleaning, and interior & exterior painting services in Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas."
-        />
-        <meta
-          itemProp="areaServed"
-          content="Plymouth, MA, South Shore MA, Cape Cod MA, and surrounding areas"
-        />
-
-        <section
-          id="home"
-          aria-label="Home"
-          itemProp="offers"
-          itemScope
-          itemType="https://schema.org/Offer"
-        >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
+      />
+      <main className="bg-gray-50">
+        <section id="home" aria-label="Home">
           <Hero />
         </section>
 
-        <section
-          id="contact"
-          aria-label="Get a Free Quote"
-          itemProp="contactPoint"
-          itemScope
-          itemType="https://schema.org/ContactPoint"
-          className="bg-slate-50"
-        >
+        <section id="contact" aria-label="Get a Free Quote" className="bg-slate-50">
           <GetAiQuote />
         </section>
 
@@ -173,13 +71,7 @@ const Page = () => {
           <BeforeAfter />
         </section>
 
-        <section
-          id="services"
-          aria-label="Our Services"
-          itemProp="hasOfferCatalog"
-          itemScope
-          itemType="https://schema.org/OfferCatalog"
-        >
+        <section id="services" aria-label="Our Services">
           <Services />
         </section>
 
@@ -188,12 +80,10 @@ const Page = () => {
         </section>
 
         <section id="areas-served" aria-label="Areas We Serve">
-          <ServiceAreaMap />
+          <ServiceAreaMap showTowns />
         </section>
 
         <GReviews />
-
-        <Footer />
       </main>
     </>
   );

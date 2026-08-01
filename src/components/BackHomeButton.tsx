@@ -10,9 +10,14 @@ const HIDDEN_PREFIXES = ["/qr", "/get-quote", "/thank-you", "/login", "/admin"];
 export default function BackHomeButton() {
   const pathname = usePathname();
 
+  // Area landings act as local homepages — don't show "Back home" there.
+  const isServiceAreaLanding =
+    pathname.startsWith("/areas-served/") && pathname !== "/areas-served";
+
   const hide =
     !pathname ||
     HIDDEN_EXACT.includes(pathname) ||
+    isServiceAreaLanding ||
     HIDDEN_PREFIXES.some((prefix) => pathname.startsWith(prefix));
 
   if (hide) return null;

@@ -92,6 +92,24 @@ export default function ServicesPage() {
           ))}
         </div>
 
+        <div className="mt-16 rounded-none border border-slate-200 bg-slate-50 px-6 py-10 text-center">
+          <h2 className="text-2xl font-bold text-slate-950">
+            Find a service in your town
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-slate-600">
+            Every service has dedicated pages for Plymouth, the South Shore,
+            Cape Cod, and surrounding towns — with local details and free
+            quotes.
+          </p>
+          <Link
+            href="/areas-served"
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 px-7 py-3 text-sm font-bold text-white transition hover:bg-slate-800"
+          >
+            Browse areas served
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
+        </div>
+
         <div className="mt-20">
           <h2 className="text-center text-3xl font-bold text-slate-950">
             Painting Services

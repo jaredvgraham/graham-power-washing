@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, MapPin, Phone } from "lucide-react";
 import type { ServiceDefinition } from "@/data/services";
-import { serviceCanonical } from "@/data/services";
+import { SERVICES, serviceCanonical } from "@/data/services";
+import { SERVICE_AREAS, getRegionalAreas } from "@/data/serviceAreas";
 import { phoneDisplay, phoneTelHref } from "@/lib/phone";
+import { getCoreAreas, getSecondaryAreas } from "@/lib/seo/localSeo";
 
 type Props = {
   service: ServiceDefinition;
@@ -11,6 +13,10 @@ type Props = {
 
 export default function ServiceDetailPage({ service }: Props) {
   const url = serviceCanonical(service.slug);
+  const coreTowns = getCoreAreas();
+  const secondaryTowns = getSecondaryAreas();
+  const regions = getRegionalAreas();
+  const relatedServices = SERVICES.filter((s) => s.slug !== service.slug);
 
   return (
     <main className="bg-white">
@@ -176,6 +182,100 @@ export default function ServiceDetailPage({ service }: Props) {
             ))}
           </div>
         </section>
+
+        <section className="mt-20 border-t border-slate-200 pt-16">
+          <p className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-red-600">
+            Service Areas
+          </p>
+          <h2 className="mt-3 text-center text-3xl font-bold text-slate-950">
+            {service.shortName} by town
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-slate-600">
+            Pick a town for a dedicated {service.shortName.toLowerCase()} page,
+            or open a town hub for a free quote.
+          </p>
+          <ul className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+            {coreTowns.map((area) => (
+              <li key={area.slug}>
+                <Link
+                  href={`/services/${service.slug}/${area.slug}`}
+                  className="inline-flex w-full items-center gap-1.5 border border-slate-200 px-3 py-2 text-sm text-slate-700 transition hover:border-blue-300 hover:text-blue-800"
+                >
+                  <MapPin
+                    className="h-3.5 w-3.5 shrink-0 text-blue-600"
+                    aria-hidden
+                  />
+                  {area.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {secondaryTowns.length > 0 && (
+            <>
+              <p className="mx-auto mt-8 max-w-2xl text-center text-sm font-semibold uppercase tracking-[0.15em] text-slate-500">
+                More towns we serve
+              </p>
+              <ul className="mx-auto mt-4 grid max-w-4xl grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+                {secondaryTowns.map((area) => (
+                  <li key={area.slug}>
+                    <Link
+                      href={`/areas-served/${area.slug}`}
+                      className="inline-flex w-full items-center gap-1.5 border border-dashed border-slate-200 px-3 py-2 text-sm text-slate-600 transition hover:border-blue-300 hover:text-blue-800"
+                    >
+                      <MapPin
+                        className="h-3.5 w-3.5 shrink-0 text-slate-400"
+                        aria-hidden
+                      />
+                      {area.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+          <ul className="mx-auto mt-6 flex max-w-4xl flex-wrap justify-center gap-2">
+            {regions.map((area) => (
+              <li key={area.slug}>
+                <Link
+                  href={`/areas-served/${area.slug}`}
+                  className="inline-flex items-center gap-1.5 bg-slate-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800"
+                >
+                  {area.name} coverage
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-center text-slate-600">
+            Browse every town on{" "}
+            <Link
+              href="/areas-served"
+              className="font-semibold text-blue-700 underline"
+            >
+              Areas Served
+            </Link>
+            .
+          </p>
+        </section>
+
+        {relatedServices.length > 0 && (
+          <section className="mt-16 mb-8">
+            <h2 className="text-center text-2xl font-bold text-slate-950">
+              Related services
+            </h2>
+            <ul className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-3">
+              {relatedServices.map((related) => (
+                <li key={related.slug}>
+                  <Link
+                    href={related.href}
+                    className="text-blue-700 underline-offset-2 hover:underline"
+                  >
+                    {related.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
 
       <script
@@ -187,16 +287,14 @@ export default function ServiceDetailPage({ service }: Props) {
             name: service.name,
             description: service.metaDescription,
             provider: {
-              "@type": "Organization",
-              name: "Graham Power Washing",
-              url: "https://www.grahampowerwashing.com",
-              telephone: "7744877616",
+              "@id": "https://www.grahampowerwashing.com/#business",
             },
-            areaServed: [
-              { "@type": "Place", name: "Plymouth, Massachusetts" },
-              { "@type": "Place", name: "South Shore, Massachusetts" },
-              { "@type": "Place", name: "Cape Cod, Massachusetts" },
-            ],
+            areaServed: SERVICE_AREAS.filter(
+              (area) => area.setting !== "regional",
+            ).map((area) => ({
+              "@type": "City",
+              name: `${area.name}, Massachusetts`,
+            })),
             serviceType: service.serviceType,
             url,
             image: `https://www.grahampowerwashing.com${service.heroImage}`,

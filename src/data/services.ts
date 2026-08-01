@@ -132,10 +132,10 @@ export const SERVICES: ServiceDefinition[] = [
       "graham power washing",
     ],
     metaTitle:
-      "Vinyl Siding Soft Washing Plymouth MA | House Washing | Graham Power Washing",
+      "Vinyl Siding Soft Washing | South Shore & Cape Cod | Graham Power Washing",
     metaDescription:
-      "Professional vinyl siding soft washing in Plymouth, MA, the South Shore, and Cape Cod. Safe low-pressure cleaning that removes algae and mildew. Free quotes.",
-    ogTitle: "Vinyl Siding Soft Washing in Plymouth MA",
+      "Professional vinyl siding soft washing across the South Shore and Cape Cod. Safe low-pressure cleaning that removes algae and mildew. Free quotes.",
+    ogTitle: "Vinyl Siding Soft Washing | South Shore & Cape Cod",
     serviceType: "Soft Washing",
   },
   {
@@ -239,10 +239,10 @@ export const SERVICES: ServiceDefinition[] = [
       "graham power washing",
     ],
     metaTitle:
-      "Cedar Shake Soft Washing Plymouth MA | Soft Wash Cedar | Graham Power Washing",
+      "Cedar Shake Soft Washing | South Shore & Cape Cod | Graham Power Washing",
     metaDescription:
-      "Professional cedar shake soft washing in Plymouth, MA and the South Shore. Safe cleaning for natural and painted cedar. Free quotes.",
-    ogTitle: "Cedar Shake Soft Washing in Plymouth MA",
+      "Professional cedar shake soft washing across the South Shore and Cape Cod. Safe cleaning for natural and painted cedar. Free quotes.",
+    ogTitle: "Cedar Shake Soft Washing | South Shore & Cape Cod",
     serviceType: "Cedar Soft Washing",
   },
   {
@@ -330,10 +330,10 @@ export const SERVICES: ServiceDefinition[] = [
       "graham power washing",
     ],
     metaTitle:
-      "Patio Pressure Washing Plymouth MA | Paver & Stone Cleaning | Graham Power Washing",
+      "Patio Pressure Washing | South Shore & Cape Cod | Graham Power Washing",
     metaDescription:
-      "Professional patio pressure washing in Plymouth, MA, the South Shore, and Cape Cod. Safe cleaning for stone, pavers, and concrete. Free quotes.",
-    ogTitle: "Patio Pressure Washing in Plymouth MA",
+      "Professional patio pressure washing across the South Shore and Cape Cod. Safe cleaning for stone, pavers, and concrete. Free quotes.",
+    ogTitle: "Patio Pressure Washing | South Shore & Cape Cod",
     serviceType: "Patio Pressure Washing",
   },
   {
@@ -422,10 +422,10 @@ export const SERVICES: ServiceDefinition[] = [
       "graham power washing",
     ],
     metaTitle:
-      "Concrete Pressure Washing Plymouth MA | Driveway Cleaning | Graham Power Washing",
+      "Concrete Pressure Washing | South Shore & Cape Cod | Graham Power Washing",
     metaDescription:
-      "Professional concrete pressure washing in Plymouth, MA and the South Shore. Driveways, walkways, and hard surfaces cleaned right. Free quotes.",
-    ogTitle: "Concrete Pressure Washing in Plymouth MA",
+      "Professional concrete pressure washing across the South Shore and Cape Cod. Driveways, walkways, and hard surfaces cleaned right. Free quotes.",
+    ogTitle: "Concrete Pressure Washing | South Shore & Cape Cod",
     serviceType: "Concrete Pressure Washing",
   },
   {
@@ -513,10 +513,10 @@ export const SERVICES: ServiceDefinition[] = [
       "graham power washing",
     ],
     metaTitle:
-      "Deck Pressure Washing Plymouth MA | Wood & Composite Deck Cleaning | Graham Power Washing",
+      "Deck Pressure Washing | South Shore & Cape Cod | Graham Power Washing",
     metaDescription:
-      "Professional deck pressure washing in Plymouth, MA, the South Shore, and Cape Cod. Safe for wood and composite. Free quotes.",
-    ogTitle: "Deck Pressure Washing in Plymouth MA",
+      "Professional deck pressure washing across the South Shore and Cape Cod. Safe for wood and composite. Free quotes.",
+    ogTitle: "Deck Pressure Washing | South Shore & Cape Cod",
     serviceType: "Deck Pressure Washing",
   },
   {
@@ -601,10 +601,10 @@ export const SERVICES: ServiceDefinition[] = [
       "graham power washing window cleaning",
     ],
     metaTitle:
-      "Window Cleaning Plymouth MA | Interior & Exterior Window Washing | Graham Power Washing",
+      "Window Cleaning | South Shore & Cape Cod | Graham Power Washing",
     metaDescription:
-      "Professional window cleaning in Plymouth, MA, the South Shore, and Cape Cod. Streak-free interior & exterior washing. Free quotes.",
-    ogTitle: "Window Cleaning in Plymouth MA",
+      "Professional window cleaning across the South Shore and Cape Cod. Streak-free interior and exterior washing. Free quotes.",
+    ogTitle: "Window Cleaning | South Shore & Cape Cod",
     serviceType: "Window Cleaning",
   },
 ];

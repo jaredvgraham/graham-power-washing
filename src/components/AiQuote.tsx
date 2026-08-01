@@ -88,22 +88,33 @@ type GetAiQuoteProps = {
   hideHowYouFoundUs?: boolean;
   /** Render only the form card (no left marketing column). */
   formOnly?: boolean;
+  /** Prefill town on area / service×area landings. */
+  defaultTown?: string;
+  /** Prefill selected services (must match SERVICE_CHECKBOXES values). */
+  defaultOptions?: string[];
+  /** Localize the desktop marketing column for an area landing. */
+  areaLabel?: string;
 };
 
 const GetAiQuote = ({
   defaultHowYouFoundUs = "",
   hideHowYouFoundUs = false,
   formOnly = false,
+  defaultTown = "",
+  defaultOptions = [],
+  areaLabel,
 }: GetAiQuoteProps = {}) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    town: "",
+    town: defaultTown,
     howYouFoundUs: defaultHowYouFoundUs,
     howYouFoundUsOther: "",
-    options: [] as string[],
+    options: defaultOptions.filter((opt) =>
+      (SERVICE_CHECKBOXES as readonly string[]).includes(opt),
+    ),
     images: [] as File[],
     message: "",
   });
@@ -560,15 +571,24 @@ const GetAiQuote = ({
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-red-600">
                 Graham Power Washing
               </p>
-              <h1 className="text-3xl font-normal tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-tight">
+              <h2 className="text-3xl font-normal tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-tight">
                 <span className="text-red-600 font-bold">Soft Wash</span>{" "}
                 Special for{" "}
-                <span className="font-bold text-blue-700">Plymouth County</span>{" "}
-                &amp; Cape Cod Homes
-              </h1>
+                <span className="font-bold text-blue-700">
+                  {areaLabel ?? "Plymouth County"}
+                </span>
+                {!areaLabel && (
+                  <>
+                    {" "}
+                    &amp; Cape Cod Homes
+                  </>
+                )}
+                {areaLabel ? " Homes" : null}
+              </h2>
               <p className="text-lg leading-relaxed text-slate-600">
                 Get a fast, free power washing quote for siding, decks, patios,
-                walkways, concrete, house washing, and more.
+                walkways, concrete, house washing, and more
+                {areaLabel ? ` in ${areaLabel}` : ""}.
               </p>
               <p className="leading-relaxed text-slate-600">
                 Safe low-pressure soft washing and professional pressure washing
