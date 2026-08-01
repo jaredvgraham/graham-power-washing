@@ -3,37 +3,45 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import PhoneCallQuoteChart from "./PhoneCallQuoteChart";
 
-interface Quote {
-  id: number;
+interface Lead {
+  id: string;
   name: string;
   town: string;
   phone: string;
-  howYouFoundUs?: string;
+  email?: string | null;
+  howYouFoundUs?: string | null;
+  services?: string[];
+  source?: string;
+  status?: string;
+  createdAt?: string | null;
 }
 
 const PhoneCalls = () => {
   const [phoneCalls, setPhoneCalls] = useState(0);
   const [quoteCount, setQuoteCount] = useState(0);
-  const [quotes, setQuotes] = useState<Quote[]>([]);
+  const [leads, setLeads] = useState<Lead[]>([]);
 
   useEffect(() => {
     const getPhoneCalls = async () => {
-      const response = await axios.get("/api/admin/phoneCalls");
-      setPhoneCalls(response.data);
-      console.log(response.data);
+      try {
+        const response = await axios.get("/api/admin/phoneCalls");
+        setPhoneCalls(response.data);
+      } catch (error) {
+        console.log("Error getting phone calls:", error);
+      }
     };
     getPhoneCalls();
 
-    const getQuotes = async () => {
+    const getLeads = async () => {
       try {
         const response = await axios.get("/api/admin/quote");
-        setQuotes(response.data);
+        setLeads(response.data);
         setQuoteCount(response.data.length);
       } catch (error) {
-        console.log("Error getting quotes:", error);
+        console.log("Error getting leads:", error);
       }
     };
-    getQuotes();
+    getLeads();
   }, []);
 
   return (
@@ -43,26 +51,43 @@ const PhoneCalls = () => {
         <PhoneCallQuoteChart phoneCalls={phoneCalls} quoteCount={quoteCount} />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-4xl">
-        {quotes?.map((quote: Quote) => (
-          <div key={quote.id} className="bg-white p-4 rounded-lg shadow-md">
+        {leads?.map((lead) => (
+          <div key={lead.id} className="bg-white p-4 rounded-lg shadow-md">
+            <div className="mb-2 flex flex-wrap gap-2">
+              {lead.source === "meta_ad" && (
+                <span className="rounded-full bg-blue-50 px-2 py-0.5 text-xs font-semibold text-blue-700">
+                  Meta ad
+                </span>
+              )}
+              {lead.status && (
+                <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold capitalize text-slate-600">
+                  {lead.status}
+                </span>
+              )}
+            </div>
             <p className="font-semibold">
-              <strong>Name:</strong> {quote.name}
+              <strong>Name:</strong> {lead.name}
             </p>
             <p>
-              <strong>Town:</strong> {quote.town}
+              <strong>Town:</strong> {lead.town}
             </p>
             <p>
-              <strong>Phone:</strong> {quote.phone}
+              <strong>Phone:</strong> {lead.phone}
             </p>
-            {quote.howYouFoundUs && (
+            {lead.howYouFoundUs && (
               <p>
-                <strong>How they found us:</strong> {quote.howYouFoundUs}
+                <strong>How they found us:</strong> {lead.howYouFoundUs}
+              </p>
+            )}
+            {lead.services && lead.services.length > 0 && (
+              <p className="mt-1 text-sm text-slate-600">
+                {lead.services.join(", ")}
               </p>
             )}
           </div>
         ))}
-        {quotes.length === 0 && (
-          <p className="text-center col-span-full">No quotes available</p>
+        {leads.length === 0 && (
+          <p className="text-center col-span-full">No leads available</p>
         )}
       </div>
     </div>

@@ -147,25 +147,22 @@ const GetAiQuote = ({
         }),
       );
 
-      await axios.post("/api/admin/quote", {
+      const leadPayload = {
         name: formData.name.trim(),
         town: formData.town.trim(),
         phone: formData.phone.trim(),
         howYouFoundUs,
         ...(formData.email.trim() ? { email: formData.email.trim() } : {}),
-        phoneNumber: formData.phone.trim(),
-      });
-
-      await axios.post("/api/quote/wash", {
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
-        town: formData.town.trim(),
-        howYouFoundUs,
         message: formData.message.trim(),
-        imageUrls: uploadedBlobUrls,
         options: formData.options,
-      });
+        imageUrls: uploadedBlobUrls,
+      };
+
+      // Persist lead to shared MongoDB (gpw booking DB)
+      await axios.post("/api/admin/quote", leadPayload);
+
+      // Email notification
+      await axios.post("/api/quote/wash", leadPayload);
 
       router.push("/thank-you");
     } catch (error) {
