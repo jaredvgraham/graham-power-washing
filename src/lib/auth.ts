@@ -23,7 +23,9 @@ async function importHmacKey(secret: string): Promise<CryptoKey> {
 
 function toBase64Url(bytes: Uint8Array): string {
   let binary = "";
-  for (const byte of bytes) binary += String.fromCharCode(byte);
+  for (let i = 0; i < bytes.length; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
   return btoa(binary)
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
