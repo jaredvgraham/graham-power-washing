@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 
-const HIDDEN_PREFIXES = ["/qr"];
+const HIDDEN_PREFIXES = ["/qr", "/get-quote"];
 
 export default function ConditionalNavbar() {
   const pathname = usePathname();

@@ -10,6 +10,7 @@ const HIDDEN_PREFIXES = [
   "/admin",
   "/avatar",
   "/contact",
+  "/get-quote",
   "/qr",
   "/quote",
   "/signin",

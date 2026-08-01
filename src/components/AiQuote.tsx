@@ -81,14 +81,27 @@ const HOW_FOUND_OPTIONS = [
 const ctaClasses =
   "inline-flex w-full items-center justify-center rounded-lg bg-red-600 px-6 py-3.5 text-center text-base font-semibold text-white shadow-sm transition hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 sm:w-auto";
 
-const GetAiQuote = () => {
+type GetAiQuoteProps = {
+  /** Pre-fill attribution (e.g. Meta ads landing pages). */
+  defaultHowYouFoundUs?: string;
+  /** Hide the attribution field while still submitting the default. */
+  hideHowYouFoundUs?: boolean;
+  /** Render only the form card (no left marketing column). */
+  formOnly?: boolean;
+};
+
+const GetAiQuote = ({
+  defaultHowYouFoundUs = "",
+  hideHowYouFoundUs = false,
+  formOnly = false,
+}: GetAiQuoteProps = {}) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     town: "",
-    howYouFoundUs: "",
+    howYouFoundUs: defaultHowYouFoundUs,
     howYouFoundUsOther: "",
     options: [] as string[],
     images: [] as File[],
@@ -111,8 +124,9 @@ const GetAiQuote = () => {
       return;
     }
 
-    const howYouFoundUs =
-      formData.howYouFoundUs === "Other"
+    const howYouFoundUs = hideHowYouFoundUs
+      ? (defaultHowYouFoundUs || formData.howYouFoundUs).trim()
+      : formData.howYouFoundUs === "Other"
         ? formData.howYouFoundUsOther.trim()
         : formData.howYouFoundUs.trim();
 
@@ -192,10 +206,13 @@ const GetAiQuote = () => {
 
   const handleOptionChange = (option: string) => {
     setFormData((prevState) => {
-      const next = prevState.options.includes(option)
-        ? prevState.options.filter((o) => o !== option)
-        : [...prevState.options, option];
-      return { ...prevState, options: next };
+      const selected = prevState.options.includes(option);
+      return {
+        ...prevState,
+        options: selected
+          ? prevState.options.filter((o) => o !== option)
+          : [...prevState.options, option],
+      };
     });
   };
 
@@ -203,6 +220,338 @@ const GetAiQuote = () => {
     "w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-base text-slate-900 shadow-sm placeholder:text-slate-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:px-4 sm:py-3";
   const labelClasses =
     "mb-1.5 block text-sm font-semibold tracking-tight text-slate-700 sm:mb-2";
+
+  const formCard = (
+    <div id="quote-form" className="scroll-mt-24 lg:scroll-mt-28">
+      <div
+        className={`rounded-xl border border-slate-200 bg-white shadow-sm ${
+          formOnly ? "p-4 sm:p-6" : "p-4 sm:p-8"
+        }`}
+      >
+        {!formOnly && (
+          <div className="mb-3 lg:hidden">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+              Graham Power Washing
+            </p>
+            <h1 className="mt-1 text-2xl font-bold tracking-tight text-slate-900">
+              Get a Fast Free Quote
+            </h1>
+          </div>
+        )}
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-slate-600 sm:mb-5">
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 font-medium">
+            <Lock className="h-3.5 w-3.5 text-slate-500" aria-hidden />
+            Secure form
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 font-medium">
+            <ShieldCheck className="h-3.5 w-3.5 text-slate-500" aria-hidden />
+            Licensed & insured
+          </span>
+        </div>
+        <div className="mb-4 rounded-lg border border-blue-100 bg-blue-50/70 p-3 sm:mb-6 sm:p-5">
+          <p className="text-sm font-medium leading-relaxed text-slate-700">
+            Takes about 60 seconds. Photos are optional, but they can help us
+            quote more accurately.
+          </p>
+          {!formOnly && (
+            <a
+              href={phoneTelHref}
+              className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 underline decoration-slate-300 underline-offset-2 transition hover:text-blue-800 hover:decoration-blue-600 sm:mt-3"
+            >
+              <Phone className="h-4 w-4 shrink-0" aria-hidden />
+              Prefer to call? {formatPhoneDisplay(clientData.phone)}
+            </a>
+          )}
+        </div>
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-5">
+          <div>
+            <label htmlFor="name" className={labelClasses}>
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              autoComplete="name"
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+              className={inputClasses}
+              placeholder="Your name"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="phone" className={labelClasses}>
+              Phone
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              inputMode="tel"
+              autoComplete="tel"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData({ ...formData, phone: e.target.value })
+              }
+              className={inputClasses}
+              placeholder="Best phone number"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="town" className={labelClasses}>
+              Town
+            </label>
+            <input
+              type="text"
+              id="town"
+              name="town"
+              autoComplete="address-level2"
+              value={formData.town}
+              onChange={(e) =>
+                setFormData({ ...formData, town: e.target.value })
+              }
+              className={inputClasses}
+              placeholder="Plymouth, Sandwich, Bourne, etc."
+              required
+            />
+          </div>
+          <div>
+            <span id="services-label" className={labelClasses}>
+              What do you need cleaned?
+            </span>
+            <p className="mb-2 text-xs text-slate-500 sm:mb-3">
+              Select all that apply — e.g. house wash, deck, patio, walkway…
+            </p>
+            <div
+              className="grid grid-cols-2 gap-2 md:grid-cols-3"
+              role="group"
+              aria-labelledby="services-label"
+            >
+              {SERVICE_CHECKBOXES.map((option) => {
+                const selected = formData.options.includes(option);
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => handleOptionChange(option)}
+                    className={`flex min-h-11 items-center gap-2 rounded-lg border px-2.5 py-2 text-left shadow-sm transition-colors sm:gap-3 sm:p-3 ${
+                      selected
+                        ? "border-blue-500 bg-blue-50 ring-1 ring-blue-500/30"
+                        : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/80"
+                    }`}
+                  >
+                    <span
+                      className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border ${
+                        selected
+                          ? "border-blue-600 bg-blue-600 text-white"
+                          : "border-slate-300 bg-white"
+                      }`}
+                      aria-hidden
+                    >
+                      {selected && (
+                        <svg
+                          viewBox="0 0 16 16"
+                          className="h-3 w-3"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                        >
+                          <path d="M3.5 8.5 6.5 11.5 12.5 4.5" />
+                        </svg>
+                      )}
+                    </span>
+                    <span
+                      className={`text-xs font-medium capitalize leading-tight sm:text-sm ${
+                        selected ? "text-blue-900" : "text-slate-700"
+                      }`}
+                    >
+                      {option.replace(/-/g, " ")}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {!hideHowYouFoundUs && (
+            <div>
+              <label htmlFor="howYouFoundUs" className={labelClasses}>
+                How did you find us?
+              </label>
+              <select
+                id="howYouFoundUs"
+                name="howYouFoundUs"
+                value={formData.howYouFoundUs}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    howYouFoundUs: e.target.value,
+                    howYouFoundUsOther: "",
+                  })
+                }
+                className={inputClasses}
+                required
+              >
+                <option value="">Select one…</option>
+                {HOW_FOUND_OPTIONS.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              {formData.howYouFoundUs === "Other" && (
+                <input
+                  type="text"
+                  id="howYouFoundUsOther"
+                  name="howYouFoundUsOther"
+                  value={formData.howYouFoundUsOther}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      howYouFoundUsOther: e.target.value,
+                    })
+                  }
+                  className={`${inputClasses} mt-3`}
+                  placeholder="Please tell us how you heard about us"
+                  required
+                />
+              )}
+            </div>
+          )}
+          <details className="rounded-lg border border-slate-200 bg-slate-50/60">
+            <summary className="cursor-pointer px-3 py-2.5 text-sm font-semibold text-slate-700">
+              Add optional details or photos
+            </summary>
+            <div className="space-y-3 border-t border-slate-200 p-3 sm:space-y-5 sm:p-4">
+              <div>
+                <label htmlFor="email" className={labelClasses}>
+                  Email{" "}
+                  <span className="font-normal text-slate-500">(optional)</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autoComplete="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  className={inputClasses}
+                  placeholder="you@email.com"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className={labelClasses}>
+                  Message{" "}
+                  <span className="font-normal text-slate-500">(optional)</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  className={`${inputClasses} min-h-[80px] resize-y`}
+                  placeholder="Anything else we should know?"
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                />
+              </div>
+              <div className="border-t border-slate-200 pt-3 sm:pt-5">
+                <label htmlFor="images" className={labelClasses}>
+                  Photos{" "}
+                  <span className="font-normal text-slate-500">(optional)</span>
+                </label>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Optional: upload project photos"
+                  className="mt-2 flex cursor-pointer justify-center rounded-lg border-2 border-dashed border-slate-200 bg-white px-4 py-5 transition hover:border-slate-300 hover:bg-slate-50 sm:py-8"
+                  onClick={() => inputFileRef.current?.click()}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      inputFileRef.current?.click();
+                    }
+                  }}
+                >
+                  <div className="space-y-1 text-center">
+                    <FaPaperclip className="mx-auto h-7 w-7 text-slate-400 sm:h-10 sm:w-10" />
+                    <p className="text-sm text-slate-600">Tap to add photos</p>
+                    <p className="text-xs text-slate-500">
+                      PNG, JPG, GIF up to 10MB each
+                    </p>
+                  </div>
+                </div>
+                <input
+                  ref={inputFileRef}
+                  type="file"
+                  id="images"
+                  multiple
+                  onChange={handleFileChange}
+                  className="sr-only"
+                  accept="image/*"
+                />
+                {formData.images.length > 0 && (
+                  <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    {formData.images.map((file, index) => (
+                      <div
+                        key={`${file.name}-${index}`}
+                        className="relative group"
+                      >
+                        <img
+                          src={URL.createObjectURL(file)}
+                          alt=""
+                          className="h-24 w-full rounded-lg object-cover"
+                        />
+                        <button
+                          type="button"
+                          className="absolute right-1 top-1 rounded-full bg-slate-700 p-1.5 text-white opacity-90 shadow transition hover:bg-slate-800 hover:opacity-100"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            removeImage(index);
+                          }}
+                          aria-label={`Remove ${file.name}`}
+                        >
+                          <FaTrash size={12} />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </details>
+          <div className="pt-1">
+            {errorMessage && (
+              <div className="mt-4 rounded-lg border border-slate-200 bg-slate-100 p-4 text-sm text-slate-800">
+                {errorMessage}
+              </div>
+            )}
+            <button
+              type="submit"
+              className="w-full rounded-lg bg-red-600 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Sending…" : "Submit My Free Estimate"}
+            </button>
+            <p className="mt-3 text-center text-xs leading-relaxed text-slate-500">
+              No obligation. We&apos;ll only use your info to follow up about
+              your quote.
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+
+  if (formOnly) {
+    return formCard;
+  }
 
   return (
     <div className="bg-slate-50">
@@ -309,306 +658,7 @@ const GetAiQuote = () => {
             <ServiceAreaMap compact showCta={false} />
           </div>
 
-          <div id="quote-form" className="scroll-mt-20 lg:scroll-mt-28">
-            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-8">
-              <div className="mb-3 lg:hidden">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                  Graham Power Washing
-                </p>
-                <h1 className="mt-1 text-2xl font-bold tracking-tight text-slate-900">
-                  Get a Fast Free Quote
-                </h1>
-              </div>
-              <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-slate-600 sm:mb-5">
-                <span className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 font-medium">
-                  <Lock className="h-3.5 w-3.5 text-slate-500" aria-hidden />
-                  Secure form
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 font-medium">
-                  <ShieldCheck
-                    className="h-3.5 w-3.5 text-slate-500"
-                    aria-hidden
-                  />
-                  Licensed & insured
-                </span>
-              </div>
-              <div className="mb-4 rounded-lg border border-blue-100 bg-blue-50/70 p-3 sm:mb-6 sm:p-5">
-                <p className="text-sm font-medium leading-relaxed text-slate-700">
-                  Takes about 60 seconds. Photos are optional, but they can help
-                  us quote more accurately.
-                </p>
-                <a
-                  href={phoneTelHref}
-                  className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 underline decoration-slate-300 underline-offset-2 transition hover:text-blue-800 hover:decoration-blue-600 sm:mt-3"
-                >
-                  <Phone className="h-4 w-4 shrink-0" aria-hidden />
-                  Prefer to call? {formatPhoneDisplay(clientData.phone)}
-                </a>
-              </div>
-              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-5">
-                <div>
-                  <label htmlFor="name" className={labelClasses}>
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    autoComplete="name"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className={inputClasses}
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className={labelClasses}>
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    inputMode="tel"
-                    autoComplete="tel"
-                    value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className={inputClasses}
-                    placeholder="Best phone number"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="town" className={labelClasses}>
-                    Town
-                  </label>
-                  <input
-                    type="text"
-                    id="town"
-                    name="town"
-                    autoComplete="address-level2"
-                    value={formData.town}
-                    onChange={(e) =>
-                      setFormData({ ...formData, town: e.target.value })
-                    }
-                    className={inputClasses}
-                    placeholder="Plymouth, Sandwich, Bourne, etc."
-                    required
-                  />
-                </div>
-                <div>
-                  <span id="services-label" className={labelClasses}>
-                    What do you need cleaned?
-                  </span>
-                  <p className="mb-2 text-xs text-slate-500 sm:mb-3">
-                    Select all that apply — e.g. house wash, deck, patio,
-                    walkway…
-                  </p>
-                  <div
-                    className="grid grid-cols-2 gap-2 md:grid-cols-3"
-                    role="group"
-                    aria-labelledby="services-label"
-                  >
-                    {SERVICE_CHECKBOXES.map((option) => (
-                      <label
-                        key={option}
-                        className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 bg-white px-2.5 py-2 shadow-sm transition-colors hover:border-slate-300 hover:bg-slate-50/80 sm:gap-3 sm:p-3"
-                      >
-                        <input
-                          type="checkbox"
-                          value={option}
-                          checked={formData.options.includes(option)}
-                          onChange={() => handleOptionChange(option)}
-                          className="h-4 w-4 shrink-0 rounded border-slate-300 text-blue-600 accent-blue-600 focus:ring-blue-500/30"
-                        />
-                        <span className="text-xs font-medium capitalize leading-tight text-slate-700 sm:text-sm">
-                          {option.replace(/-/g, " ")}
-                        </span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="howYouFoundUs" className={labelClasses}>
-                    How did you find us?
-                  </label>
-                  <select
-                    id="howYouFoundUs"
-                    name="howYouFoundUs"
-                    value={formData.howYouFoundUs}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        howYouFoundUs: e.target.value,
-                        howYouFoundUsOther: "",
-                      })
-                    }
-                    className={inputClasses}
-                    required
-                  >
-                    <option value="">Select one…</option>
-                    {HOW_FOUND_OPTIONS.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                  {formData.howYouFoundUs === "Other" && (
-                    <input
-                      type="text"
-                      id="howYouFoundUsOther"
-                      name="howYouFoundUsOther"
-                      value={formData.howYouFoundUsOther}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          howYouFoundUsOther: e.target.value,
-                        })
-                      }
-                      className={`${inputClasses} mt-3`}
-                      placeholder="Please tell us how you heard about us"
-                      required
-                    />
-                  )}
-                </div>
-                <details className="rounded-lg border border-slate-200 bg-slate-50/60">
-                  <summary className="cursor-pointer px-3 py-2.5 text-sm font-semibold text-slate-700">
-                    Add optional details or photos
-                  </summary>
-                  <div className="space-y-3 border-t border-slate-200 p-3 sm:space-y-5 sm:p-4">
-                    <div>
-                      <label htmlFor="email" className={labelClasses}>
-                        Email{" "}
-                        <span className="font-normal text-slate-500">
-                          (optional)
-                        </span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        autoComplete="email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        className={inputClasses}
-                        placeholder="you@email.com"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="message" className={labelClasses}>
-                        Message{" "}
-                        <span className="font-normal text-slate-500">
-                          (optional)
-                        </span>
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        className={`${inputClasses} min-h-[80px] resize-y`}
-                        placeholder="Anything else we should know?"
-                        onChange={(e) =>
-                          setFormData({ ...formData, message: e.target.value })
-                        }
-                      />
-                    </div>
-                    <div className="border-t border-slate-200 pt-3 sm:pt-5">
-                      <label htmlFor="images" className={labelClasses}>
-                        Photos{" "}
-                        <span className="font-normal text-slate-500">
-                          (optional)
-                        </span>
-                      </label>
-                      <div
-                        role="button"
-                        tabIndex={0}
-                        aria-label="Optional: upload project photos"
-                        className="mt-2 flex cursor-pointer justify-center rounded-lg border-2 border-dashed border-slate-200 bg-white px-4 py-5 transition hover:border-slate-300 hover:bg-slate-50 sm:py-8"
-                        onClick={() => inputFileRef.current?.click()}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            inputFileRef.current?.click();
-                          }
-                        }}
-                      >
-                        <div className="space-y-1 text-center">
-                          <FaPaperclip className="mx-auto h-7 w-7 text-slate-400 sm:h-10 sm:w-10" />
-                          <p className="text-sm text-slate-600">
-                            Tap to add photos
-                          </p>
-                          <p className="text-xs text-slate-500">
-                            PNG, JPG, GIF up to 10MB each
-                          </p>
-                        </div>
-                      </div>
-                      <input
-                        ref={inputFileRef}
-                        type="file"
-                        id="images"
-                        multiple
-                        onChange={handleFileChange}
-                        className="sr-only"
-                        accept="image/*"
-                      />
-                      {formData.images.length > 0 && (
-                        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                          {formData.images.map((file, index) => (
-                            <div
-                              key={`${file.name}-${index}`}
-                              className="relative group"
-                            >
-                              <img
-                                src={URL.createObjectURL(file)}
-                                alt=""
-                                className="h-24 w-full rounded-lg object-cover"
-                              />
-                              <button
-                                type="button"
-                                className="absolute right-1 top-1 rounded-full bg-slate-700 p-1.5 text-white opacity-90 shadow transition hover:bg-slate-800 hover:opacity-100"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  removeImage(index);
-                                }}
-                                aria-label={`Remove ${file.name}`}
-                              >
-                                <FaTrash size={12} />
-                              </button>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </details>
-                <div className="pt-1">
-                  {errorMessage && (
-                    <div className="mt-4 rounded-lg border border-slate-200 bg-slate-100 p-4 text-sm text-slate-800">
-                      {errorMessage}
-                    </div>
-                  )}
-                  <button
-                    type="submit"
-                    className="w-full rounded-lg bg-red-600 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Sending…" : "Request My Free Estimate"}
-                  </button>
-                  <p className="mt-3 text-center text-xs leading-relaxed text-slate-500">
-                    No obligation. We&apos;ll only use your info to follow up
-                    about your quote.
-                  </p>
-                </div>
-              </form>
-            </div>
-          </div>
+          {formCard}
         </div>
       </div>
     </div>
