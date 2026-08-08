@@ -28,8 +28,8 @@ type Props = {
 };
 
 /**
- * Focused service×area page: unique local copy + proof, links up to the
- * service authority page for shared process/benefits (reduces thin duplication).
+ * Service×area page: unique local copy + FAQs first; shared process lives on
+ * the parent service URL to avoid near-duplicate bodies across towns.
  */
 export default function ServiceAreaDetailPage({
   service,
@@ -50,37 +50,52 @@ export default function ServiceAreaDetailPage({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: `${SITE_URL}/`,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Services",
-            item: `${SITE_URL}/services`,
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: service.name,
-            item: `${SITE_URL}/services/${service.slug}`,
-          },
-          {
-            "@type": "ListItem",
-            position: 4,
-            name: area.name,
-            item: url,
-          },
-        ],
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: content.h1,
+        description: content.metaDescription,
+        inLanguage: "en-US",
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: { "@id": LOCAL_BUSINESS_ID },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}${service.heroImage}`,
+        },
+        breadcrumb: {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: `${SITE_URL}/`,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Services",
+              item: `${SITE_URL}/services`,
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: service.name,
+              item: `${SITE_URL}/services/${service.slug}`,
+            },
+            {
+              "@type": "ListItem",
+              position: 4,
+              name: area.name,
+              item: url,
+            },
+          ],
+        },
       },
       {
         "@type": "Service",
-        name: service.name,
+        "@id": `${url}#service`,
+        name: content.h1,
         description: content.metaDescription,
         serviceType: service.serviceType,
         url,
@@ -110,7 +125,7 @@ export default function ServiceAreaDetailPage({
       <section className="relative h-[58vh] min-h-[420px] w-full overflow-hidden sm:h-[62vh]">
         <Image
           src={service.heroImage}
-          alt={`${service.name} by Graham Power Washing ${place}`}
+          alt={`${content.h1} — Graham Power Washing`}
           fill
           priority
           className={`object-cover ${service.heroObjectPosition ?? "object-center"}`}
@@ -128,7 +143,7 @@ export default function ServiceAreaDetailPage({
             ]}
           />
           <p className="mt-4 text-sm font-semibold uppercase tracking-[0.22em] text-white/75">
-            Graham Power Washing · {area.name}
+            Graham Power Washing · {area.name}, MA
           </p>
           <h1 className="mt-3 max-w-4xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
             {content.h1}
@@ -140,12 +155,12 @@ export default function ServiceAreaDetailPage({
       </section>
 
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-        <p className="mx-auto max-w-3xl text-center text-xl leading-relaxed text-slate-700">
-          {content.intro}
-        </p>
-
-        <section className="mx-auto mt-16 max-w-3xl">
-          <h2 className="text-center text-3xl font-bold text-slate-950">
+        {/* Unique local body first */}
+        <section className="mx-auto max-w-3xl">
+          <p className="text-center text-xl leading-relaxed text-slate-700">
+            {content.intro}
+          </p>
+          <h2 className="mt-14 text-center text-3xl font-bold text-slate-950">
             {content.localTitle}
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-700">
@@ -153,51 +168,27 @@ export default function ServiceAreaDetailPage({
           </p>
         </section>
 
-        {service.gallery.length > 0 && (
-          <section className="mt-16">
-            <p className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-red-600">
-              Real Jobs
-            </p>
-            <h2 className="mt-3 text-center text-3xl font-bold tracking-tight text-slate-950">
-              Recent {service.shortName} work
-            </h2>
-            <div
-              className={`mt-10 grid gap-4 ${
-                service.gallery.length === 1
-                  ? "mx-auto max-w-3xl grid-cols-1"
-                  : service.gallery.length === 2
-                    ? "grid-cols-1 sm:grid-cols-2"
-                    : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-              }`}
-            >
-              {service.gallery.map((img) => (
-                <div
-                  key={img.src}
-                  className="relative aspect-[4/3] overflow-hidden bg-slate-100"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className={`object-cover ${
-                      img.src === service.heroImage
-                        ? (service.heroObjectPosition ?? "object-center")
-                        : "object-center"
-                    }`}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        <section className="mt-20">
+        <section className="mt-16" id="faq">
           <h2 className="text-center text-3xl font-bold text-slate-950">
-            {service.benefitsTitle}
+            {service.shortName} questions for {area.name} homeowners
           </h2>
-          <ul className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2">
-            {service.benefits.map((item) => (
+          <div className="mx-auto mt-10 max-w-3xl space-y-8 text-lg text-slate-700">
+            {content.faqs.map((faq) => (
+              <div key={faq.question}>
+                <h3 className="font-bold text-slate-950">{faq.question}</h3>
+                <p className="mt-2 leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Short benefit summary — full process lives on parent service page */}
+        <section className="mx-auto mt-20 max-w-3xl border-t border-slate-200 pt-14">
+          <h2 className="text-center text-2xl font-bold text-slate-950">
+            What you get with {service.shortName.toLowerCase()} {place}
+          </h2>
+          <ul className="mt-8 space-y-3">
+            {service.benefits.slice(0, 3).map((item) => (
               <li
                 key={item}
                 className="flex gap-3 text-lg leading-relaxed text-slate-700"
@@ -209,8 +200,8 @@ export default function ServiceAreaDetailPage({
               </li>
             ))}
           </ul>
-          <p className="mx-auto mt-8 max-w-2xl text-center text-slate-600">
-            See our full process on the{" "}
+          <p className="mt-6 text-center text-slate-600">
+            Full process, gallery, and details:{" "}
             <Link
               href={service.href}
               className="font-semibold text-blue-700 underline"
@@ -222,9 +213,9 @@ export default function ServiceAreaDetailPage({
         </section>
 
         <div className="mt-16 bg-slate-950 px-6 py-12 text-center text-white sm:px-12 sm:py-16">
-          <h3 className="text-3xl font-bold">
-            Get a free quote for {area.name}
-          </h3>
+          <h2 className="text-3xl font-bold">
+            Free quote for {service.shortName.toLowerCase()} in {area.name}
+          </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-slate-300">
             Tell us what needs cleaning. We&apos;ll follow up with clear next
             steps — no pressure.
@@ -247,25 +238,11 @@ export default function ServiceAreaDetailPage({
           </div>
         </div>
 
-        <section className="mt-20 mb-8" id="faq">
-          <h2 className="text-center text-3xl font-bold text-slate-950">
-            {service.shortName} FAQs — {area.name}
-          </h2>
-          <div className="mx-auto mt-10 max-w-3xl space-y-8 text-lg text-slate-700">
-            {content.faqs.map((faq) => (
-              <div key={faq.question}>
-                <h3 className="font-bold text-slate-950">{faq.question}</h3>
-                <p className="mt-2 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section className="mt-20 border-t border-slate-200 pt-16">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
               <h2 className="text-2xl font-bold text-slate-950">
-                More in {area.name}
+                More services in {area.name}
               </h2>
               <ul className="mt-5 space-y-2">
                 <li>
@@ -273,7 +250,7 @@ export default function ServiceAreaDetailPage({
                     href={`/areas-served/${area.slug}`}
                     className="font-medium text-blue-700 hover:underline"
                   >
-                    {area.name} power washing homepage
+                    All power washing in {area.name}
                   </Link>
                 </li>
                 {otherServices.map((s) => (
@@ -282,7 +259,7 @@ export default function ServiceAreaDetailPage({
                       href={`/services/${s.slug}/${area.slug}`}
                       className="text-slate-700 hover:text-blue-700 hover:underline"
                     >
-                      {s.name} {place}
+                      {s.name} in {area.name}
                     </Link>
                   </li>
                 ))}

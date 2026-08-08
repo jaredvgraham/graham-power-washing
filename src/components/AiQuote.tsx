@@ -242,9 +242,9 @@ const GetAiQuote = ({
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
               Graham Power Washing
             </p>
-            <h1 className="mt-1 text-2xl font-bold tracking-tight text-slate-900">
+            <h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900">
               Get a Fast Free Quote
-            </h1>
+            </h2>
           </div>
         )}
         <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-slate-600 sm:mb-5">

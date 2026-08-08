@@ -178,12 +178,13 @@ export function buildLocalizedServiceContent(
         ? `${service.name} on Cape Cod`
         : `${service.name} in ${area.name}, MA`;
 
-  const intro = `${localAngle} ${service.intro}`;
+  // Lead with local angle so towns don't share the same opening paragraph.
+  const intro = `${localAngle} Homeowners ${place} hire Graham Power Washing for careful ${service.shortName.toLowerCase()} with clear pricing and no high-pressure sales.`;
 
   const localBody = [
     area.housingNote,
     area.climateNote,
-    `Whether you need ${service.shortName.toLowerCase()} alone or bundled with other exterior work, we quote clearly and treat ${display} properties with the same care we bring to every Graham Power Washing job.`,
+    `For ${service.shortName.toLowerCase()} ${place}, we match the method to the surface and the ${area.county} climate — then quote the job before work begins. Bundling with other exterior cleaning is available when it saves you a second visit.`,
   ].join(" ");
 
   const metaTitle =

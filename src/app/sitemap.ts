@@ -6,8 +6,8 @@ import {
   SITE_URL,
 } from "@/lib/seo/localSeo";
 
-/** Stable lastmod — avoid rewriting every deploy as "fresh" */
-const CONTENT_UPDATED = new Date("2026-08-01");
+/** Bump when indexable page templates/content materially change */
+const CONTENT_UPDATED = new Date("2026-08-08");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
