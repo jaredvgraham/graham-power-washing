@@ -5,7 +5,14 @@ import { usePathname } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 
 const HIDDEN_EXACT = ["/"];
-const HIDDEN_PREFIXES = ["/qr", "/get-quote", "/thank-you", "/login", "/admin"];
+const HIDDEN_PREFIXES = [
+  "/qr",
+  "/get-quote",
+  "/cabinet-quote",
+  "/thank-you",
+  "/login",
+  "/admin",
+];
 
 export default function BackHomeButton() {
   const pathname = usePathname();

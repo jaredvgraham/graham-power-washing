@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 const HIDDEN_PREFIXES = [
   "/qr",
   "/get-quote",
+  "/cabinet-quote",
   "/login",
   "/signin",
   "/admin",
